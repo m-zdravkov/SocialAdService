@@ -11,5 +11,8 @@ namespace Model
         public string Email { get; set; }
         public string Name { get; set; }
         public string Password { get; set; }
+        public string PictureURL { get; set; }
+        public int Reservations { get; set; }
+        public int Boosts { get; set; }
     }
 }
