@@ -17,7 +17,8 @@ namespace ModelTests
                 Password = "123",
                 Email = "1@2",
                 Reservations = -1,
-                Boosts = -1
+                Boosts = -1,
+                DateRegistered = DateTime.Now
             };
 
             
@@ -39,7 +40,8 @@ namespace ModelTests
                 PictureURL = "http://images.com/myimage.jpg",
                 Password = "124i53290uas9884ufas89f04uq9hge98u",
                 Reservations = 0,
-                Boosts = 0
+                Boosts = 0,
+                DateRegistered = DateTime.Now
             };
 
             UserValidator validator1 = new UserValidator(validUser1);
