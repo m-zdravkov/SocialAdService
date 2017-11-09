@@ -10,7 +10,7 @@ namespace Model
     public class UserValidator
     {
         private static Regex _nameRegex = new Regex(@"[a-zA-Z]{4,128}");
-        private static Regex _passwordRegex = new Regex(@"*{8,256}");
+        private static Regex _passwordRegex = new Regex(@"[a-zA-Z0-9]{8,256}");
         private static Regex _pictureURLRegex = new Regex(@"*{4,256}");
         private static Regex _emailRegex = new Regex(@"*@*.*{4,256}");
 
