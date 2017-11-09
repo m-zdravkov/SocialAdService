@@ -10,6 +10,9 @@ namespace Model
     public class UserValidator
     {
         private static Regex _nameRegex = new Regex(@"[a-zA-Z]{4,128}");
+        private static Regex _passwordRegex = new Regex(@"*{8,256}");
+        private static Regex _pictureURLRegex = new Regex(@"*{4,256}");
+        private static Regex _emailRegex = new Regex(@"*@*.*{4,256}");
 
         public User User { get; set; }
 
@@ -23,10 +26,12 @@ namespace Model
             bool result = true;
 
             result = result && ValidateName(User.Name);
-            //result = result && ValidateName(User.Name);
-            //result = result && ValidateName(User.Name);
-            //result = result && ValidateName(User.Name);
-            //other checks
+            result = result && ValidatePassword(User.Password);
+            result = result && ValidatePictureURL(User.PictureURL);
+            result = result && ValidateBoosts(User.Boosts);
+            result = result && ValidateReservations(User.Reservations);
+            //add any other checks below
+
             return result;
         }
 
@@ -36,6 +41,24 @@ namespace Model
             return _nameRegex.Match(name).Success;
         }
 
-        
+        public static bool ValidatePassword(string hash)
+        {
+            return _nameRegex.Match(hash).Success;
+        }
+
+        public static bool ValidatePictureURL(string url)
+        {
+            return _pictureURLRegex.Match(url).Success;
+        }
+
+        public static bool ValidateBoosts(int value)
+        {
+            return (value >= 0);
+        }
+
+        public static bool ValidateReservations(int value)
+        {
+            return (value >= 0);
+        }
     }
 }

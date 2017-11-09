@@ -8,22 +8,43 @@ namespace ModelTests
     public class UserTests
     {
         [TestMethod]
-        public void TestValidationName()
+        public void TestInvalid()
         {
-            User shortName = new User
+            User invalidUser1 = new User
             {
-                Name = "joe"
+                Name = "joe",
+                PictureURL = "123",
+                Password = "123",
+                Email = "1@2",
+                Reservations = -1,
+                Boosts = -1
             };
 
-            User longName = new User
-            {
-                Name = "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
-            };
-            UserValidator validator1 = new UserValidator(shortName);
-            UserValidator validator2 = new UserValidator(longName);
+            
+
+            UserValidator validator1 = new UserValidator(invalidUser1);
+            
 
             Assert.IsFalse(validator1.ValidateUser());
-            Assert.IsFalse(!validator2.ValidateUser());
+            
+        }
+
+        [TestMethod]
+        public void TestValid()
+        {
+            User validUser1 = new User
+            {
+                Name = "john doe",
+                Email = "john.doe@email.com",
+                PictureURL = "http://images.com/myimage.jpg",
+                Password = "124i53290uas9884ufas89f04uq9hge98u",
+                Reservations = 0,
+                Boosts = 0
+            };
+
+            UserValidator validator1 = new UserValidator(validUser1);
+
+            Assert.IsTrue(validator1.ValidateUser());
         }
     }
 }
