@@ -15,5 +15,6 @@ namespace Model
         public string PictureURL { get; set; }
         public int Reservations { get; set; }
         public int Boosts { get; set; }
+        public DateTime DateRegistered { get; set; }
     }
 }

@@ -30,11 +30,16 @@ namespace Model
             result = result && ValidatePictureURL(User.PictureURL);
             result = result && ValidateBoosts(User.Boosts);
             result = result && ValidateReservations(User.Reservations);
+            result = result && ValidateDateRegistered(User.DateRegistered);
             //add any other checks below
 
             return result;
         }
 
+        private bool ValidateDateRegistered(DateTime dateRegistered)
+        {
+            return (dateRegistered != null);
+        }
 
         public static bool ValidateName(string name)
         {
