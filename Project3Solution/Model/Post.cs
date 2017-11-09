@@ -10,5 +10,11 @@ namespace Model
     {
         public string Id { get; set; }
         public string Content { get; set; }
+
+        public string ImageSource { get; set; }
+
+        public DateTime DatePosted { get; set; }
+
+        public DateTime LastEdited { get; set; }
     }
 }
