@@ -11,8 +11,8 @@ namespace Model
     {
         private static Regex _nameRegex = new Regex(@"[a-zA-Z]{4,128}");
         private static Regex _passwordRegex = new Regex(@"[a-zA-Z0-9]{8,256}");
-        private static Regex _pictureURLRegex = new Regex(@"*{4,256}");
-        private static Regex _emailRegex = new Regex(@"*@*.*{4,256}");
+        private static Regex _pictureURLRegex = new Regex(@"[a-zA-Z:/.-_]{4,256}");
+        private static Regex _emailRegex = new Regex(@"[a-zA-Z0-9_.-][@][.][a-zA-Z]{4,256}");
 
         public User User { get; set; }
 
