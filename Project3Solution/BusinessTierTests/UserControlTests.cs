@@ -13,10 +13,10 @@ namespace BusinessTierTests
             Id = "UserUnitTestID00000001",
             Name = "Tester",
             Email = "email@service.com",
-            PictureURL = "http://asoijdaosifjaf/image.jpg",
+            PictureURL = "http://test.com/image.jpg",
             Boosts = 0,
             Reservations = 0,
-            Password = "aoigjoiatjseot349yujsiojgofi"
+            PasswordHash = new byte[256]
         };
 
         static UserControl users = UserControl.GetInstance();
@@ -51,14 +51,27 @@ namespace BusinessTierTests
                 Id = "UserUnitTestID00000002",
                 Name = "Tester",
                 Email = "email@service.com",
-                PictureURL = "http://asoijdaosifjaf/image.jpg",
+                PictureURL = "http://test.com/image.jpg",
                 Boosts = 0,
                 Reservations = 0,
-                Password = "aoigjoiatjseot349yujsiojgofi"
             };
             
             users.AddUser(testUser);
             users.DeleteUser(testUser.Id);
+        }
+
+        [TestMethod]
+        public void TestRegister()
+        {
+            User registeredUser = users.RegisterUser(
+                "Tester",
+                "register@unit.test",
+                "http://test.com/image.jpg",
+                "Don't hack my p4ssw0rd, please! 1234");
+
+            Assert.IsNotNull(registeredUser);
+
+            users.DeleteUser(registeredUser.Id);
         }
 
         [ClassCleanup]

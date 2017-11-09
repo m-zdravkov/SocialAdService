@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SecureHashing.cs" />
     <Compile Include="UserControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

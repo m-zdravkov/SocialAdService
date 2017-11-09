@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 
 namespace Model
 {
@@ -11,7 +10,7 @@ namespace Model
     {
         public Price Price = new Price();
 
-        public ISet<String> Categories;
+        public ISet<string> Categories { get; set; }
 
         public DateTime ExpDate { get; set; }
 

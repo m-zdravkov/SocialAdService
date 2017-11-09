@@ -14,20 +14,14 @@ namespace ModelTests
             {
                 Name = "joe",
                 PictureURL = "123",
-                Password = "123",
+                PasswordHash = new byte[256],
                 Email = "1@2",
                 Reservations = -1,
                 Boosts = -1,
                 DateRegistered = DateTime.Now
             };
 
-            
-
-            UserValidator validator1 = new UserValidator(invalidUser1);
-            
-
-            Assert.IsFalse(validator1.ValidateUser());
-            
+            Assert.IsFalse(invalidUser1.Validate()); 
         }
 
         [TestMethod]
@@ -38,15 +32,13 @@ namespace ModelTests
                 Name = "john doe",
                 Email = "john.doe@email.com",
                 PictureURL = "http://images.com/myimage.jpg",
-                Password = "124i53290uas9884ufas89f04uq9hge98u",
+                PasswordHash = new byte[256],
                 Reservations = 0,
                 Boosts = 0,
                 DateRegistered = DateTime.Now
             };
 
-            UserValidator validator1 = new UserValidator(validUser1);
-
-            Assert.IsTrue(validator1.ValidateUser());
+            Assert.IsTrue(validUser1.Validate());
         }
     }
 }

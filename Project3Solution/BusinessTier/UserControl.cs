@@ -22,29 +22,23 @@ namespace BusinessTier
         }
 
         private UserControl() { }
+        
 
-        public static void GenerateUserId(User user)
-        {
-            if (user.Name == null || user.Email == null)
-                throw new NullReferenceException("User.Name and User.Email are required to generate an Id");
-            
-            // TODO generate Id from hash value
-            user.Id = user.Name + "-" + user.Email;
-        }
-
-        public void RegisterUser(string name, string email, string picutreURL, string password)
+        public User RegisterUser(string name, string email, string picutreURL, string password)
         {
             User user = new User
             {
+                Id = Guid.NewGuid().ToString(),
+                DateRegistered = DateTime.Now,
                 Name = name,
                 Email = email,
                 PictureURL = picutreURL,
                 Boosts = 5,
                 Reservations = 5,
             };
-
-            GenerateUserId(user);
+            
             AddUser(user);
+            return user;
         }
 
         public void AddUser(User user)

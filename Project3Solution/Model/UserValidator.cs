@@ -19,7 +19,7 @@ namespace Model
             bool result = true;
 
             result = result && ValidateName(user.Name);
-            result = result && ValidatePassword(user.Password);
+            result = result && ValidatePassword(user.PasswordHash);
             result = result && ValidatePictureURL(user.PictureURL);
             result = result && ValidateBoosts(user.Boosts);
             result = result && ValidateReservations(user.Reservations);
@@ -39,9 +39,9 @@ namespace Model
             return _nameRegex.Match(name).Success;
         }
 
-        public static bool ValidatePassword(string hash)
+        public static bool ValidatePassword(byte[] hash)
         {
-            return _nameRegex.Match(hash).Success;
+            return hash.Length == 256;
         }
 
         public static bool ValidatePictureURL(string url)
