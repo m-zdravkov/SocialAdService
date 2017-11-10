@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ad.cs" />
+    <Compile Include="AdValidator.cs" />
     <Compile Include="DBContext.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Post.cs" />
