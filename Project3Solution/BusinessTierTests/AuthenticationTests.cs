@@ -12,18 +12,21 @@ namespace BusinessTierTests
     {
         UserControl users = UserControl.GetInstance();
         User testUser;
+        AuthenticationControl auth = AuthenticationControl.GetInstance();
+        string testPass = "#&authT3St*(";
 
         [ClassInitialize]
         public void Initialize()
         {
             testUser = users.RegisterUser(
-                "Unit Test","auth@unit.test","http://unit.test/image.jpg","#&authT3St*(");
+                "Unit Test","auth@unit.test","http://unit.test/image.jpg",testPass);
         }
 
         [TestMethod]
-        public void TestLogin()
+        public void TestLoginProper()
         {
-            
+            auth.Authenticate("auth@unit.test",testPass);
+            Assert.Equals(auth.AuthenticatedUser,testUser);
         }
 
         [ClassCleanup]
