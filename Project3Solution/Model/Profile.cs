@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Profile
+    public class Profile : Feed
     {
-        //TO DO: Domain model shows that Profile inherits Feed class, check if its correct?
         public string Information { get; set; }
-
-        //public string Content { get; set; }
-
 
     }
 }
