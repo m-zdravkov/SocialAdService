@@ -18,9 +18,7 @@ namespace ModelTests
                 
             };
 
-            PostValidator validator1 = new PostValidator(postObject);
-
-            Assert.IsFalse(validator1.ValidatePost());
+            Assert.IsFalse(postObject.ValidatePost());
 
         }
 
@@ -36,9 +34,7 @@ namespace ModelTests
                 
             };
 
-            PostValidator validator1 = new PostValidator(postObject);
-
-            Assert.IsFalse(validator1.ValidatePost());
+            Assert.IsFalse(postObject.ValidatePost());
         }
         [TestMethod]
         //Test URL link
@@ -51,9 +47,7 @@ namespace ModelTests
                 ImageSource = "http://images.com/myimage.jpg"
             };
 
-            PostValidator validator1 = new PostValidator(postObject);
-
-            Assert.IsTrue(validator1.ValidatePost());
+            Assert.IsTrue(postObject.ValidatePost());
         }
     }
 }

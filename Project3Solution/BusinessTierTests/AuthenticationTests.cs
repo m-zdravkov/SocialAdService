@@ -29,6 +29,20 @@ namespace BusinessTierTests
             Assert.Equals(auth.AuthenticatedUser,testUser);
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(UserNotFoundException))]
+        public void TestLoginNotFound()
+        {
+            auth.Authenticate("authNotFound@unit.test", testPass);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(WrongPasswordException))]
+        public void TestLoginWrongPassword()
+        {
+            auth.Authenticate("auth@unit.test", "123");
+        }
+
         [ClassCleanup]
         public void Cleanup()
         {
