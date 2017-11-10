@@ -7,19 +7,16 @@ using System.Text.RegularExpressions;
 
 namespace Model
 {
-    public class PostValidator
+    public static class PostValidator
     {
         private static Regex _contentRegex = new Regex(@"[a-zA-Z]{4,128}");
         //TO DO: Test if the Regex for URLS works.
         private static Regex _imageSourceRegex = new Regex(@"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$");
 
-        public Post postObject { get; set; }
-        public PostValidator (Post post)
-        {
-            postObject = post;
-        }
+        public static Post postObject { get; set; }
+        
 
-        public bool ValidatePost ()
+        public static bool ValidatePost (this Post post)
         {
             bool result = true;
 
