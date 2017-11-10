@@ -20,6 +20,7 @@ namespace Model
 
             result = result && ValidateName(user.Name);
             result = result && ValidatePassword(user.PasswordHash);
+            result = result && ValidateSalt(user.Salt);
             result = result && ValidatePictureURL(user.PictureURL);
             result = result && ValidateBoosts(user.Boosts);
             result = result && ValidateReservations(user.Reservations);
@@ -27,6 +28,11 @@ namespace Model
             //add any other checks below
 
             return result;
+        }
+
+        private static bool ValidateSalt(byte[] salt)
+        {
+            return salt != null && salt.Length >= 256;
         }
 
         private static bool ValidateDateRegistered(DateTime dateRegistered)
@@ -41,7 +47,7 @@ namespace Model
 
         public static bool ValidatePassword(byte[] hash)
         {
-            return hash.Length == 256;
+            return hash!=null && hash.Length == 256; //Confirm SHA256
         }
 
         public static bool ValidatePictureURL(string url)

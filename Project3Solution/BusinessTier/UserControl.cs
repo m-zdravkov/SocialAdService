@@ -10,21 +10,36 @@ namespace BusinessTier
 {
     public class UserControl
     {
-        private static UserControl instance;
+        private static UserControl _instance;
 
         //private DBContext db = new DBContext();
 
         public static UserControl GetInstance()
         {
-            if (instance == null)
-                instance = new UserControl();
-            return instance;
+            if (_instance == null)
+                _instance = new UserControl();
+            return _instance;
         }
 
         private UserControl() { }
         
 
         public User RegisterUser(string name, string email, string picutreURL, string password)
+        {
+            User user = PrepareUserRegistration(name,email,picutreURL,password);
+
+            //Extended method from SecureHashingControl
+            user.GeneratePassword(password);
+            
+            AddUser(user);
+            return user;
+        }
+
+        /// <summary>
+        /// Preparation for registration. Does not do anythig but set the proper fields in a User.
+        /// Public visibility because it is used for testing.
+        /// </summary>
+        public User PrepareUserRegistration(string name, string email, string picutreURL, string password)
         {
             User user = new User
             {
@@ -36,8 +51,7 @@ namespace BusinessTier
                 Boosts = 5,
                 Reservations = 5,
             };
-            
-            AddUser(user);
+
             return user;
         }
 

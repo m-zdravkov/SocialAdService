@@ -8,25 +8,16 @@ namespace BusinessTierTests
     [TestClass]
     public class UserControlTests
     {
-        static User user1 = new User
-        {
-            Id = "UserUnitTestID00000001",
-            Name = "Tester",
-            Email = "email@service.com",
-            PictureURL = "http://test.com/image.jpg",
-            Boosts = 0,
-            Reservations = 0,
-            PasswordHash = new byte[256]
-        };
-
         static UserControl users = UserControl.GetInstance();
+        
+        static User testUser;
 
         [TestMethod]
         public void TestAdd()
         {
-            users.AddUser(user1);
-            //Assert no exception occured
-            Assert.IsTrue(true);
+            testUser = users.RegisterUser(
+            "Unit Tester", "register1@unit.test", "http://unit.test/image.jpg", "-#un1tT3st#");
+            Assert.IsNotNull(testUser);
         }
 
         [TestMethod]
@@ -34,50 +25,31 @@ namespace BusinessTierTests
         {
             User query = new User
             {
-                Name = user1.Name,
-                Email = user1.Email
+                Name = testUser.Name,
+                Email = testUser.Email
             };
 
             User userTest = users.GetUser(query);
 
-            Assert.IsTrue(userTest.Id.Equals( user1.Id ));
+            Assert.IsTrue(userTest.Id.Equals(testUser.Id ));
         }
 
         [TestMethod]
         public void TestDelete()
         {
-            User testUser = new User
-            {
-                Id = "UserUnitTestID00000002",
-                Name = "Tester",
-                Email = "email@service.com",
-                PictureURL = "http://test.com/image.jpg",
-                Boosts = 0,
-                Reservations = 0,
-            };
-            
-            users.AddUser(testUser);
+            /*User deleteUser = users.RegisterUser(
+            "Unit Tester", "delete@unit.test", "http://unit.test/image.jpg", "-#un1tT3st#");
+
+            users.AddUser(deleteUser);*/
             users.DeleteUser(testUser.Id);
+            //Assert that no exception occured
+            Assert.IsTrue(true);
         }
 
-        [TestMethod]
-        public void TestRegister()
-        {
-            User registeredUser = users.RegisterUser(
-                "Tester",
-                "register@unit.test",
-                "http://test.com/image.jpg",
-                "Don't hack my p4ssw0rd, please! 1234");
-
-            Assert.IsNotNull(registeredUser);
-
-            users.DeleteUser(registeredUser.Id);
-        }
-
-        [ClassCleanup]
+        /*[ClassCleanup]
         public static void Cleanup()
         {
-            users.DeleteUser(user1.Id);
-        }
+            users.DeleteUser(testUser.Id);
+        }*/
     }
 }
