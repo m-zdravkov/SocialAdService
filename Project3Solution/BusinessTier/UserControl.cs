@@ -11,7 +11,7 @@ namespace BusinessTier
     public class UserControl
     {
         private static UserControl _instance;
-        //public static bool CommitChanges = true;
+        //public static bool SaveChanges = true;
 
         //private DBContext db = new DBContext();
 
@@ -22,7 +22,25 @@ namespace BusinessTier
             return _instance;
         }
 
-        private UserControl() { }
+        private UserControl()
+        {
+            SeedUsers();
+        }
+
+        private void SeedUsers()
+        {
+            DBContext db = new DBContext();
+            int count = db.Users.Count<User>();
+            if (count == 0)
+            {
+                MigrationSeed.Seed();
+                
+                foreach (var user in MigrationSeed.Users)
+                {
+                    RegisterUser(user.Name, user.Email, "http://test.com/image.png", "!# test password #!");
+                }
+            }
+        }
         
 
         public User RegisterUser(string name, string email, string picutreURL, string password)
