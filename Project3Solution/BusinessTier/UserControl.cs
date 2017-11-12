@@ -11,6 +11,7 @@ namespace BusinessTier
     public class UserControl
     {
         private static UserControl _instance;
+        //public static bool CommitChanges = true;
 
         //private DBContext db = new DBContext();
 
@@ -52,10 +53,13 @@ namespace BusinessTier
                 Reservations = 5,
             };
 
+            //if (!user.Validate())
+            //    throw new ArgumentException("Invalid User");
+
             return user;
         }
 
-        public void AddUser(User user)
+        private void AddUser(User user)
         {
             DBContext db = new DBContext();
             db.Users.Add(user);
@@ -65,7 +69,13 @@ namespace BusinessTier
         public User GetUser(User query)
         {
             DBContext db = new DBContext();
-            return db.Users.First(u => u.Name.Equals(query.Name) && u.Email.Equals(query.Email));
+            
+            User user = db.Users.FirstOrDefault(u => u.Email.Equals(query.Email));
+
+            if (user == null)
+                throw new UserNotFoundException();
+
+            return user;
         }
 
         public void DeleteUser(string id)

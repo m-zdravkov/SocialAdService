@@ -33,7 +33,7 @@ namespace BusinessTier
             user.Salt = salt;
             user.PasswordHash = GenerateSHA256Password(password, salt);
 
-            return user.PasswordHash.Equals(passwordHash);
+            return Enumerable.SequenceEqual(user.PasswordHash,passwordHash);
         }
         
         /// <summary>
@@ -42,8 +42,10 @@ namespace BusinessTier
         /// <returns></returns>
         private static byte[] GenerateSHA256Password(string text, byte[] salt)
         {
-            byte[] bytes = Encoding.UTF8.GetBytes(text);
-            bytes.Concat(salt);
+            byte[] pass = Encoding.UTF8.GetBytes(text);
+            byte[] bytes = new byte[pass.Length + salt.Length];
+            Array.Copy(pass, 0, bytes, 0, pass.Length);
+            Array.Copy(salt, 0, bytes, pass.Length, salt.Length);
 
             byte[] hash;
 
