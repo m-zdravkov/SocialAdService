@@ -96,6 +96,25 @@ namespace BusinessTier
             return user;
         }
 
+        public IList<User> GetAllUsers(int skip, int amount)
+        {
+            if (amount > 64) amount = 64; //limit traffic
+
+            DBContext db = new DBContext();
+
+            IQueryable<User> query = db.Users;
+            var pagedQuery = query.Skip(amount * (skip - 1)).Take(amount).ToList();
+
+            return pagedQuery;
+        }
+
+        public int CountUsers()
+        {
+            DBContext db = new DBContext();
+
+            return db.Users.Count();
+        }
+
         public void DeleteUser(string id)
         {
             DBContext db = new DBContext();

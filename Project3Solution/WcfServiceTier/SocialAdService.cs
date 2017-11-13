@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BusinessTier;
+using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -11,32 +13,41 @@ namespace WcfServiceTier
     {
         public int CountUsers()
         {
-            throw new NotImplementedException();
+            return UserControl.GetInstance().CountUsers();
         }
 
         public UserDTO GetUser(string userId)
         {
-            throw new NotImplementedException();
+            User user = UserControl.GetInstance().GetUser(new User { Id = userId });
+            return UserDTO.FromUser(user);
         }
 
         public IList<UserDTO> GetUsers(int skip, int amount)
         {
-            throw new NotImplementedException();
+            IList<User> users = UserControl.GetInstance().GetAllUsers(skip,amount);
+            IList<UserDTO> dtos = new List<UserDTO>(users.Count);
+
+            foreach (var user in users)
+            {
+                dtos.Add(UserDTO.FromUser(user));
+            }
+
+            return dtos;
         }
 
-        public void Login(string email, string password)
+        public void LogIn(string email, string password)
         {
-            throw new NotImplementedException();
+            AuthenticationControl.GetInstance().Authenticate(email,password);
         }
 
-        public void Logout()
+        public void LogOut()
         {
-            throw new NotImplementedException();
+            AuthenticationControl.GetInstance().LogOut();
         }
 
-        public void Register(string email, string password, string name)
+        public void Register(string email, string password, string name, string pictureURL)
         {
-            throw new NotImplementedException();
+            UserControl.GetInstance().RegisterUser(name, email, pictureURL, password);
         }
     }
 }

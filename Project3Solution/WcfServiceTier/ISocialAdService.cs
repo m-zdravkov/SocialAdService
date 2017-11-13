@@ -11,13 +11,13 @@ namespace WcfServiceTier
     public interface ISocialAdService
     {
         [OperationContract]
-        void Register(string email, string password, string name);
+        void Register(string email, string password, string name, string pictureURL);
 
         [OperationContract]
-        void Login(string email, string password);
+        void LogIn(string email, string password);
 
         [OperationContract]
-        void Logout();
+        void LogOut();
 
         [OperationContract]
         UserDTO GetUser(string userId);
