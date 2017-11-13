@@ -35,7 +35,7 @@ namespace WcfServiceTier
             return dtos;
         }
 
-        public void LogIn(string email, string password)
+        public void Authenticate(string email, string password)
         {
             AuthenticationControl.GetInstance().Authenticate(email,password);
         }
@@ -48,6 +48,12 @@ namespace WcfServiceTier
         public void Register(string email, string password, string name, string pictureURL)
         {
             UserControl.GetInstance().RegisterUser(name, email, pictureURL, password);
+        }
+
+        public UserDTO GetAuthenticatedUser()
+        {
+            User user = AuthenticationControl.GetInstance().AuthenticatedUser;
+            return UserDTO.FromUser(user);
         }
     }
 }

@@ -14,7 +14,10 @@ namespace WcfServiceTier
         void Register(string email, string password, string name, string pictureURL);
 
         [OperationContract]
-        void LogIn(string email, string password);
+        void Authenticate(string email, string password);
+
+        [OperationContract]
+        UserDTO GetAuthenticatedUser();
 
         [OperationContract]
         void LogOut();
