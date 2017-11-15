@@ -21,6 +21,8 @@ namespace WcfServiceTier
 
         public static UserDTO FromUser(User user)
         {
+            if (user == null) return null;
+
             return new UserDTO
             {
                 Id = user.Id,
@@ -35,6 +37,8 @@ namespace WcfServiceTier
 
         public static User ToUser(UserDTO user)
         {
+            if (user == null) return null;
+
             return new User
             {
                 Id = user.Id,
