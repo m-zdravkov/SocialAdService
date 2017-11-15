@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceTier", "WcfServiceTier\WcfServiceTier.csproj", "{DCADDB88-471D-4B17-974C-D5DE18338E82}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcClient", "MvcClient\MvcClient.csproj", "{F66E64C6-3927-42F3-A593-202E9DC47499}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DCADDB88-471D-4B17-974C-D5DE18338E82} = {DCADDB88-471D-4B17-974C-D5DE18338E82}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

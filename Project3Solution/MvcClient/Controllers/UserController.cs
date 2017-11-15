@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvcClient.SocialAdService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,9 @@ namespace MvcClient.Controllers
         // GET: User
         public ActionResult Index()
         {
-            return View();
+            var client = new SocialAdServiceClient();
+            IList < UserDTO > list = client.GetUsers(0, 100);
+            return View(list);
         }
 
         // GET: User/Details/5
