@@ -103,7 +103,7 @@ namespace BusinessTier
             DBContext db = new DBContext();
 
             IQueryable<User> query = db.Users;
-            var pagedQuery = query.Skip(amount * (skip - 1)).Take(amount).ToList();
+            var pagedQuery = query.OrderBy(u => u.Id).Skip(skip).Take(amount).ToList();
 
             return pagedQuery;
         }
