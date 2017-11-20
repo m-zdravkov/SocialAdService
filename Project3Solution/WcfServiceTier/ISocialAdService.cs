@@ -30,5 +30,8 @@ namespace WcfServiceTier
 
         [OperationContract]
         IList<UserDTO> GetUsers(int skip, int amount);
+
+        [OperationContract]
+        int getData();
     }
 }

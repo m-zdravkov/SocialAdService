@@ -55,5 +55,9 @@ namespace WcfServiceTier
             User user = AuthenticationControl.GetInstance().AuthenticatedUser;
             return UserDTO.FromUser(user);
         }
+        public int getData()
+        {
+            return 123;
+        }
     }
 }
