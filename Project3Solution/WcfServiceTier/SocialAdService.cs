@@ -11,6 +11,7 @@ namespace WcfServiceTier
 {
     public class SocialAdService : ISocialAdService
     {
+        //Counts the registered users
         public int CountUsers()
         {
             return UserControl.GetInstance().CountUsers();
