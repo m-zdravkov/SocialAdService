@@ -13,11 +13,13 @@ namespace WcfServiceConsoleHost
     {
         static void Main(string[] args)
         {
+
             using (ServiceHost host = new ServiceHost(typeof(SocialAdService)))
             {
                 host.Open();
                 Console.WriteLine("Social Ad service is hosted...");
                 Console.ReadLine();
+                host.Close();
             }
         }
     }

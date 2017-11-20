@@ -14,6 +14,8 @@ namespace ConsoleClient
         {
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
             SocialAdServiceClient cl = new SocialAdServiceClient();
+            cl.ClientCredentials.UserName.UserName = "Mein Schaft";
+            cl.ClientCredentials.UserName.Password = "!# test password #!";
             var data = cl.getData();
             Console.WriteLine(data);
             Console.ReadLine();
