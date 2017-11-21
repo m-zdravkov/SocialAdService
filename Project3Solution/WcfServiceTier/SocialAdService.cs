@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
+using System.Security.Permissions;
 using System.ServiceModel;
 using System.Text;
 
@@ -11,6 +12,8 @@ namespace WcfServiceTier
 {
     public class SocialAdService : ISocialAdService
     {
+        [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
+
         public int CountUsers()
         {
             return UserControl.GetInstance().CountUsers();
