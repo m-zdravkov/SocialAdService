@@ -54,6 +54,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthService.cs" />
+    <Compile Include="IAuthService.cs" />
     <Compile Include="ISocialAdService.cs" />
     <Compile Include="MyPasswordValidator.cs" />
     <Compile Include="MyRoleManager.cs" />

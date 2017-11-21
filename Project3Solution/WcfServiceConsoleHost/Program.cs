@@ -14,13 +14,16 @@ namespace WcfServiceConsoleHost
         static void Main(string[] args)
         {
 
-            using (ServiceHost host = new ServiceHost(typeof(SocialAdService)))
-            {
+                ServiceHost host = new ServiceHost(typeof(SocialAdService));
+                ServiceHost authhost = new ServiceHost(typeof(AuthService));
                 host.Open();
                 Console.WriteLine("Social Ad service is hosted...");
+                authhost.Open();
+                Console.WriteLine("AuthService is hosted...");
                 Console.ReadLine();
                 host.Close();
-            }
+                authhost.Close();
+            
         }
     }
 }
