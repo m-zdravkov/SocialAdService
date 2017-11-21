@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="AuthenticationControl.cs" />
     <Compile Include="PostControl.cs" />
+    <Compile Include="PostNotFoundException.cs" />
     <Compile Include="SecureHashingControl.cs" />
     <Compile Include="UserControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
