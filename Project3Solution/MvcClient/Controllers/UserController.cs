@@ -1,4 +1,5 @@
-﻿using MvcClient.SocialAdService;
+﻿using MvcClient.Models;
+using MvcClient.SocialAdService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,23 +25,27 @@ namespace MvcClient.Controllers
         }
 
         // GET: User/Create
-        public ActionResult Create()
+        public ActionResult Register()
         {
             return View();
         }
 
         // POST: User/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Register(UserRegistrationViewModel user)
         {
             try
             {
-                // TODO: Add insert logic here
+                var client = new SocialAdServiceClient();
 
-                return RedirectToAction("Index");
+                client.Register(user.Email,user.Password,user.Name,user.PictureURL);
+
+                ViewBag.Message = "Registration was successful.";
+                return View();
             }
             catch
             {
+                ViewBag.Message = "There was a problem trying to register you. Please try again.";
                 return View();
             }
         }
