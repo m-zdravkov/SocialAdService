@@ -11,5 +11,7 @@ namespace Model
         public Post repliedTo { get; set; }
 
         public int level { get; set; }
+
+        public string comment { get; set; }
     }
 }
