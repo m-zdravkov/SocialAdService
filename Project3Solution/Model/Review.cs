@@ -23,7 +23,7 @@ namespace Model
             this.user.Id = user.Id;
             if (!this.IsRatingScoreValid(ratingScore))
             {
-                throw new ReviewValidator(
+                throw new ReviewExistsException(
                     string.Format("Rating score {0} falls outside the bounds of acceptable rating score between {1} and {2}",
                     ratingScore,
                     MinRatingScore,

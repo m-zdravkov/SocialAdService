@@ -11,6 +11,7 @@ namespace Model
         public Price Price = new Price();
 
         public ISet<string> Categories { get; set; }
+        public string Title { get; set; }
 
         public DateTime ExpDate { get; set; }
 
