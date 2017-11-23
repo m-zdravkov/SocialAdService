@@ -45,7 +45,7 @@ namespace BusinessTier
 
         public User RegisterUser(string name, string email, string picutreURL, string password)
         {
-            User user = PrepareUserRegistration(name,email,picutreURL,password);
+            User user = PrepareUserRegistration(name,email.ToLower(),picutreURL.ToLower(),password);
 
             //Extended method from SecureHashingControl
             user.GeneratePassword(password);

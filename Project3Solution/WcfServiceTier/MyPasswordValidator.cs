@@ -6,30 +6,33 @@ using System.Threading.Tasks;
 using System.Security.Permissions;
 using System.IdentityModel.Selectors;
 using System.ServiceModel;
+using BusinessTier;
+using System.Net;
+using System.ServiceModel.Web;
 
 namespace WcfServiceTier
 {
     public class MyPasswordValidator : UserNamePasswordValidator
     {
-        public override void Validate(string userName, string password)
+        public override void Validate(string email, string password)
         {
-            if (userName == "Mein Schaft" && password == "!# test password #!")
+            /*if (userName == "Mein Schaft" && password == "!# test password #!")
             {
 
             }
             else
             {
                 throw new FaultException<Exception>(new Exception("Incorrect Login"), "Try again maaatey");
-            }
-            /*try
-            {
-                SocialAdService service = new SocialAdService();
-                service.Authenticate(userName, password);
-            }
-            catch
-            {
-                throw new FaultException<Exception>(new Exception("Incorrect Login"), "Invalid login attempt");
             }*/
+            try
+            {
+                AuthenticationControl.GetInstance().Authenticate(email, password);
+            }
+            catch (Exception ex)
+            {
+                if (ex is UserNotFoundException || ex is WrongPasswordException || ex is InvalidOperationException)
+                    throw new WebFaultException(HttpStatusCode.Unauthorized);
+            }
         }
     }
 }

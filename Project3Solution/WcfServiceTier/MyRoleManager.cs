@@ -16,7 +16,7 @@ namespace WcfServiceTier
             var identity = operationContext.ServiceSecurityContext.PrimaryIdentity;
             //simulate that we get a user and all his roles from the database
             bool? userFound = true;
-            string[] userRolesFound = new string[] { "Admin" };
+            string[] userRolesFound = new string[] { "Admin", "User" };
             if (userFound == null || userFound == false)
             {
                 throw new Exception("User not found");
