@@ -8,7 +8,7 @@ using Model;
 namespace Model
 {
     public enum PriceType { Range, Free, Unspecified, Bid }
-    class Price
+    public class Price
     {
         public int Low { get; private set; }
         public int High { get; private set; }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
@@ -11,7 +13,9 @@ namespace Model
         public string Id { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
+        [SettingsBindable(false)]
         public byte[] PasswordHash { get; set; }
+        [SettingsBindable(false)]
         public byte[] Salt { get; set; }
         public string PictureURL { get; set; }
         public int Reservations { get; set; }

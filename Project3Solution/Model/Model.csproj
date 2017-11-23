@@ -53,7 +53,7 @@
     <Compile Include="AdValidator.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="CommentValidator.cs" />
-    <Compile Include="DBContext.cs" />
+    <Compile Include="DbContext.cs" />
     <Compile Include="Feed.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="LocationValidator.cs" />

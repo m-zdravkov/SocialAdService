@@ -8,10 +8,7 @@ namespace Model
 {
     public class Comment : Post
     {
-        public Post repliedTo { get; set; }
-
-        public int level { get; set; }
-
-        public string comment { get; set; }
+        public string ReplyId { get; set; }
+        public int Indent { get; set; }
     }
 }

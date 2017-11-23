@@ -31,7 +31,7 @@ namespace Model
             }
 
             this.RatingScore = ratingScore;
-            this.comment = comment;
+            this.Content = comment;
         }
 
         private const ushort MinRatingScore = 0;

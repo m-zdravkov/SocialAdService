@@ -6,17 +6,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    class Ad : Post
+    public class Ad : Post
     {
-        public Price Price = new Price();
-
+        public Price Price { get; set; }
         public ISet<string> Categories { get; set; }
         public string Title { get; set; }
-
         public DateTime ExpDate { get; set; }
-
         public int Views { get; set; }
-
-
     }
 }
