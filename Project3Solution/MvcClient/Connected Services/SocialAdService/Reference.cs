@@ -199,6 +199,12 @@ namespace MvcClient.SocialAdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUsers", ReplyAction="http://tempuri.org/ISocialAdService/GetUsersResponse")]
         System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO[]> GetUsersAsync(int skip, int amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/getData", ReplyAction="http://tempuri.org/ISocialAdService/getDataResponse")]
+        int getData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/getData", ReplyAction="http://tempuri.org/ISocialAdService/getDataResponse")]
+        System.Threading.Tasks.Task<int> getDataAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -282,6 +288,14 @@ namespace MvcClient.SocialAdService {
         
         public System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO[]> GetUsersAsync(int skip, int amount) {
             return base.Channel.GetUsersAsync(skip, amount);
+        }
+        
+        public int getData() {
+            return base.Channel.getData();
+        }
+        
+        public System.Threading.Tasks.Task<int> getDataAsync() {
+            return base.Channel.getDataAsync();
         }
     }
 }
