@@ -19,23 +19,14 @@ namespace WcfServiceTier
             return UserControl.GetInstance().CountUsers();
         }
 
-        public UserDTO GetUser(string userId)
+        public User GetUser(string userId)
         {
-            User user = UserControl.GetInstance().GetUser(new User { Id = userId });
-            return UserDTO.FromUser(user);
+            return UserControl.GetInstance().GetUser(new User { Id = userId });
         }
 
-        public IList<UserDTO> GetUsers(int skip, int amount)
+        public IList<User> GetUsers(int skip, int amount)
         {
-            IList<User> users = UserControl.GetInstance().GetAllUsers(skip,amount);
-            IList<UserDTO> dtos = new List<UserDTO>(users.Count);
-
-            foreach (var user in users)
-            {
-                dtos.Add(UserDTO.FromUser(user));
-            }
-
-            return dtos;
+            return UserControl.GetInstance().GetAllUsers(skip,amount);
         }
 
         public void Authenticate(string email, string password)
@@ -53,14 +44,26 @@ namespace WcfServiceTier
             UserControl.GetInstance().RegisterUser(name, email, pictureURL, password);
         }
 
-        public UserDTO GetAuthenticatedUser()
+        public User GetAuthenticatedUser()
         {
-            User user = AuthenticationControl.GetInstance().AuthenticatedUser;
-            return UserDTO.FromUser(user);
+            return AuthenticationControl.GetInstance().AuthenticatedUser;
         }
-        public int getData()
+        public int GetData()
         {
             return 123;
+        }
+
+        public Comment GenerateTestPost(string content)
+        {
+            if (content.Length < 4)
+                return null;
+
+            return new Comment()
+            {
+                Id = content.Substring(0,4) + DateTime.UtcNow.ToString(),
+                Content = content,
+                DatePosted = DateTime.UtcNow,
+            };
         }
     }
 }

@@ -26,7 +26,10 @@ namespace ConsoleClient
                 cl.ClientCredentials.UserName.UserName = "mein.schaft@test.com";
                 cl.ClientCredentials.UserName.Password = "!# test password #!";
                 var data = cl.getData();
+                var post = cl.GenerateTestPost("Hvis dette virker, er det rigtig spændende.");
                 Console.WriteLine(data);
+                Console.WriteLine(post.DatePosted);
+                Console.WriteLine(post.Content);
                 Console.ReadLine();
             } else
             {

@@ -11,7 +11,7 @@ namespace ModelTests
         //Test minimum character limit
         public void TestContent1()
         {
-            Post postObject = new Post
+            Comment postObject = new Comment
             {
                 Content = "1234",
                 ImageSource = "NaN"
@@ -27,7 +27,7 @@ namespace ModelTests
         //Test maximum character limit
         public void TestContent2()
         {
-            Post postObject = new Post
+            Comment postObject = new Comment
             {
                 Content = "Lorem ipsum dolor sit amet, consetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque pen",
                 ImageSource = "NaN"
@@ -41,7 +41,7 @@ namespace ModelTests
         //NOTE: Changed: Assert.IsFalse TO Assert.IsTrue
         public void TestImageSource1()
         {
-            Post postObject = new Post
+            Comment postObject = new Comment
             {
                 Content = "NaNi",
                 ImageSource = "http://images.com/myimage.jpg"

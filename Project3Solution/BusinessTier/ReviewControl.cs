@@ -10,7 +10,7 @@ namespace BusinessTier
     class ReviewControl
     {
         User user = new User();
-        Post post = new Post();
+        Comment post = new Comment();
         //this.syncObject = new object ();
         //this._reviews = new List<Review>();
         //this._cumulativeReviewScore = 0;

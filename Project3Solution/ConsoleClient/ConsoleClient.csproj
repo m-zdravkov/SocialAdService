@@ -67,6 +67,9 @@
     <None Include="Service References\AuthServiceReference\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\HttpsServiceReference\ConsoleClient.HttpsServiceReference.Post.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\HttpsServiceReference\ConsoleClient.HttpsServiceReference.UserDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -77,6 +80,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\HttpsServiceReference\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\HttpsServiceReference\item3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\HttpsServiceReference\SocialAdService.wsdl" />

@@ -26,16 +26,16 @@ namespace BusinessTier
             return _instance;
         }
 
-        public void AddPost (Post post)
+        /*public void AddPost (Post post)
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
             db.Posts.Add(post);
             db.SaveChanges();
         }
 
         public void DeletePost(string id)
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
             Post toDelete = new Post { Id = id };
             db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
@@ -43,7 +43,7 @@ namespace BusinessTier
 
         public Post GetPost (Post query)
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
 
             Post post = db.Posts.FirstOrDefault(p => p.Id.Equals(query.Id));
 
@@ -60,13 +60,13 @@ namespace BusinessTier
             if (amount > 64)
                 amount = 64;
 
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
 
             IQueryable<Post> query = db.Posts;
 
             var pagedQuery = query.OrderBy(p => p.Id).Skip(skip).Take(amount).ToList();
 
             return pagedQuery;
-        }
+        }*/
     }
 }

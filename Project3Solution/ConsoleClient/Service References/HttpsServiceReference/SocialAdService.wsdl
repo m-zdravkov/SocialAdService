@@ -106,6 +106,7 @@
       <xsd:import schemaLocation="https://localhost:1414/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="https://localhost:1414/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="https://localhost:1414/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServiceTier" />
+      <xsd:import schemaLocation="https://localhost:1414/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Model" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="ISocialAdService_Register_InputMessage">
@@ -156,6 +157,12 @@
   <wsdl:message name="ISocialAdService_getData_OutputMessage">
     <wsdl:part name="parameters" element="tns:getDataResponse" />
   </wsdl:message>
+  <wsdl:message name="ISocialAdService_GenerateTestPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateTestPost" />
+  </wsdl:message>
+  <wsdl:message name="ISocialAdService_GenerateTestPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GenerateTestPostResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISocialAdService">
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/Register" message="tns:ISocialAdService_Register_InputMessage" />
@@ -188,6 +195,10 @@
     <wsdl:operation name="getData">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/getData" message="tns:ISocialAdService_getData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/getDataResponse" message="tns:ISocialAdService_getData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTestPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/GenerateTestPost" message="tns:ISocialAdService_GenerateTestPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/GenerateTestPostResponse" message="tns:ISocialAdService_GenerateTestPost_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ISocialAdService" type="tns:ISocialAdService">
@@ -258,6 +269,15 @@
     </wsdl:operation>
     <wsdl:operation name="getData">
       <soap12:operation soapAction="http://tempuri.org/ISocialAdService/getData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTestPost">
+      <soap12:operation soapAction="http://tempuri.org/ISocialAdService/GenerateTestPost" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -17,21 +18,24 @@ namespace WcfServiceTier
         void Authenticate(string email, string password);
 
         [OperationContract]
-        UserDTO GetAuthenticatedUser();
+        User GetAuthenticatedUser();
 
         [OperationContract]
         void LogOut();
 
         [OperationContract]
-        UserDTO GetUser(string userId);
+        User GetUser(string userId);
 
         [OperationContract]
         int CountUsers();
 
         [OperationContract]
-        IList<UserDTO> GetUsers(int skip, int amount);
+        IList<User> GetUsers(int skip, int amount);
 
         [OperationContract]
-        int getData();
+        int GetData();
+
+        [OperationContract]
+        Comment GenerateTestPost(string content);
     }
 }

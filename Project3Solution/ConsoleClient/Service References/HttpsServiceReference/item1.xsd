@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="https://localhost:1414/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfServiceTier" />
+  <xs:import schemaLocation="https://localhost:1414/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Model" />
   <xs:element name="Register">
     <xs:complexType>
       <xs:sequence>
@@ -101,6 +102,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="getDataResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateTestPost">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="content" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GenerateTestPostResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GenerateTestPostResult" nillable="true" type="q4:Post" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

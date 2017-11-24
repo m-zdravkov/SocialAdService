@@ -13,10 +13,10 @@ namespace Model
         //TO DO: Test if the Regex for URLS works.
         private static Regex _imageSourceRegex = new Regex(@"^http(s)?://([\w-]+.)+[\w-]+(/[\w- ./?%&=])?$");
 
-        public static Post postObject { get; set; }
+        public static Comment postObject { get; set; }
         
 
-        public static bool ValidatePost (this Post post)
+        public static bool ValidatePost (this Comment post)
         {
             bool result = true;
 

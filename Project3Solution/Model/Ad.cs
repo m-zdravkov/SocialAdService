@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public class Ad : Post
+    public class Ad : Comment
     {
         public Price Price { get; set; }
         public ISet<string> Categories { get; set; }
