@@ -156,6 +156,7 @@
     </Compile>
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -163,7 +164,9 @@
     </Compile>
     <Compile Include="Helpers\AuthHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
+    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
+    <Compile Include="Models\PostAdViewModel.cs" />
     <Compile Include="Models\UserRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">
@@ -182,6 +185,12 @@
     <None Include="Connected Services\AuthService\item1.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\AuthService\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Connected Services\AuthService\MvcClient.AuthService.Ad.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\SocialAdService\configuration91.svcinfo" />
     <None Include="Connected Services\SocialAdService\configuration.svcinfo" />
     <None Include="Connected Services\AuthService\item.disco" />
@@ -191,9 +200,15 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\SocialAdService\MvcClient.SocialAdService.UserDTO.datasource">
+    <Content Include="Connected Services\SocialAdService\MvcClient.SocialAdService.Ad.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\SocialAdService\MvcClient.SocialAdService.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SocialAdService\Model1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\SocialAdService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -209,14 +224,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\SocialAdService\service.wsdl" />
-    <None Include="Connected Services\SocialAdService\service.xsd">
+    <None Include="Connected Services\SocialAdService\service1.wsdl" />
+    <None Include="Connected Services\SocialAdService\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SocialAdService\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\SocialAdService\WcfServiceTier.xsd">
+    <None Include="Connected Services\SocialAdService\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -251,6 +263,7 @@
     <Content Include="Views\Index.cshtml" />
     <Content Include="Views\Search.cshtml" />
     <Content Include="Views\Search\SearchView.cshtml" />
+    <Content Include="Views\Post\Ad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

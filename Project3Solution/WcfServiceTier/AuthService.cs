@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using BusinessTier;
 using System.ServiceModel.Web;
 using System.Net;
+using Model;
 
 namespace WcfServiceTier
 {
@@ -28,6 +29,27 @@ namespace WcfServiceTier
             //This should always be true at this point, but we compare the authenticated user just in case
             
             return auth.AuthenticatedUser.Email.ToLower().Equals(email.ToLower());
+        }
+
+        public bool Register(string email, string name, string password, string pictureUrl)
+        {
+            try
+            {
+                UserControl.GetInstance().RegisterUser(name, email, pictureUrl, password);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                if (ex is InvalidOperationException)
+                    throw ex;
+
+                throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public IList<Ad> GetAds(int skip, int amount)
+        {
+            return AdControl.GetInstance().GetAds(skip,amount);
         }
     }
 }

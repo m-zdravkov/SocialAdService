@@ -15,12 +15,19 @@ namespace Model
         [Required]
         [StringLength(2048, MinimumLength = 1)]
         public string Content { get; set; }
-        [StringLength(512, MinimumLength = 1)]
+        [StringLength(512)]
         public string ImageSource { get; set; }
         [Required]
         public DateTime DatePosted { get; set; }
         public DateTime LastEdited { get; set; }
+        //[Required]
+        //public string AuthorId { get; set; }
         [Required]
-        public string AuthorId { get; set; }
+        public User Author { get; set; }
+
+        public Post()
+        {
+            Id = Guid.NewGuid().ToString();
+        }
     }
 }

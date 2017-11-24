@@ -3,9 +3,11 @@ using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 
 namespace WcfServiceTier
@@ -64,6 +66,37 @@ namespace WcfServiceTier
                 Content = content,
                 DatePosted = DateTime.UtcNow,
             };
+        }
+
+        public IList<Ad> FetchAds(int skip, int amount)
+        {
+            return AdControl.GetInstance().GetAds(skip, amount);
+        }
+
+        public void PostAd(string title, string content)
+        {
+            try
+            {
+                //Get the author's identity from the service
+                OperationContext oc = OperationContext.Current;
+                ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+                string userEmail = ssc.PrimaryIdentity.Name;
+
+                User author = new User
+                {
+                    Email = userEmail
+                };
+
+                AdControl.GetInstance().PostAd(author, title, content);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new WebFaultException<Exception>(new Exception("The post details were invalid."), HttpStatusCode.BadRequest);
+            }
+            catch (UserNotFoundException)
+            {
+                throw new WebFaultException<Exception>(new Exception("The post author was not found."), HttpStatusCode.Unauthorized);
+            }
         }
     }
 }

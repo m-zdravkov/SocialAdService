@@ -26,6 +26,29 @@ namespace BusinessTier
             return _instance;
         }
 
+        public void PostAd(User author, string title, string content)
+        {
+            var db = new ServiceDbContext();
+            
+
+            Ad ad = new Ad
+            {
+                Content = content,
+                DatePosted = DateTime.Now,
+                Views = 0,
+                Title = title,
+                Price = new Price { Type = PriceType.Free },
+            };
+            
+            var foundUser = UserControl.GetInstance().GetUser(author);
+            db.Ads.Add(ad);
+            var authorFull = db.Users.Attach(foundUser);
+            ad.Author = authorFull;
+            db.SaveChanges();
+
+            //AddAd(ad);
+        }
+
         public void AddAd (Ad ad)
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
@@ -41,11 +64,11 @@ namespace BusinessTier
             db.SaveChanges();
         }
 
-        public Comment GetAd (Ad query)
+        public Ad GetAd (Ad query)
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
-            Comment post = db.Ads.FirstOrDefault(a => a.Id.Equals(query.Id));
+            Ad post = db.Ads.FirstOrDefault(a => a.Id.Equals(query.Id));
 
             if (post == null)
             {
@@ -55,24 +78,27 @@ namespace BusinessTier
             return post;
         }
 
-        public IList<Comment> GetAds (int skip, int amount)
+        /// <summary>
+        /// Fetches from all ads. Ordered by date.
+        /// </summary>
+        public IList<Ad> GetAds (int skip, int amount)
         {
             if (amount > 64)
                 amount = 64;
 
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
-            IQueryable<Comment> query = db.Ads;
+            IQueryable<Ad> query = db.Ads;
 
-            var pagedQuery = query.OrderBy(a => a.Id).Skip(skip).Take(amount).ToList();
+            var pagedQuery = query.OrderBy(a => a.DatePosted).Skip(skip).Take(amount).ToList();
 
             return pagedQuery;
         }
 
-        private void GetAndAppendComments(Ad ad)
+        private IList<Comment> GetComments(Ad ad)
         {
             CommentControl comments = CommentControl.GetInstance();
-            comments.
+            return comments.GetReplies(ad.Id, 0, 64);
         }
     }
 }

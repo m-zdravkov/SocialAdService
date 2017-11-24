@@ -13,9 +13,18 @@ namespace MvcClient.Helpers
         public static SocialAdServiceClient GetServiceClientWithCredentials(string username, string password)
         {
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            SocialAdServiceClient client = new SocialAdServiceClient();// "BasicHttpBinding_ISocialAdService");
+            SocialAdServiceClient client = new SocialAdServiceClient("WSHttpBinding_ISocialAdService");
             client.ClientCredentials.UserName.UserName = username;
-            client.ClientCredentials.UserName.Password = username;
+            client.ClientCredentials.UserName.Password = password;
+            return client;
+        }
+
+        public static SocialAdServiceClient GetServiceClientLoggedIn()
+        {
+            ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
+            SocialAdServiceClient client = new SocialAdServiceClient("WSHttpBinding_ISocialAdService");
+            client.ClientCredentials.UserName.UserName = AuthHelper.CurrentUser.Email;
+            client.ClientCredentials.UserName.Password = AuthHelper.CurrentUser.Password;
             return client;
         }
 

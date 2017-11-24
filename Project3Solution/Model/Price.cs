@@ -10,8 +10,8 @@ namespace Model
     public enum PriceType { Range, Free, Unspecified, Bid }
     public class Price
     {
-        public int Low { get; private set; }
-        public int High { get; private set; }
-        public PriceType Type { get; private set; }
+        public int Low { get; set; }
+        public int High { get; set; }
+        public PriceType Type { get; set; }
     }
 }

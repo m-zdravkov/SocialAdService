@@ -24,12 +24,13 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("All Users","Index","User")</li>
                     @{ 
                         if(AuthHelper.IsLoggedIn())
                         {
-                            <li><p class="alert-success">Logged in with @AuthHelper.CurrentUser.Email</p></li>
+                            <li><p class="navbar-text">Logged in with @AuthHelper.CurrentUser.Email</p></li>
                             <li>@Html.ActionLink("Log out", "LogOut", "Auth")</li>
+                            <li>@Html.ActionLink("All Users","Index","User")</li>
+                            <li>@Html.ActionLink("Post", "Ad", "Post")</li>
                         }
                         else
                         {

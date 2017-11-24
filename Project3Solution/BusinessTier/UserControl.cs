@@ -84,9 +84,15 @@ namespace BusinessTier
             db.SaveChanges();
         }
         
+        /// <summary>
+        /// Can query users by Email
+        /// </summary>
+        /// <param name="query">A User containing at least Id or Email</param>
+        /// <returns></returns>
         public User GetUser(User query)
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
+            
             
             User user = db.Users.FirstOrDefault(u => u.Email.Equals(query.Email));
 

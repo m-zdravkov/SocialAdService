@@ -1,4 +1,5 @@
-﻿using MvcClient.Models;
+﻿using MvcClient.Helpers;
+using MvcClient.Models;
 using MvcClient.SocialAdService;
 using System;
 using System.Collections.Generic;
@@ -13,8 +14,8 @@ namespace MvcClient.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var client = new SocialAdServiceClient();
-            IList < UserDTO > list = client.GetUsers(0, 100);
+            var client = ServiceHelper.GetServiceClientLoggedIn();
+            IList < User > list = client.GetUsers(0, 100);
             return View(list);
         }
 
@@ -36,16 +37,21 @@ namespace MvcClient.Controllers
         {
             try
             {
-                var client = new SocialAdServiceClient();
+                using (var authsvc = ServiceHelper.GetAuthServiceClient())
+                {
+                    bool canRegister = authsvc.Register(user.Email, user.Name, user.Password, user.PictureURL);
+                    if (!canRegister)
+                        throw new InvalidOperationException("Could not register with these credentials.");
+                }
 
-                client.Register(user.Email,user.Password,user.Name,user.PictureURL);
+                //    client.Register(user.Email, user.Password, user.Name, user.PictureURL);
 
                 ViewBag.Message = "Registration was successful.";
                 return View();
             }
-            catch
+            catch(Exception ex)
             {
-                ViewBag.Message = "There was a problem trying to register you. Please try again.";
+                ViewBag.Message = "There was a problem trying to register you. Please try again.\n" + ex.Message;
                 return View();
             }
         }

@@ -36,6 +36,9 @@ namespace WcfServiceTier
         int GetData();
 
         [OperationContract]
-        Comment GenerateTestPost(string content);
+        IList<Ad> FetchAds(int skip, int amount);
+
+        [OperationContract]
+        void PostAd(string title, string content);
     }
 }

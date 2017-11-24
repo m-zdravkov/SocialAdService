@@ -26,6 +26,7 @@
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="6805caa3-3ecf-42a0-8ffe-2595ab72d880" SourceId="1" SourceUrl="https://localhost:1415/?disco" />
     <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b93f8fb8-ec34-4f8b-be6d-3a43e5c83ed1" SourceId="1" SourceUrl="https://localhost:1415/?xsd=xsd1" />
     <MetadataFile FileName="AuthService.wsdl" MetadataType="Wsdl" ID="809b2fdb-2840-4619-8971-7aca378b057d" SourceId="1" SourceUrl="https://localhost:1415/?wsdl" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="a365541c-3de3-4297-be67-93e46be0ac7e" SourceId="1" SourceUrl="https://localhost:1415/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
+using Model;
 
 namespace WcfServiceTier
 {
@@ -11,6 +12,12 @@ namespace WcfServiceTier
     public interface IAuthService
     {
         [OperationContract]
-        bool Login(string username, string password);
+        bool Login(string email, string password);
+
+        [OperationContract]
+        bool Register(string email, string name, string password, string pictureUrl);
+
+        [OperationContract]
+        IList<Ad> GetAds(int skip, int amount);
     }
 }
