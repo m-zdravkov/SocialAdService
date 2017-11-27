@@ -13,7 +13,7 @@ namespace Model
         public Price Price { get; set; }
         public ISet<string> Categories { get; set; }
         public string Title { get; set; }
-        public DateTime ExpDate { get; set; }
+        public DateTime? ExpDate { get; set; }
         public int Views { get; set; }
     }
 }
