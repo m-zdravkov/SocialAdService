@@ -65,14 +65,25 @@ namespace BusinessTierTests
         public void TestPostAd()
         {
             User author = new User { Email = "max.damage@test.com" };
-            control.PostAd(author, "Unit Test", "This ad was written by a unit test.");
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.");
+            control.DeleteAd(ad.Id);
         }
 
         [TestMethod]
         public void TestPostAdWithLocation()
         {
             User author = new User { Email = "max.damage@test.com" };
-            control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
+            control.DeleteAd(ad.Id);
+        }
+
+        [TestMethod]
+        public void TestFindAd()
+        {
+            User author = new User { Email = "max.damage@test.com" };
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
+            control.FindAds(0, 100, "Denmark", "unit test");
+            control.DeleteAd(ad.Id);
         }
     }
 }

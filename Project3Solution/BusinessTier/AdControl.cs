@@ -11,7 +11,8 @@ namespace BusinessTier
     public class AdControl
     {
         private static AdControl _instance;
-        
+        public const int Throttle = 64;
+
         private AdControl ()
         {
 
@@ -26,7 +27,7 @@ namespace BusinessTier
             return _instance;
         }
 
-        public void PostAd(User author, string title, string content, string locationName=null)
+        public Ad PostAd(User author, string title, string content, string locationName=null)
         {
             var db = new ServiceDbContext();
 
@@ -56,6 +57,8 @@ namespace BusinessTier
             }
 
             db.SaveChanges();
+
+            return ad;
         }
 
         public void AddAd (Ad ad)
@@ -92,15 +95,15 @@ namespace BusinessTier
         /// </summary>
         public IList<Ad> GetAds (int skip, int amount)
         {
-            if (amount > 64)
-                amount = 64;
+            if (amount > Throttle)
+                amount = Throttle;
 
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
             IQueryable<Ad> query = db.Ads;
 
             var pagedQuery = query
-                .OrderBy(a => a.DatePosted)
+                .OrderByDescending(a => a.DatePosted)
                 .Skip(skip)
                 .Take(amount)
                 .Include(a => a.Author)
@@ -111,8 +114,8 @@ namespace BusinessTier
 
         public IList<Ad> GetAdsWithinLocation(int skip, int amount, string location)
         {
-            if (amount > 64)
-                amount = 64;
+            if (amount > Throttle)
+                amount = Throttle;
 
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
@@ -121,8 +124,45 @@ namespace BusinessTier
             var loc = LocationControl.GetInstance();
             var pagedQuery = query
                 .Where(a => a.Location.IsWithin(location))
-                .OrderBy(a => a.DatePosted)
+                .OrderByDescending(a => a.DatePosted)
                 .Skip(skip)
+                .Take(amount)
+                .Include(a => a.Author)
+                .ToList();
+
+            return pagedQuery;
+        }
+
+        /// <summary>
+        /// A VERY expensive operation that searches through ad content. Use with caution.
+        /// </summary>
+        /// <param name="skip">Skip amount of ads (for paging)</param>
+        /// <param name="amount">Take amount of ads (for paging)</param>
+        /// <param name="location">General location of ad</param>
+        /// <param name="searchQuery">A search query, like a few words that describe what is searched</param>
+        /// <returns>A page of ads that match the criteria.</returns>
+        public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery)
+        {
+            if (amount > Throttle)
+                amount = Throttle;
+
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
+
+            IList<string> keywords = searchQuery.GetKeywords();
+
+            //Delimit to ads that are within a location 
+            IQueryable<Ad> query = db.Ads.OrderBy(a => a.DatePosted)
+                .Where(a => a.Location.IsWithin(location));
+
+            //A complex and heavy SQL query to find the search query within ad titles, contents and categories
+            query = (from ad in query
+             where keywords.Any(kw => ad.Title.ToLower().Contains(kw)
+                                   || ad.Content.ToLower().Contains(kw)
+                                   || ad.Categories.Contains(kw))
+             select ad);
+
+            //Delimit the query to take only a page of results and append the Authors to the ads
+            var pagedQuery = query.Skip(skip)
                 .Take(amount)
                 .Include(a => a.Author)
                 .ToList();
