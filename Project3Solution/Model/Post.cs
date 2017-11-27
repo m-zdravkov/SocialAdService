@@ -19,7 +19,7 @@ namespace Model
         public string ImageSource { get; set; }
         [Required]
         public DateTime DatePosted { get; set; }
-        public DateTime LastEdited { get; set; }
+        public DateTime? LastEdited { get; set; }
         //[Required]
         //public string AuthorId { get; set; }
         [Required]
