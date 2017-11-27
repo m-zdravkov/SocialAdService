@@ -21,13 +21,14 @@ namespace MvcClient.AuthService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Post))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.User))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Price))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.PriceType))]
     public partial class Ad : MvcClient.AuthService.Post {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private object CategoriesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime ExpDateField;
+        private System.Nullable<System.DateTime> ExpDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MvcClient.AuthService.Price PriceField;
@@ -52,7 +53,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime ExpDate {
+        public System.Nullable<System.DateTime> ExpDate {
             get {
                 return this.ExpDateField;
             }
@@ -130,7 +131,7 @@ namespace MvcClient.AuthService {
         private string ImageSourceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime LastEditedField;
+        private System.Nullable<System.DateTime> LastEditedField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -208,7 +209,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime LastEdited {
+        public System.Nullable<System.DateTime> LastEdited {
             get {
                 return this.LastEditedField;
             }
@@ -412,6 +413,15 @@ namespace MvcClient.AuthService {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int HighField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.AuthService.PriceType TypeField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -419,6 +429,45 @@ namespace MvcClient.AuthService {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int High {
+            get {
+                return this.HighField;
+            }
+            set {
+                if ((this.HighField.Equals(value) != true)) {
+                    this.HighField = value;
+                    this.RaisePropertyChanged("High");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Low {
+            get {
+                return this.LowField;
+            }
+            set {
+                if ((this.LowField.Equals(value) != true)) {
+                    this.LowField = value;
+                    this.RaisePropertyChanged("Low");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.AuthService.PriceType Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((this.TypeField.Equals(value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
             }
         }
         
@@ -430,6 +479,23 @@ namespace MvcClient.AuthService {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PriceType", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum PriceType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Range = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Free = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Unspecified = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Bid = 3,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

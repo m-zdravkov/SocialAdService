@@ -40,10 +40,11 @@ namespace WcfServiceTier
             }
             catch (Exception ex)
             {
-                if (ex is InvalidOperationException)
-                    throw ex;
-
-                throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);
+                //if (ex is InvalidOperationException)
+                //    throw ex;
+                Console.WriteLine(ex.Message);
+                throw ex;
+                //throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);
             }
         }
 

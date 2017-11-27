@@ -11,7 +11,7 @@
       <xs:extension base="tns:Post">
         <xs:sequence>
           <xs:element minOccurs="0" name="Categories" nillable="true" type="xs:anyType" />
-          <xs:element minOccurs="0" name="ExpDate" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="ExpDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Price" nillable="true" type="tns:Price" />
           <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="Views" type="xs:int" />
@@ -27,7 +27,7 @@
       <xs:element minOccurs="0" name="DatePosted" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ImageSource" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="LastEdited" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="LastEdited" nillable="true" type="xs:dateTime" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Post" nillable="true" type="tns:Post" />
@@ -46,7 +46,20 @@
   </xs:complexType>
   <xs:element name="User" nillable="true" type="tns:User" />
   <xs:complexType name="Price">
-    <xs:sequence />
+    <xs:sequence>
+      <xs:element minOccurs="0" name="High" type="xs:int" />
+      <xs:element minOccurs="0" name="Low" type="xs:int" />
+      <xs:element minOccurs="0" name="Type" type="tns:PriceType" />
+    </xs:sequence>
   </xs:complexType>
   <xs:element name="Price" nillable="true" type="tns:Price" />
+  <xs:simpleType name="PriceType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Range" />
+      <xs:enumeration value="Free" />
+      <xs:enumeration value="Unspecified" />
+      <xs:enumeration value="Bid" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="PriceType" nillable="true" type="tns:PriceType" />
 </xs:schema>

@@ -35,24 +35,23 @@ namespace MvcClient.Controllers
         [HttpPost]
         public ActionResult Register(UserRegistrationViewModel user)
         {
-            try
+            using (var authsvc = ServiceHelper.GetAuthServiceClient())
             {
-                using (var authsvc = ServiceHelper.GetAuthServiceClient())
+                try
                 {
                     bool canRegister = authsvc.Register(user.Email, user.Name, user.Password, user.PictureURL);
                     if (!canRegister)
-                        throw new InvalidOperationException("Could not register with these credentials.");
+                        throw new InvalidOperationException("We could not register you with these credentials, please try a different E-Mail.");
+
+                    ViewBag.Message = "Your registration was successful and you are ready to log in. Welcome!";
+                    return View();
                 }
-
-                //    client.Register(user.Email, user.Password, user.Name, user.PictureURL);
-
-                ViewBag.Message = "Registration was successful.";
-                return View();
-            }
-            catch(Exception ex)
-            {
-                ViewBag.Message = "There was a problem trying to register you. Please try again.\n" + ex.Message;
-                return View();
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "A problem occured when signing you up.\n" + ex.Message;
+                    throw;
+                    //return View();
+                }
             }
         }
 
