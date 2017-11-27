@@ -36,6 +36,7 @@ namespace BusinessTier
                 Content = content,
                 DatePosted = DateTime.Now,
                 LastEdited = DateTime.Now,
+                ExpDate = DateTime.Now,
                 Views = 0,
                 Title = title,
                 Price = new Price { Type = PriceType.Free },
