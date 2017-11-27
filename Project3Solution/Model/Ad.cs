@@ -15,5 +15,6 @@ namespace Model
         public string Title { get; set; }
         public DateTime? ExpDate { get; set; }
         public int Views { get; set; }
+        public Location Location { get; set; }
     }
 }

@@ -26,10 +26,9 @@ namespace BusinessTier
             return _instance;
         }
 
-        public void PostAd(User author, string title, string content)
+        public void PostAd(User author, string title, string content, string locationName=null)
         {
             var db = new ServiceDbContext();
-            
 
             Ad ad = new Ad
             {
@@ -40,15 +39,23 @@ namespace BusinessTier
                 Views = 0,
                 Title = title,
                 Price = new Price { Type = PriceType.Free },
+                Location = null,
             };
-            
-            var foundUser = UserControl.GetInstance().GetUser(author);
-            db.Ads.Add(ad);
-            var authorFull = db.Users.Attach(foundUser);
-            ad.Author = authorFull;
-            db.SaveChanges();
 
-            //AddAd(ad);
+            //Find a user and attach him to the DB context
+            var authorFull = db.Users.Attach(
+                db.Users.FirstOrDefault(u => u.Email == author.Email));
+            //Attach the user to the Ad
+            ad.Author = authorFull;
+
+            //Find a location and attach it to the DB context and to the Ad
+            if(locationName != null)
+            {
+                var locationFull = db.Locations.Attach(new Location { Name = locationName });
+                ad.Location = locationFull;
+            }
+
+            db.SaveChanges();
         }
 
         public void AddAd (Ad ad)
@@ -92,7 +99,33 @@ namespace BusinessTier
 
             IQueryable<Ad> query = db.Ads;
 
-            var pagedQuery = query.OrderBy(a => a.DatePosted).Skip(skip).Take(amount).Include(a => a.Author).ToList();
+            var pagedQuery = query
+                .OrderBy(a => a.DatePosted)
+                .Skip(skip)
+                .Take(amount)
+                .Include(a => a.Author)
+                .ToList();
+
+            return pagedQuery;
+        }
+
+        public IList<Ad> GetAdsWithinLocation(int skip, int amount, string location)
+        {
+            if (amount > 64)
+                amount = 64;
+
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
+
+            IQueryable<Ad> query = db.Ads;
+
+            var loc = LocationControl.GetInstance();
+            var pagedQuery = query
+                .Where(a => a.Location.IsWithin(location))
+                .OrderBy(a => a.DatePosted)
+                .Skip(skip)
+                .Take(amount)
+                .Include(a => a.Author)
+                .ToList();
 
             return pagedQuery;
         }

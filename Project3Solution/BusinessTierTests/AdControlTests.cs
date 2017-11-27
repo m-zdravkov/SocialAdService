@@ -66,7 +66,13 @@ namespace BusinessTierTests
         {
             User author = new User { Email = "max.damage@test.com" };
             control.PostAd(author, "Unit Test", "This ad was written by a unit test.");
-            
+        }
+
+        [TestMethod]
+        public void TestPostAdWithLocation()
+        {
+            User author = new User { Email = "max.damage@test.com" };
+            control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
         }
     }
 }

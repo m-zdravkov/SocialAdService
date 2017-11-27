@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="AdControlTests.cs" />
     <Compile Include="AuthenticationTests.cs" />
+    <Compile Include="LocationControlTests.cs" />
     <Compile Include="UserControlTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

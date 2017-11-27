@@ -16,7 +16,7 @@ namespace Model
         {
             bool result = true;
 
-            result = result && ValidateName(location.name);
+            result = result && ValidateName(location.Name);
 
             return result;
         }

@@ -13,8 +13,15 @@ namespace Model
     public static class MigrationSeed
     {
         public static ICollection<User> Users { get; set; } = new LinkedList<User>();
+        public static ICollection<Location> Locations { get; set; } = new LinkedList<Location>();
 
-        public static void Seed()
+        public static void SeedAll()
+        {
+            SeedUsers();
+            SeedLocations();
+        }
+
+        public static void SeedUsers()
         {
             Users.Add(new User { Name = "Wanda Butler", Email = "wanda.butler@test.com" });
             Users.Add(new User { Name = "Olivia Metcalfe", Email = "olivia.metcalfe@test.com" });
@@ -50,6 +57,133 @@ namespace Model
             Users.Add(new User { Name = "Henry Ford", Email = "henry.ford@test.com" });
             Users.Add(new User { Name = "Mr. Krabs", Email = "mrkrabs@test.com" });
             //Users.Add(new User { Name = "", Email = "@test.com" });
+        }
+
+        public static void SeedLocations()
+        {
+            Locations.Add(new Location { Name = "Denmark", Type = LocationType.Country } );
+            Locations.Add(new Location { Name = "Norway", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Sweden", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Finland", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Iceland", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Denmark - Faroe Islands", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Denmark - Greenland", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "USA", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Canada", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Australia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Germany", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Austria", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "France", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Belgium", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Switzerland", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Spain", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Portugal", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "United Kingdom", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Russia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Ukraine", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Belarus", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Moldova", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Romania", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Bulgaria", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Greece", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "FYROM", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Serbia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Croatia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Slovenia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Slovakia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Czech Republic", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Poland", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Lithuania", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Latvia", Type = LocationType.Country });
+            Locations.Add(new Location { Name = "Estonia", Type = LocationType.Country });
+
+            //Regions
+            Locations.Add(new Location
+            {
+                Name = "Nordjylland",
+                Type = LocationType.Region,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Denmark")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Hovedstaden",
+                Type = LocationType.Region,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Denmark")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Sjælland",
+                Type = LocationType.Region,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Denmark")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Syddanmark",
+                Type = LocationType.Region,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Denmark")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Midtjylland",
+                Type = LocationType.Region,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Denmark")
+            });
+
+            //Cities
+            Locations.Add(new Location
+            {
+                Name = "Aalborg",
+                Type = LocationType.City,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Nordjylland")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Hirtshals",
+                Type = LocationType.City,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Nordjylland")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Frederikshavn",
+                Type = LocationType.City,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Nordjylland")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Skagen",
+                Type = LocationType.City,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Nordjylland")
+            });
+
+            //Areas
+            Locations.Add(new Location
+            {
+                Name = "Centrum",
+                Type = LocationType.Area,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Aalborg")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Aalborg Øst",
+                Type = LocationType.Area,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Aalborg")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Skalborg",
+                Type = LocationType.Area,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Aalborg")
+            });
+            
         }
     }
 }

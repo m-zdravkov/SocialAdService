@@ -27,13 +27,16 @@ namespace BusinessTier
             SeedUsers();
         }
 
+        /// <summary>
+        /// Makes sure we have placeholder users in the database, if we find out that it's empty.
+        /// </summary>
         private void SeedUsers()
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
             int count = db.Users.Count<User>();
             if (count == 0)
             {
-                MigrationSeed.Seed();
+                MigrationSeed.SeedUsers();
                 
                 foreach (var user in MigrationSeed.Users)
                 {
