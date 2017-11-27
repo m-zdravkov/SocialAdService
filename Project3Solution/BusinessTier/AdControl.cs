@@ -92,7 +92,7 @@ namespace BusinessTier
 
             IQueryable<Ad> query = db.Ads;
 
-            var pagedQuery = query.OrderBy(a => a.DatePosted).Skip(skip).Take(amount).ToList();
+            var pagedQuery = query.OrderBy(a => a.DatePosted).Skip(skip).Take(amount).Include(a => a.Author).ToList();
 
             return pagedQuery;
         }
