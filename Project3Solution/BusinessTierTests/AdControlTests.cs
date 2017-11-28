@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Model;
 using BusinessTier;
+using System.Threading;
 
 namespace BusinessTierTests
 {
@@ -65,8 +66,19 @@ namespace BusinessTierTests
         public void TestPostAd()
         {
             User author = new User { Email = "max.damage@test.com" };
-            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.");
-            control.DeleteAd(ad.Id);
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.","Aalborg");
+            Assert.IsTrue(control.GetAd(ad)?.Id == ad.Id);
+            control.DeleteAd(ad.Id, author);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(PostNotFoundException))]
+        public void TestDeleteAd()
+        {
+            User author = new User { Email = "max.damage@test.com" };
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.", "Aalborg");
+            control.DeleteAd(ad.Id, author);
+            Assert.IsTrue(control.GetAd(ad) == null);
         }
 
         [TestMethod]
@@ -74,7 +86,39 @@ namespace BusinessTierTests
         {
             User author = new User { Email = "max.damage@test.com" };
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
-            control.DeleteAd(ad.Id);
+            control.DeleteAd(ad.Id, author);
+        }
+
+        [TestMethod]
+        public void GetLocationObjectTest()
+        {
+            var location = "Denmark".GetLocationObject();
+            Assert.IsTrue(location.Name == "Denmark");
+        }
+
+        [TestMethod]
+        public void GetLocationParentsTest()
+        {
+            var parentList = "Aalborg".GetLocationObject().GetParents(true);
+            Assert.IsTrue(parentList.Count == 3);
+        }
+
+        [TestMethod]
+        public void GetPossibleLocationsTest()
+        {
+            var list = AdControl.GetInstance().GetPossibleLocationNames("Denmark");
+            Assert.IsTrue(list.Count > 1);
+        }
+
+        [TestMethod]
+        public void TestGetAdWithinLocation()
+        {
+            User author = new User { Email = "max.damage@test.com" };
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
+            
+            var results = control.GetAdsWithinLocation(0, 100, "Denmark");
+            Assert.IsTrue(results.Count > 0);
+            control.DeleteAd(ad.Id, author);
         }
 
         [TestMethod]
@@ -82,8 +126,19 @@ namespace BusinessTierTests
         {
             User author = new User { Email = "max.damage@test.com" };
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
-            control.FindAds(0, 100, "Denmark", "unit test");
-            control.DeleteAd(ad.Id);
+            var results = control.FindAds(0, 100, "Denmark", "unit test");
+            Assert.IsTrue(results.Count > 0);
+            control.DeleteAd(ad.Id, author);
+        }
+
+        [TestMethod]
+        public void TestFindAdDifficult()
+        {
+            User author = new User { Email = "max.damage@test.com" };
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark. I want Dinosours.", "Aalborg");
+            var results = control.FindAds(0, 100, "Denmark", "dinosours");
+            Assert.IsTrue(results.Count > 0);
+            control.DeleteAd(ad.Id, author);
         }
     }
 }

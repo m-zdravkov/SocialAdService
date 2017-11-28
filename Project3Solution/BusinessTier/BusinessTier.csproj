@@ -47,11 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbContextControl.cs" />
     <Compile Include="LocationControl.cs" />
     <Compile Include="AuthenticationControl.cs" />
     <Compile Include="AdControl.cs" />
     <Compile Include="CommentControl.cs" />
     <Compile Include="LocationExtendedMethods.cs" />
+    <Compile Include="LocationNotFoundException.cs" />
     <Compile Include="PostControl.cs" />
     <Compile Include="PostNotFoundException.cs" />
     <Compile Include="ReviewControl.cs" />

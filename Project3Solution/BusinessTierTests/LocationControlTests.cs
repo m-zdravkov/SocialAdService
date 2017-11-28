@@ -45,5 +45,18 @@ namespace BusinessTierTests
 
             Assert.IsFalse(control.IsWithin("Germany", "Poland"));
         }
+
+        [TestMethod]
+        public void GetLocationChildrenTest()
+        {
+            var children = "Denmark".GetLocationObject().GetChildren(true).ToNameList();
+            var str = "";
+            foreach (var l in children)
+            {
+                str += l + " ";
+            }
+
+            Assert.IsTrue(children.Contains("Aalborg"));
+        }
     }
 }

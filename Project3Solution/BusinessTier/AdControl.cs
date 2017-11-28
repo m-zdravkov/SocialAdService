@@ -29,7 +29,7 @@ namespace BusinessTier
 
         public Ad PostAd(User author, string title, string content, string locationName=null)
         {
-            var db = new ServiceDbContext();
+            var db = DbContextControl.GetNew();
 
             Ad ad = new Ad
             {
@@ -39,8 +39,8 @@ namespace BusinessTier
                 ExpDate = DateTime.Now,
                 Views = 0,
                 Title = title,
-                Price = new Price { Type = PriceType.Free },
                 Location = null,
+                Price = null,
             };
 
             //Find a user and attach him to the DB context
@@ -55,7 +55,10 @@ namespace BusinessTier
                 var locationFull = db.Locations.Attach(new Location { Name = locationName });
                 ad.Location = locationFull;
             }
+            
+            ad.Price = new Price { Id = ad.Id, Type = PriceType.Free, High = 0, Low = 0 };
 
+            db.Ads.Add(ad);
             db.SaveChanges();
 
             return ad;
@@ -63,16 +66,18 @@ namespace BusinessTier
 
         public void AddAd (Ad ad)
         {
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            var db = DbContextControl.GetNew();
             db.Ads.Add(ad);
             db.SaveChanges();
         }
 
-        public void DeleteAd(string id)
+        public void DeleteAd(string id, User author)
         {
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
-            Ad toDelete = new Ad { Id = id };
-            db.Entry(toDelete).State = EntityState.Deleted;
+            var db = DbContextControl.GetNew();
+            Ad toDelete = new Ad { Id = id, Author = UserControl.GetInstance().GetUser(author) };
+            db.Ads.Attach(toDelete);
+            db.Ads.Remove(toDelete);
+            //db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
         }
 
@@ -112,18 +117,58 @@ namespace BusinessTier
             return pagedQuery;
         }
 
+        /// <summary>
+        /// This method is used to shorten the finding of possible locations for search methods
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        private IList<Location> GetPossibleLocations(string location)
+        {
+            IList<Location> possibleLocations = location?.GetLocationObject()?.GetChildren(true);
+            
+            if (possibleLocations == null)
+            {
+                throw new LocationNotFoundException("Could not find ads within a location, because it doesn't exist.");
+            }
+
+            return possibleLocations;
+        }
+
+        /// <summary>
+        /// Like GetPossibleLocations, but returns string list, for easier comparison
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        public IList<string> GetPossibleLocationNames(string location)
+        {
+            var list = GetPossibleLocations(location);
+            var strings = new List<string>();
+
+            foreach (var item in list)
+            {
+                strings.Add(item.Name);
+            }
+
+            return strings;
+        }
+
         public IList<Ad> GetAdsWithinLocation(int skip, int amount, string location)
         {
             if (amount > Throttle)
                 amount = Throttle;
 
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            IList<string> possibleLocationNames = GetPossibleLocationNames(location);
 
-            IQueryable<Ad> query = db.Ads;
+            ///TODO: use one universal db context when possible
+            ServiceDbContext db = DbContextControl.GetLastOrNew();
+            IQueryable<Ad> query = /*(from ad in db.Ads
+                                    where possibleLocations.Any(loc => ad.Location.Name == loc)
+                                    select ad);*/
+                                    db.Ads.Include("Location")
+                                    .Where(a => a.Location!=null
+                                        && possibleLocationNames.Contains(a.Location.Name));
 
-            var loc = LocationControl.GetInstance();
             var pagedQuery = query
-                .Where(a => a.Location.IsWithin(location))
                 .OrderByDescending(a => a.DatePosted)
                 .Skip(skip)
                 .Take(amount)
@@ -146,19 +191,24 @@ namespace BusinessTier
             if (amount > Throttle)
                 amount = Throttle;
 
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            var db = DbContextControl.GetNew();
 
-            IList<string> keywords = searchQuery.GetKeywords();
+            var possibleLocations = GetPossibleLocationNames(location);
+
+            var keywords = searchQuery.GetKeywords();
 
             //Delimit to ads that are within a location 
+            //This copies GetAdsWithinLocation, but we would like to do the search in the same query
             IQueryable<Ad> query = db.Ads.OrderBy(a => a.DatePosted)
-                .Where(a => a.Location.IsWithin(location));
+                .Include("Location");
 
             //A complex and heavy SQL query to find the search query within ad titles, contents and categories
             query = (from ad in query
-             where keywords.Any(kw => ad.Title.ToLower().Contains(kw)
-                                   || ad.Content.ToLower().Contains(kw)
-                                   || ad.Categories.Contains(kw))
+             where possibleLocations.Any(loc => ad.Location.Name == loc)
+                   && keywords.Any(kw => ad.Title.ToLower().Contains(kw)
+                                   || ad.Content.ToLower().Contains(kw))
+                                   ///TODO: Add category search
+                                   //|| ad.Categories.Contains(kw))
              select ad);
 
             //Delimit the query to take only a page of results and append the Authors to the ads

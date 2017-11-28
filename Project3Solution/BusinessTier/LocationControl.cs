@@ -50,7 +50,7 @@ namespace BusinessTier
         /// </summary>
         public void RegisterLocation(string name, LocationType type, string parentName = null)
         {
-            var db = new ServiceDbContext();
+            var db = DbContextControl.GetLastOrNew();
 
             Location parent = null;
 
@@ -75,7 +75,7 @@ namespace BusinessTier
         /// <param name="name"></param>
         public Location GetLocation(string name)
         {
-            var db = new ServiceDbContext();
+            var db = DbContextControl.GetLastOrNew();
             return db.Locations.Include("Parent").FirstOrDefault(l => l.Name == name);
         }
 
@@ -107,7 +107,7 @@ namespace BusinessTier
         /// </summary>
         public void DeleteLocation(string name)
         {
-            var db = new ServiceDbContext();
+            var db = DbContextControl.GetLastOrNew();
             var toDelete = new Location { Name = name };
             db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
@@ -133,16 +133,16 @@ namespace BusinessTier
         public bool IsWithin(string name, string parent)
         {
             //Get a reference to a Database Context from Entity Framework
-            var db = new ServiceDbContext();
-            
+            var db = DbContextControl.GetLastOrNew();
+
             //Make sure that the name and parent arguments are existing locations
             Location current = GetLocation(db, name);
             Location parentLocation = GetLocation(db, parent);
 
             if (current == null)
-                throw new ArgumentException("Location not found (first parameter).");
+                throw new LocationNotFoundException("Checking if non-existing location is within another.");
             if (parentLocation == null)
-                throw new ArgumentException("Location not found (second parameter).");
+                throw new LocationNotFoundException("Checking if a location is within a non-existing one.");
 
             //Now we try to traverse the Location tree, to find if two locations are connected
             bool found = false; //Boolean flag to help us later
@@ -168,6 +168,90 @@ namespace BusinessTier
             }
             //If nothing is found, this remains false
             return found;
+        }
+
+        /// <summary>
+        /// Get a list of all locations that contain this location.
+        /// Starts with the current location.
+        /// Ordered from smallest to largest containing location.
+        /// </summary>
+        /// <param name="location">The location whose parents you are looking for.</param>
+        /// <returns></returns>
+        public IList<Location> GetParents(Location location, bool locationIsAlreadyValidated = false)
+        {
+            var db = DbContextControl.GetLastOrNew();
+            Location current = location;
+
+            if (!locationIsAlreadyValidated)
+            {
+                //Check if the location exists in the database
+                current = GetLocation(db, location?.Name);
+
+                if (current == null)
+                    throw new LocationNotFoundException();
+            }
+
+            IList <Location> locations = new List<Location>();
+
+            //While we aren't at a null location
+            while (current!=null)
+            {
+                //Add the current location to our list
+                locations.Add(current);
+                //Get the parent of the current (null if at the top of the tree)
+                if (current.Parent == null)
+                    current = null; //If no more parents, terminate the loop
+                else current = GetLocation(current.Parent.Name);
+            }
+
+            return locations;
+        }
+
+        /// <summary>
+        /// Returns all children of a location. Keeps the location in the list.
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="locationIsAlreadyValidated"></param>
+        /// <returns></returns>
+        public IList<Location> GetChildren(Location location, bool locationIsAlreadyValidated = false)
+        {
+            var db = DbContextControl.GetLastOrNew();
+            Location current = location;
+
+            if (!locationIsAlreadyValidated)
+            {
+                //Check if the location exists in the database
+                current = GetLocation(db, location?.Name);
+
+                if (current == null)
+                    throw new LocationNotFoundException();
+            }
+
+            //Find all locations whose parent is our location
+            IQueryable<Location> query
+                = db.Locations.Include("Parent").Where(l => l.Parent != null && l.Parent.Name == location.Name);
+
+            int results = query.Count();
+            IList<Location> validLocations = query.ToList();
+            IList<string> children = validLocations.ToNameList(); //Children to check, per iteration
+            //We need to loop this for the children of children, until we get no more new results
+            bool iterate = true;
+            while (iterate) //Do while there are still objects available
+            {
+                //Perform query to find all Locations whose parent is one of the previous children
+                query = db.Locations.Include("Parent").Where(l => l.Parent != null && children.Contains(l.Parent.Name));
+                //Count
+                results = query.Count();
+                if (results > 0)//Prepare next iteration
+                {
+                    var newList = query.ToList(); //Turn the query into list of objects
+                    validLocations = validLocations.Concat(newList).ToList(); //Add the newfound locations to the total list
+                    children = newList.ToNameList(); //Specify the children to check for in the next iteration
+                }
+                else iterate = false;
+            }
+            validLocations.Add(location);//Keep the current location in the list to simplify later use
+            return validLocations;
         }
     }
 }

@@ -37,7 +37,7 @@ namespace BusinessTier
         /// <returns></returns>
         public static IList<string> FilterOutSearchWords(this IList<string> list)
         {
-            string[] blacklist = { "a", "an" , "that", "i", "you", "it", "we", "they",
+            string[] blacklist = { "a", "an" , "that", "i", "you", "it", "we", "they", "as",
                 "use", "for", "in", "there", "order", "to", "need", "want", "like", "looking" };
 
             foreach (var word in list)
