@@ -1,4 +1,6 @@
-﻿using MvcClient.SocialAdService;
+﻿using MvcClient.Helpers;
+using MvcClient.Models;
+using MvcClient.SocialAdService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +14,8 @@ namespace MvcClient.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var client = new SocialAdServiceClient();
-            IList < UserDTO > list = client.GetUsers(0, 100);
+            var client = ServiceHelper.GetServiceClientLoggedIn();
+            IList < User > list = client.GetUsers(0, 100);
             return View(list);
         }
 
@@ -24,24 +26,32 @@ namespace MvcClient.Controllers
         }
 
         // GET: User/Create
-        public ActionResult Create()
+        public ActionResult Register()
         {
             return View();
         }
 
         // POST: User/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Register(UserRegistrationViewModel user)
         {
-            try
+            using (var authsvc = ServiceHelper.GetAuthServiceClient())
             {
-                // TODO: Add insert logic here
+                try
+                {
+                    bool canRegister = authsvc.Register(user.Email, user.Name, user.Password, user.PictureURL);
+                    if (!canRegister)
+                        throw new InvalidOperationException("We could not register you with these credentials, please try a different E-Mail.");
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
+                    ViewBag.Message = "Your registration was successful and you are ready to log in. Welcome!";
+                    return View();
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "A problem occured when signing you up.\n" + ex.Message;
+                    throw;
+                    //return View();
+                }
             }
         }
 

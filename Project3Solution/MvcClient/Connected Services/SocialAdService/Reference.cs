@@ -15,9 +15,9 @@ namespace MvcClient.SocialAdService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UserDTO", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceTier")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="User", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    public partial class UserDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class User : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -38,10 +38,16 @@ namespace MvcClient.SocialAdService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] PasswordHashField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PictureURLField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ReservationsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private byte[] SaltField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -119,6 +125,19 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] PasswordHash {
+            get {
+                return this.PasswordHashField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordHashField, value) != true)) {
+                    this.PasswordHashField = value;
+                    this.RaisePropertyChanged("PasswordHash");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string PictureURL {
             get {
                 return this.PictureURLField;
@@ -141,6 +160,266 @@ namespace MvcClient.SocialAdService {
                     this.ReservationsField = value;
                     this.RaisePropertyChanged("Reservations");
                 }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public byte[] Salt {
+            get {
+                return this.SaltField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.SaltField, value) != true)) {
+                    this.SaltField = value;
+                    this.RaisePropertyChanged("Salt");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Ad", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.User[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Ad[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Post))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Price))]
+    public partial class Ad : MvcClient.SocialAdService.Post {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object CategoriesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime ExpDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.SocialAdService.Price PriceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ViewsField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object Categories {
+            get {
+                return this.CategoriesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoriesField, value) != true)) {
+                    this.CategoriesField = value;
+                    this.RaisePropertyChanged("Categories");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime ExpDate {
+            get {
+                return this.ExpDateField;
+            }
+            set {
+                if ((this.ExpDateField.Equals(value) != true)) {
+                    this.ExpDateField = value;
+                    this.RaisePropertyChanged("ExpDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.SocialAdService.Price Price {
+            get {
+                return this.PriceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PriceField, value) != true)) {
+                    this.PriceField = value;
+                    this.RaisePropertyChanged("Price");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Views {
+            get {
+                return this.ViewsField;
+            }
+            set {
+                if ((this.ViewsField.Equals(value) != true)) {
+                    this.ViewsField = value;
+                    this.RaisePropertyChanged("Views");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Post", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Ad))]
+    public partial class Post : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.SocialAdService.User AuthorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ContentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime DatePostedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ImageSourceField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime LastEditedField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.SocialAdService.User Author {
+            get {
+                return this.AuthorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AuthorField, value) != true)) {
+                    this.AuthorField = value;
+                    this.RaisePropertyChanged("Author");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Content {
+            get {
+                return this.ContentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ContentField, value) != true)) {
+                    this.ContentField = value;
+                    this.RaisePropertyChanged("Content");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime DatePosted {
+            get {
+                return this.DatePostedField;
+            }
+            set {
+                if ((this.DatePostedField.Equals(value) != true)) {
+                    this.DatePostedField = value;
+                    this.RaisePropertyChanged("DatePosted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ImageSource {
+            get {
+                return this.ImageSourceField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ImageSourceField, value) != true)) {
+                    this.ImageSourceField = value;
+                    this.RaisePropertyChanged("ImageSource");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime LastEdited {
+            get {
+                return this.LastEditedField;
+            }
+            set {
+                if ((this.LastEditedField.Equals(value) != true)) {
+                    this.LastEditedField = value;
+                    this.RaisePropertyChanged("LastEdited");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Price", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Price : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
             }
         }
         
@@ -171,10 +450,10 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task AuthenticateAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetAuthenticatedUser", ReplyAction="http://tempuri.org/ISocialAdService/GetAuthenticatedUserResponse")]
-        MvcClient.SocialAdService.UserDTO GetAuthenticatedUser();
+        MvcClient.SocialAdService.User GetAuthenticatedUser();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetAuthenticatedUser", ReplyAction="http://tempuri.org/ISocialAdService/GetAuthenticatedUserResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO> GetAuthenticatedUserAsync();
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetAuthenticatedUserAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/LogOut", ReplyAction="http://tempuri.org/ISocialAdService/LogOutResponse")]
         void LogOut();
@@ -183,10 +462,10 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task LogOutAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUser", ReplyAction="http://tempuri.org/ISocialAdService/GetUserResponse")]
-        MvcClient.SocialAdService.UserDTO GetUser(string userId);
+        MvcClient.SocialAdService.User GetUser(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUser", ReplyAction="http://tempuri.org/ISocialAdService/GetUserResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO> GetUserAsync(string userId);
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetUserAsync(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/CountUsers", ReplyAction="http://tempuri.org/ISocialAdService/CountUsersResponse")]
         int CountUsers();
@@ -195,10 +474,28 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task<int> CountUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUsers", ReplyAction="http://tempuri.org/ISocialAdService/GetUsersResponse")]
-        MvcClient.SocialAdService.UserDTO[] GetUsers(int skip, int amount);
+        MvcClient.SocialAdService.User[] GetUsers(int skip, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUsers", ReplyAction="http://tempuri.org/ISocialAdService/GetUsersResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO[]> GetUsersAsync(int skip, int amount);
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.User[]> GetUsersAsync(int skip, int amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetData", ReplyAction="http://tempuri.org/ISocialAdService/GetDataResponse")]
+        int GetData();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetData", ReplyAction="http://tempuri.org/ISocialAdService/GetDataResponse")]
+        System.Threading.Tasks.Task<int> GetDataAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/FetchAds", ReplyAction="http://tempuri.org/ISocialAdService/FetchAdsResponse")]
+        MvcClient.SocialAdService.Ad[] FetchAds(int skip, int amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/FetchAds", ReplyAction="http://tempuri.org/ISocialAdService/FetchAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> FetchAdsAsync(int skip, int amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostAd", ReplyAction="http://tempuri.org/ISocialAdService/PostAdResponse")]
+        void PostAd(string title, string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostAd", ReplyAction="http://tempuri.org/ISocialAdService/PostAdResponse")]
+        System.Threading.Tasks.Task PostAdAsync(string title, string content);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -244,11 +541,11 @@ namespace MvcClient.SocialAdService {
             return base.Channel.AuthenticateAsync(email, password);
         }
         
-        public MvcClient.SocialAdService.UserDTO GetAuthenticatedUser() {
+        public MvcClient.SocialAdService.User GetAuthenticatedUser() {
             return base.Channel.GetAuthenticatedUser();
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO> GetAuthenticatedUserAsync() {
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetAuthenticatedUserAsync() {
             return base.Channel.GetAuthenticatedUserAsync();
         }
         
@@ -260,11 +557,11 @@ namespace MvcClient.SocialAdService {
             return base.Channel.LogOutAsync();
         }
         
-        public MvcClient.SocialAdService.UserDTO GetUser(string userId) {
+        public MvcClient.SocialAdService.User GetUser(string userId) {
             return base.Channel.GetUser(userId);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO> GetUserAsync(string userId) {
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetUserAsync(string userId) {
             return base.Channel.GetUserAsync(userId);
         }
         
@@ -276,12 +573,36 @@ namespace MvcClient.SocialAdService {
             return base.Channel.CountUsersAsync();
         }
         
-        public MvcClient.SocialAdService.UserDTO[] GetUsers(int skip, int amount) {
+        public MvcClient.SocialAdService.User[] GetUsers(int skip, int amount) {
             return base.Channel.GetUsers(skip, amount);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.UserDTO[]> GetUsersAsync(int skip, int amount) {
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User[]> GetUsersAsync(int skip, int amount) {
             return base.Channel.GetUsersAsync(skip, amount);
+        }
+        
+        public int GetData() {
+            return base.Channel.GetData();
+        }
+        
+        public System.Threading.Tasks.Task<int> GetDataAsync() {
+            return base.Channel.GetDataAsync();
+        }
+        
+        public MvcClient.SocialAdService.Ad[] FetchAds(int skip, int amount) {
+            return base.Channel.FetchAds(skip, amount);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> FetchAdsAsync(int skip, int amount) {
+            return base.Channel.FetchAdsAsync(skip, amount);
+        }
+        
+        public void PostAd(string title, string content) {
+            base.Channel.PostAd(title, content);
+        }
+        
+        public System.Threading.Tasks.Task PostAdAsync(string title, string content) {
+            return base.Channel.PostAdAsync(title, content);
         }
     }
 }

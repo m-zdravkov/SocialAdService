@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcClient", "MvcClient\MvcC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfServiceConsoleHost", "WcfServiceConsoleHost\WcfServiceConsoleHost.csproj", "{A5A43855-2619-4DD4-A450-2AE251AE2944}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleClient", "ConsoleClient\ConsoleClient.csproj", "{31F29B21-C3F2-4C26-8E14-F44C52E5C6A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{A5A43855-2619-4DD4-A450-2AE251AE2944}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5A43855-2619-4DD4-A450-2AE251AE2944}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5A43855-2619-4DD4-A450-2AE251AE2944}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F29B21-C3F2-4C26-8E14-F44C52E5C6A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F29B21-C3F2-4C26-8E14-F44C52E5C6A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F29B21-C3F2-4C26-8E14-F44C52E5C6A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F29B21-C3F2-4C26-8E14-F44C52E5C6A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

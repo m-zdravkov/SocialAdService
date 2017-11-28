@@ -9,23 +9,23 @@ namespace Model
 {
     public static class CommentValidator
     {
-        public static bool validateComment (this Comment comment)
+        public static bool ValidateComment (this Comment comment)
         {
             bool result = true;
 
-            result = result && validateReply(comment);
-            result = result && validateContent(comment.Content);
+            result = result && ValidateReply(comment);
+            result = result && ValidateContent(comment.Content);
         
         
             return result;
         }
 
-        public static bool validateReply (Comment comment)
+        public static bool ValidateReply (Comment comment)
         {
-            return comment.level > 0 && comment.repliedTo != null;
+            return comment.Indent > 0 && comment.ReplyId != null;
         }
 
-        public static bool validateContent (string content)
+        public static bool ValidateContent (string content)
         {
             return content.Length > 3 && content.Length <= 2000;
         }

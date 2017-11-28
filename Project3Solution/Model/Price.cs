@@ -4,14 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Model
 {
     public enum PriceType { Range, Free, Unspecified, Bid }
-    class Price
+    public class Price
     {
-        public int Low { get; private set; }
-        public int High { get; private set; }
-        public PriceType Type { get; private set; }
+        public string Id { get; set; }
+        public int Low { get; set; }
+        public int High { get; set; }
+        public PriceType Type { get; set; }
     }
 }

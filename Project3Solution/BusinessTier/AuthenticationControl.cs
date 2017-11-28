@@ -30,12 +30,14 @@ namespace BusinessTier
         {
             User query = new User
             {
-                Email = email
+                Email = email.ToLower()
             };
 
             User user;
 
             user = _users.GetUser(query);
+            if (user == null)
+                throw new UserNotFoundException();
 
             if (!user.MatchPassword(password, user.Salt, user.PasswordHash))
                 throw new WrongPasswordException();

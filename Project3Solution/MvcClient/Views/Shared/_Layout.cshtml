@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using MvcClient.Helpers;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -23,7 +24,20 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("All Users","Index","User")</li>
+                    @{ 
+                        if(AuthHelper.IsLoggedIn())
+                        {
+                            <li><p class="navbar-text">Logged in with @AuthHelper.CurrentUser.Email</p></li>
+                            <li>@Html.ActionLink("Log out", "LogOut", "Auth")</li>
+                            <li>@Html.ActionLink("All Users","Index","User")</li>
+                            <li>@Html.ActionLink("Post", "Ad", "Post")</li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Log in", "Index", "Auth")</li>
+                            <li>@Html.ActionLink("Sign up", "Register", "User")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

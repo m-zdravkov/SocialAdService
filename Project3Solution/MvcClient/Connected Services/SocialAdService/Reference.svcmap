@@ -19,13 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:8733/WcfServiceTier/SocialAdService/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="https://localhost:1414/mex" Protocol="mex" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="137d6a62-05c2-4f9f-b12b-12273838a877" SourceId="1" SourceUrl="http://localhost:8733/WcfServiceTier/SocialAdService/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9ee84abc-48ac-4b27-a9b7-b15436ac9270" SourceId="1" SourceUrl="http://localhost:8733/WcfServiceTier/SocialAdService/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="5328b2c2-b13c-4c82-951e-9a2030192fec" SourceId="1" SourceUrl="http://localhost:8733/WcfServiceTier/SocialAdService/mex" />
-    <MetadataFile FileName="WcfServiceTier.xsd" MetadataType="Schema" ID="3bd2b580-64af-4036-9672-c7334bcf9c9c" SourceId="1" SourceUrl="http://localhost:8733/WcfServiceTier/SocialAdService/mex" />
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="3c2f3177-9327-4d49-9a9a-31e5bb903f70" SourceId="1" SourceUrl="https://localhost:1414/mex" />
+    <MetadataFile FileName="service2.xsd" MetadataType="Schema" ID="c23ad24e-ae95-4b1f-8b89-bbb4deab9958" SourceId="1" SourceUrl="https://localhost:1414/mex" />
+    <MetadataFile FileName="service21.xsd" MetadataType="Schema" ID="0fae39b7-a348-4ed4-8e55-5b06a7d13e22" SourceId="1" SourceUrl="https://localhost:1414/mex" />
+    <MetadataFile FileName="Model1.xsd" MetadataType="Schema" ID="e8f44575-fde6-4ccd-a81c-963dc6f611c7" SourceId="1" SourceUrl="https://localhost:1414/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

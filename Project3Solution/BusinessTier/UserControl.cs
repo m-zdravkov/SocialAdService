@@ -27,17 +27,20 @@ namespace BusinessTier
             SeedUsers();
         }
 
+        /// <summary>
+        /// Makes sure we have placeholder users in the database, if we find out that it's empty.
+        /// </summary>
         private void SeedUsers()
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
             int count = db.Users.Count<User>();
             if (count == 0)
             {
-                MigrationSeed.Seed();
+                MigrationSeed.SeedUsers();
                 
                 foreach (var user in MigrationSeed.Users)
                 {
-                    RegisterUser(user.Name, user.Email, "http://test.com/image.png", "!# test password #!");
+                    RegisterUser(user.Name, user.Email, "http://test.com/image.png", "password");
                 }
             }
         }
@@ -45,7 +48,7 @@ namespace BusinessTier
 
         public User RegisterUser(string name, string email, string picutreURL, string password)
         {
-            User user = PrepareUserRegistration(name,email,picutreURL,password);
+            User user = PrepareUserRegistration(name,email.ToLower(),picutreURL.ToLower(),password);
 
             //Extended method from SecureHashingControl
             user.GeneratePassword(password);
@@ -79,14 +82,20 @@ namespace BusinessTier
 
         private void AddUser(User user)
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
             db.Users.Add(user);
             db.SaveChanges();
         }
         
+        /// <summary>
+        /// Can query users by Email
+        /// </summary>
+        /// <param name="query">A User containing at least Id or Email</param>
+        /// <returns></returns>
         public User GetUser(User query)
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            
             
             User user = db.Users.FirstOrDefault(u => u.Email.Equals(query.Email));
 
@@ -100,7 +109,7 @@ namespace BusinessTier
         {
             if (amount > 64) amount = 64; //limit traffic
 
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
 
             IQueryable<User> query = db.Users;
             var pagedQuery = query.OrderBy(u => u.Id).Skip(skip).Take(amount).ToList();
@@ -110,14 +119,14 @@ namespace BusinessTier
 
         public int CountUsers()
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
 
             return db.Users.Count();
         }
 
         public void DeleteUser(string id)
         {
-            DBContext db = new DBContext();
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
             User toDelete = new User { Id = id };
             db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();

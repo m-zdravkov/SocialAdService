@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcClient.Helpers;
+using MvcClient.AuthService;
 
 namespace MvcClient.Controllers
 {
@@ -10,7 +12,8 @@ namespace MvcClient.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            var ads = ServiceHelper.GetAuthServiceClient().GetAds(0,64).ToList<Ad>();
+            return View(ads);
         }
 
         public ActionResult About()
