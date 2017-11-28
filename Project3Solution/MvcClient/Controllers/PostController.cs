@@ -21,7 +21,7 @@ namespace MvcClient.Controllers
         {
             try
             {
-                ServiceHelper.GetServiceClientLoggedIn().PostAd(ad.Title, ad.Content);
+                ServiceHelper.GetServiceClientLoggedIn().PostAd(ad.Title, ad.Content, ad.Location);
             }
             catch (Exception ex)
             {

@@ -51,6 +51,18 @@
   <wsdl:message name="IAuthService_GetAds_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAdsResponse" />
   </wsdl:message>
+  <wsdl:message name="IAuthService_GetAdsWithinLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdsWithinLocation" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_GetAdsWithinLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdsWithinLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_FindAds_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindAds" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_FindAds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindAdsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAuthService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/Login" message="tns:IAuthService_Login_InputMessage" />
@@ -63,6 +75,14 @@
     <wsdl:operation name="GetAds">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/GetAds" message="tns:IAuthService_GetAds_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/GetAdsResponse" message="tns:IAuthService_GetAds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsWithinLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/GetAdsWithinLocation" message="tns:IAuthService_GetAdsWithinLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse" message="tns:IAuthService_GetAdsWithinLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindAds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/FindAds" message="tns:IAuthService_FindAds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/FindAdsResponse" message="tns:IAuthService_FindAds_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IAuthService" type="tns:IAuthService">
@@ -88,6 +108,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAds">
       <soap12:operation soapAction="http://tempuri.org/IAuthService/GetAds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdsWithinLocation">
+      <soap12:operation soapAction="http://tempuri.org/IAuthService/GetAdsWithinLocation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindAds">
+      <soap12:operation soapAction="http://tempuri.org/IAuthService/FindAds" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

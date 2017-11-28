@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MvcClient.Models;
+using MvcClient.Helpers;
+using MvcClient.AuthService;
 
-/*namespace MvcClient.Controllers
+namespace MvcClient.Controllers
 {
-   /* public class SearchController : Controller
+   public class SearchController : Controller
     {
         // GET: Search
         public ActionResult Index()
@@ -14,10 +17,21 @@ using System.Web.Mvc;
             return View();
         }
 
-        const int RecordsPerPage = 5;
+        [HttpPost]
+        public ActionResult Index(SearchQueryViewModel sqvm)
+        {
+            var results = ServiceHelper.GetAuthServiceClient().
+                FindAds(0, 100, sqvm.Location, sqvm.Query).ToList<Ad>();
+            //var results = ServiceHelper.GetAuthServiceClient().GetAds(0, 100).ToList<Ad>();
+            TempData["ads"] = results;
+            //Redirect to home
+            return RedirectToAction("Index", "Home");
+        }
+
+        //const int RecordsPerPage = 5;
 
         //I am not using httpGet or httpPost because it will be used for both
-        public ActionResult Index ( Ad model)
+        /*public ActionResult Index ( Ad model)
         {
             if (!string.IsNullOrEmpty(model.SearchButton) || model.Page.HasValue)
             {
@@ -32,6 +46,6 @@ using System.Web.Mvc;
                 model.SearchResults = results.ToPagedList(pageIndex, RecordsPerPage);
             }
             return View(model);
-        }
+        }*/
     }
-}*/
+}

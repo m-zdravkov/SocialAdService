@@ -40,17 +40,28 @@ namespace WcfServiceTier
             }
             catch (Exception ex)
             {
-                //if (ex is InvalidOperationException)
-                //    throw ex;
                 Console.WriteLine(ex.Message);
                 throw ex;
-                //throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);
+                /*if (ex is InvalidOperationException)
+                    throw ex;
+                
+                throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);*/
             }
         }
 
         public IList<Ad> GetAds(int skip, int amount)
         {
             return AdControl.GetInstance().GetAds(skip,amount);
+        }
+
+        public IList<Ad> GetAdsWithinLocation(int skip, int amount, string location)
+        {
+            return AdControl.GetInstance().GetAdsWithinLocation(skip, amount, location);
+        }
+
+        public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery)
+        {
+            return AdControl.GetInstance().FindAds(skip, amount, location, searchQuery);
         }
     }
 }

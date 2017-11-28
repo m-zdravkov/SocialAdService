@@ -167,6 +167,7 @@
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PostAdViewModel.cs" />
+    <Compile Include="Models\SearchQueryViewModel.cs" />
     <Compile Include="Models\UserRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Search.aspx.cs">
@@ -264,6 +265,7 @@
     <Content Include="Views\Search.cshtml" />
     <Content Include="Views\Search\SearchView.cshtml" />
     <Content Include="Views\Post\Ad.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

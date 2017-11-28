@@ -13,5 +13,7 @@ namespace MvcClient.Models
         public string Title { get; set; }
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+        [StringLength(256, ErrorMessage = "Location must be shorter than {0} symbols.")]
+        public string Location { get; set; }
     }
 }

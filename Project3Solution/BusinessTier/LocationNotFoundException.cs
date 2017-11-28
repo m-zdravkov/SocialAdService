@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessTier
 {
-    class LocationNotFoundException : Exception
+    public class LocationNotFoundException : Exception
     {
         public LocationNotFoundException() { }
         public LocationNotFoundException(string message) : base(message) { }

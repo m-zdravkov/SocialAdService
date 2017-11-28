@@ -85,7 +85,7 @@ namespace BusinessTier
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
-            Ad post = db.Ads.FirstOrDefault(a => a.Id.Equals(query.Id));
+            Ad post = db.Ads.Include("Author").Include("Location").FirstOrDefault(a => a.Id.Equals(query.Id));
 
             if (post == null)
             {
@@ -112,6 +112,7 @@ namespace BusinessTier
                 .Skip(skip)
                 .Take(amount)
                 .Include(a => a.Author)
+                .Include(a => a.Location)
                 .ToList();
 
             return pagedQuery;

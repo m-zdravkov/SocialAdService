@@ -19,5 +19,11 @@ namespace WcfServiceTier
 
         [OperationContract]
         IList<Ad> GetAds(int skip, int amount);
+
+        [OperationContract]
+        IList<Ad> GetAdsWithinLocation(int skip, int amount, string location);
+
+        [OperationContract]
+        IList<Ad> FindAds(int skip, int amount, string location, string searchQuery);
     }
 }

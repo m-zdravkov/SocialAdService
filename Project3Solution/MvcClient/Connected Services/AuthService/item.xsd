@@ -48,4 +48,37 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetAdsWithinLocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="skip" type="xs:int" />
+        <xs:element minOccurs="0" name="amount" type="xs:int" />
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAdsWithinLocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetAdsWithinLocationResult" nillable="true" type="q2:ArrayOfAd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAds">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="skip" type="xs:int" />
+        <xs:element minOccurs="0" name="amount" type="xs:int" />
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="searchQuery" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FindAdsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="FindAdsResult" nillable="true" type="q3:ArrayOfAd" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
