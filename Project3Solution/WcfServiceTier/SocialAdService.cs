@@ -73,7 +73,7 @@ namespace WcfServiceTier
             return AdControl.GetInstance().GetAds(skip, amount);
         }
 
-        public void PostAd(string title, string content)
+        public void PostAd(string title, string content, string location)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace WcfServiceTier
                     Email = userEmail
                 };
 
-                AdControl.GetInstance().PostAd(author, title, content);
+                AdControl.GetInstance().PostAd(author, title, content, location);
             }
             catch (InvalidOperationException)
             {
@@ -96,6 +96,10 @@ namespace WcfServiceTier
             catch (UserNotFoundException)
             {
                 throw new WebFaultException<Exception>(new Exception("The post author was not found."), HttpStatusCode.Unauthorized);
+            }
+            catch (LocationNotFoundException)
+            {
+                throw new WebFaultException<Exception>(new Exception("The post location was not found."), HttpStatusCode.NotFound);
             }
         }
     }

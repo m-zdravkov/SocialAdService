@@ -15,8 +15,8 @@
         <br />
         @foreach (var ad in Model)
         {
-            <h6>@ad.DatePosted</h6>
-            <h6>@ad.Author.Name</h6>
+            <h4>@ad.Author.Name posted</h4>
+            <h5>On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</h5>
             <h2>@ad.Title</h2>
             <p class="modal-body">
                 @ad.Content

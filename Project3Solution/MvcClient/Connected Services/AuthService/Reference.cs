@@ -20,6 +20,8 @@ namespace MvcClient.AuthService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Ad[]))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Post))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Location))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.LocationType))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Price))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.PriceType))]
     public partial class Ad : MvcClient.AuthService.Post {
@@ -29,6 +31,9 @@ namespace MvcClient.AuthService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ExpDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.AuthService.Location LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private MvcClient.AuthService.Price PriceField;
@@ -61,6 +66,19 @@ namespace MvcClient.AuthService {
                 if ((this.ExpDateField.Equals(value) != true)) {
                     this.ExpDateField = value;
                     this.RaisePropertyChanged("ExpDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.AuthService.Location Location {
+            get {
+                return this.LocationField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LocationField, value) != true)) {
+                    this.LocationField = value;
+                    this.RaisePropertyChanged("Location");
                 }
             }
         }
@@ -406,6 +424,83 @@ namespace MvcClient.AuthService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.AuthService.Location ParentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.AuthService.LocationType TypeField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.AuthService.Location Parent {
+            get {
+                return this.ParentField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ParentField, value) != true)) {
+                    this.ParentField = value;
+                    this.RaisePropertyChanged("Parent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.AuthService.LocationType Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((this.TypeField.Equals(value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Price", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     public partial class Price : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -415,6 +510,9 @@ namespace MvcClient.AuthService {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int HighField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int LowField;
@@ -441,6 +539,19 @@ namespace MvcClient.AuthService {
                 if ((this.HighField.Equals(value) != true)) {
                     this.HighField = value;
                     this.RaisePropertyChanged("High");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.IdField, value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -482,6 +593,26 @@ namespace MvcClient.AuthService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LocationType", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum LocationType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Country = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Region = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        City = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Area = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Address = 4,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PriceType", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     public enum PriceType : int {
         
@@ -519,6 +650,18 @@ namespace MvcClient.AuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAds", ReplyAction="http://tempuri.org/IAuthService/GetAdsResponse")]
         System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsAsync(int skip, int amount);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdsWithinLocation", ReplyAction="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse")]
+        MvcClient.AuthService.Ad[] GetAdsWithinLocation(int skip, int amount, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdsWithinLocation", ReplyAction="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse")]
+        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
+        MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -570,6 +713,22 @@ namespace MvcClient.AuthService {
         
         public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsAsync(int skip, int amount) {
             return base.Channel.GetAdsAsync(skip, amount);
+        }
+        
+        public MvcClient.AuthService.Ad[] GetAdsWithinLocation(int skip, int amount, string location) {
+            return base.Channel.GetAdsWithinLocation(skip, amount, location);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location) {
+            return base.Channel.GetAdsWithinLocationAsync(skip, amount, location);
+        }
+        
+        public MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery) {
+            return base.Channel.FindAds(skip, amount, location, searchQuery);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery) {
+            return base.Channel.FindAdsAsync(skip, amount, location, searchQuery);
         }
     }
 }
