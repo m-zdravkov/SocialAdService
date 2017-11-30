@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public enum AdType { Other, Selling, Buying, ServiceRequest, ServiceOffer, Event }
+    public enum AdType { Other, All, Selling, Buying, ServiceRequest, ServiceOffer, Event }
 
     public class Ad : Post
     {

@@ -188,7 +188,7 @@ namespace BusinessTier
         /// <param name="location">General location of ad</param>
         /// <param name="searchQuery">A search query, like a few words that describe what is searched</param>
         /// <returns>A page of ads that match the criteria.</returns>
-        public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery)
+        public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery, AdType type = AdType.All)
         {
             if (amount > Throttle)
                 amount = Throttle;
@@ -200,13 +200,13 @@ namespace BusinessTier
             var keywords = searchQuery.GetKeywords();
 
             //Delimit to ads that are within a location 
-            //This copies GetAdsWithinLocation, but we would like to do the search in the same query
             IQueryable<Ad> query = db.Ads.OrderBy(a => a.DatePosted)
                 .Include("Location");
 
             //A complex and heavy SQL query to find the search query within ad titles, contents and categories
             query = (from ad in query
-             where possibleLocations.Any(loc => ad.Location.Name == loc)
+            where (type == AdType.All || ad.Type == type)
+                   && possibleLocations.Any(loc => ad.Location.Name == loc)
                    && keywords.Any(kw => ad.Title.ToLower().Contains(kw)
                                    || ad.Content.ToLower().Contains(kw))
                                    ///TODO: Add category search
@@ -227,5 +227,7 @@ namespace BusinessTier
             CommentControl comments = CommentControl.GetInstance();
             return comments.GetReplies(ad.Id, 0, 64);
         }
+
+
     }
 }

@@ -31,10 +31,13 @@
       <xs:extension base="tns:Post">
         <xs:sequence>
           <xs:element minOccurs="0" name="Categories" nillable="true" type="xs:anyType" />
+          <xs:element minOccurs="0" name="EventDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="ExpDate" nillable="true" type="xs:dateTime" />
           <xs:element minOccurs="0" name="Location" nillable="true" type="tns:Location" />
           <xs:element minOccurs="0" name="Price" nillable="true" type="tns:Price" />
+          <xs:element minOccurs="0" name="ReservedBy" nillable="true" type="tns:User" />
           <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Type" type="tns:AdType" />
           <xs:element minOccurs="0" name="Views" type="xs:int" />
         </xs:sequence>
       </xs:extension>
@@ -88,4 +91,15 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="PriceType" nillable="true" type="tns:PriceType" />
+  <xs:simpleType name="AdType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Other" />
+      <xs:enumeration value="Selling" />
+      <xs:enumeration value="Buying" />
+      <xs:enumeration value="ServiceRequest" />
+      <xs:enumeration value="ServiceOffer" />
+      <xs:enumeration value="Event" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="AdType" nillable="true" type="tns:AdType" />
 </xs:schema>

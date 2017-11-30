@@ -140,5 +140,17 @@ namespace BusinessTierTests
             Assert.IsTrue(results.Count > 0);
             control.DeleteAd(ad.Id, author);
         }
+
+        [TestMethod]
+        public void TestFindAdType()
+        {
+            User author = new User { Email = "max.damage@test.com" };
+            Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark. I want to buy Dinosours.", "Aalborg", AdType.Buying);
+            var results = control.FindAds(0, 100, "Denmark", "dinosours", AdType.Buying);
+            var wrongResults = control.FindAds(0, 100, "Denmark", "dinosours", AdType.Selling);
+            Assert.IsTrue(results.Count > 0);
+            Assert.IsTrue(wrongResults.Count == 0);
+            control.DeleteAd(ad.Id, author);
+        }
     }
 }

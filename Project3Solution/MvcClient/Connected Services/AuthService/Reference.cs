@@ -24,10 +24,14 @@ namespace MvcClient.AuthService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.LocationType))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Price))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.PriceType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.AdType))]
     public partial class Ad : MvcClient.AuthService.Post {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private object CategoriesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EventDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ExpDateField;
@@ -39,7 +43,13 @@ namespace MvcClient.AuthService {
         private MvcClient.AuthService.Price PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.AuthService.User ReservedByField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private MvcClient.AuthService.AdType TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ViewsField;
@@ -53,6 +63,19 @@ namespace MvcClient.AuthService {
                 if ((object.ReferenceEquals(this.CategoriesField, value) != true)) {
                     this.CategoriesField = value;
                     this.RaisePropertyChanged("Categories");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EventDate {
+            get {
+                return this.EventDateField;
+            }
+            set {
+                if ((this.EventDateField.Equals(value) != true)) {
+                    this.EventDateField = value;
+                    this.RaisePropertyChanged("EventDate");
                 }
             }
         }
@@ -97,6 +120,19 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.AuthService.User ReservedBy {
+            get {
+                return this.ReservedByField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReservedByField, value) != true)) {
+                    this.ReservedByField = value;
+                    this.RaisePropertyChanged("ReservedBy");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Title {
             get {
                 return this.TitleField;
@@ -105,6 +141,19 @@ namespace MvcClient.AuthService {
                 if ((object.ReferenceEquals(this.TitleField, value) != true)) {
                     this.TitleField = value;
                     this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public MvcClient.AuthService.AdType Type {
+            get {
+                return this.TypeField;
+            }
+            set {
+                if ((this.TypeField.Equals(value) != true)) {
+                    this.TypeField = value;
+                    this.RaisePropertyChanged("Type");
                 }
             }
         }
@@ -627,6 +676,29 @@ namespace MvcClient.AuthService {
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Bid = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AdType", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    public enum AdType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Other = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Selling = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Buying = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ServiceRequest = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ServiceOffer = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Event = 5,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

@@ -59,9 +59,9 @@ namespace WcfServiceTier
             return AdControl.GetInstance().GetAdsWithinLocation(skip, amount, location);
         }
 
-        public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery)
+        public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery, AdType adType = AdType.All)
         {
-            return AdControl.GetInstance().FindAds(skip, amount, location, searchQuery);
+            return AdControl.GetInstance().FindAds(skip, amount, location, searchQuery, adType);
         }
     }
 }
