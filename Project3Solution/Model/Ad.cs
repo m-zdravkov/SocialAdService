@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+    public enum AdType { Other, Selling, Buying, ServiceRequest, ServiceOffer, Event }
+
     public class Ad : Post
     {
         public Price Price { get; set; }
@@ -16,5 +18,7 @@ namespace Model
         public DateTime? ExpDate { get; set; }
         public int Views { get; set; }
         public Location Location { get; set; }
+        public AdType Type { get; set; }
+
     }
 }
