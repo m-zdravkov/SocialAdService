@@ -19,6 +19,7 @@ namespace Model
         public int Views { get; set; }
         public Location Location { get; set; }
         public AdType Type { get; set; }
-
+        public User ReservedBy { get; set; }
+        public DateTime? EventDate { get; set; }
     }
 }

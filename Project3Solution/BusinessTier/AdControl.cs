@@ -27,7 +27,7 @@ namespace BusinessTier
             return _instance;
         }
 
-        public Ad PostAd(User author, string title, string content, string locationName=null)
+        public Ad PostAd(User author, string title, string content, string locationName=null, AdType type = AdType.Other)
         {
             var db = DbContextControl.GetNew();
 
@@ -41,6 +41,7 @@ namespace BusinessTier
                 Title = title,
                 Location = null,
                 Price = null,
+                Type = type,
             };
 
             //Find a user and attach him to the DB context
