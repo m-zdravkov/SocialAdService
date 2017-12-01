@@ -686,19 +686,22 @@ namespace MvcClient.AuthService {
         Other = 0,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Selling = 1,
+        All = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Buying = 2,
+        Selling = 2,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ServiceRequest = 3,
+        Buying = 3,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ServiceOffer = 4,
+        ServiceRequest = 4,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Event = 5,
+        ServiceOffer = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Event = 6,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -730,10 +733,10 @@ namespace MvcClient.AuthService {
         System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
-        MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery);
+        MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery);
+        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -795,12 +798,12 @@ namespace MvcClient.AuthService {
             return base.Channel.GetAdsWithinLocationAsync(skip, amount, location);
         }
         
-        public MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery) {
-            return base.Channel.FindAds(skip, amount, location, searchQuery);
+        public MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type) {
+            return base.Channel.FindAds(skip, amount, location, searchQuery, type);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery) {
-            return base.Channel.FindAdsAsync(skip, amount, location, searchQuery);
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type) {
+            return base.Channel.FindAdsAsync(skip, amount, location, searchQuery, type);
         }
     }
 }

@@ -687,19 +687,22 @@ namespace MvcClient.SocialAdService {
         Other = 0,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Selling = 1,
+        All = 1,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Buying = 2,
+        Selling = 2,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ServiceRequest = 3,
+        Buying = 3,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        ServiceOffer = 4,
+        ServiceRequest = 4,
         
         [System.Runtime.Serialization.EnumMemberAttribute()]
-        Event = 5,
+        ServiceOffer = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Event = 6,
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

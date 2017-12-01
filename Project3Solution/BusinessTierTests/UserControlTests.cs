@@ -19,7 +19,7 @@ namespace BusinessTierTests
         }
 
         [TestMethod]
-        public void TestAdd()
+        public void TestAddUser()
         {
             User temporaryUser = users.RegisterUser(
             "Unit Tester", "register2@unit.test", "http://unit.test/image.jpg", "-#un1tT3st#");
@@ -29,7 +29,7 @@ namespace BusinessTierTests
         }
 
         [TestMethod]
-        public void TestGet()
+        public void TestGetUser()
         {
             testUser = users.RegisterUser(
                 "Unit Tester", "register1@unit.test", "http://unit.test/image.jpg", "-#un1tT3st#");
@@ -47,7 +47,7 @@ namespace BusinessTierTests
 
         [TestMethod]
         [ExpectedException(typeof(UserNotFoundException))]
-        public void TestGetNonExistent()
+        public void TestGetNonExistentUser()
         {
             User query = new User
             {
@@ -58,7 +58,7 @@ namespace BusinessTierTests
         }
 
         [TestMethod]
-        public void TestDelete()
+        public void TestDeleteUser()
         {
             User deleteUser = users.RegisterUser(
             "Unit Tester", "delete@unit.test", "http://unit.test/image.jpg", "-#un1tT3st#");

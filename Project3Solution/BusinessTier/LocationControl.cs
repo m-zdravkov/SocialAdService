@@ -107,7 +107,7 @@ namespace BusinessTier
         /// </summary>
         public void DeleteLocation(string name)
         {
-            var db = DbContextControl.GetLastOrNew();
+            var db = DbContextControl.GetNew();
             var toDelete = new Location { Name = name };
             db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
