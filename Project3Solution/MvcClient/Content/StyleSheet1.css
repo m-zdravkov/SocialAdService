@@ -8,10 +8,20 @@
     margin-left: -50px; /* Half the width */
 }
 
-#panel {
-    position: absolute;
-    display: inline-block;
+/*.panel panel-primary {
+    position: relative;
+ 
+    display: flex;
     vertical-align: central;
     margin-top: 200px; /* Half the height */
-    margin-left: 50px;
+   /* margin-left: 50px;
+}*/
+
+.panel panel-group {
+
+    position: relative;
+    display: inline;
+   
+    display: inline-grid;
+
 }
