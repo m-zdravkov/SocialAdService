@@ -73,7 +73,7 @@ namespace WcfServiceTier
             return AdControl.GetInstance().GetAds(skip, amount);
         }
 
-        public void PostAd(string title, string content, string location)
+        public void PostAd(string title, string content, string location, AdType type = AdType.Other)
         {
             try
             {
@@ -87,7 +87,7 @@ namespace WcfServiceTier
                     Email = userEmail
                 };
 
-                AdControl.GetInstance().PostAd(author, title, content, location);
+                AdControl.GetInstance().PostAd(author, title, content, location, type);
             }
             catch (InvalidOperationException)
             {

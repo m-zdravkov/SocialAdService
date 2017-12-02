@@ -39,6 +39,6 @@ namespace WcfServiceTier
         IList<Ad> FetchAds(int skip, int amount);
 
         [OperationContract]
-        void PostAd(string title, string content, string location);
+        void PostAd(string title, string content, string location, AdType type);
     }
 }
