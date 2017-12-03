@@ -42,8 +42,8 @@ namespace MvcClient.Controllers
                     bool canRegister = authsvc.Register(user.Email, user.Name, user.Password, user.PictureURL);
                     if (!canRegister)
                         throw new InvalidOperationException("We could not register you with these credentials, please try a different E-Mail.");
-
-                    ViewBag.Message = "Your registration was successful and you are ready to log in. Welcome!";
+                    
+                    ViewBag.Message = "Click here to continue..";
                     return View();
                 }
                 catch (Exception ex)
