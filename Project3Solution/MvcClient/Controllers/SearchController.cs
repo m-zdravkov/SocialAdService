@@ -21,7 +21,7 @@ namespace MvcClient.Controllers
         public ActionResult Index(SearchQueryViewModel sqvm)
         {
             var results = ServiceHelper.GetAuthServiceClient().
-                FindAds(0, 100, sqvm.Location, sqvm.Query).ToList<Ad>();
+                FindAds(0, 100, sqvm.Location, sqvm.Query, sqvm.Type).ToList<Ad>();
             //var results = ServiceHelper.GetAuthServiceClient().GetAds(0, 100).ToList<Ad>();
             TempData["ads"] = results;
             //Redirect to home

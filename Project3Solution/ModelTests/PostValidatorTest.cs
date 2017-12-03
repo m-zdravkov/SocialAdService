@@ -9,7 +9,7 @@ namespace ModelTests
     {
         [TestMethod]
         //Test minimum character limit
-        public void TestContent1()
+        public void TestPostContent1()
         {
             Comment postObject = new Comment
             {
@@ -25,7 +25,7 @@ namespace ModelTests
 
         [TestMethod]   
         //Test maximum character limit
-        public void TestContent2()
+        public void TestPostContent2()
         {
             Comment postObject = new Comment
             {
@@ -39,7 +39,7 @@ namespace ModelTests
         [TestMethod]
         //Test URL link
         //NOTE: Changed: Assert.IsFalse TO Assert.IsTrue
-        public void TestImageSource1()
+        public void TestPostImageSource1()
         {
             Comment postObject = new Comment
             {

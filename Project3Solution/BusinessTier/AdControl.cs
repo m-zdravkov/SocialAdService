@@ -228,6 +228,37 @@ namespace BusinessTier
             return comments.GetReplies(ad.Id, 0, 64);
         }
 
+        public bool ReserveAd(string adId, string userEmail)
+        {
+            var db = DbContextControl.GetNew();
 
+            using (var reserveTransaction = db.Database.BeginTransaction(System.Data.IsolationLevel.ReadCommitted))
+            {
+                try
+                {
+                    //Get ad
+                    Ad ad = db.Ads.Attach(new Ad { Id = adId });
+                    db.Entry(ad).State = EntityState.Modified;
+
+                    //Get user
+                    var user = db.Users.Attach(new User { Email = userEmail });
+
+                    //Modify ad, reserve
+                    ad.ReservedBy = user;
+
+                    //Modify user, remove points
+                    user.Reservations -= 1;
+
+                    db.SaveChanges();
+                }
+                catch (Exception)
+                {
+                    reserveTransaction.Rollback();
+                    throw;
+                }
+            }
+
+            return false;
+        }
     }
 }

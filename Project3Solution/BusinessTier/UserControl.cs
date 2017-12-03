@@ -126,7 +126,7 @@ namespace BusinessTier
 
         public void DeleteUser(string id)
         {
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            var db = DbContextControl.GetNew();
             User toDelete = new User { Id = id };
             db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();

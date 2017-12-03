@@ -88,6 +88,7 @@
   <xs:simpleType name="AdType">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Other" />
+      <xs:enumeration value="All" />
       <xs:enumeration value="Selling" />
       <xs:enumeration value="Buying" />
       <xs:enumeration value="ServiceRequest" />

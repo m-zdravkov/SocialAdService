@@ -71,13 +71,14 @@
         <xs:element minOccurs="0" name="amount" type="xs:int" />
         <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="searchQuery" nillable="true" type="xs:string" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="type" type="q3:AdType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FindAdsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="FindAdsResult" nillable="true" type="q3:ArrayOfAd" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="FindAdsResult" nillable="true" type="q4:ArrayOfAd" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

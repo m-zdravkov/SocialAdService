@@ -8,7 +8,7 @@ namespace ModelTests
     public class UserTests
     {
         [TestMethod]
-        public void TestInvalid()
+        public void TestInvalidUser()
         {
             User invalidUser1 = new User
             {
@@ -26,7 +26,7 @@ namespace ModelTests
         }
 
         [TestMethod]
-        public void TestValid()
+        public void TestValidUser()
         {
             User validUser1 = new User
             {
