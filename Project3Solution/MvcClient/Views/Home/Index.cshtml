@@ -29,9 +29,18 @@
                             <h1 class="my-4">Social Ad Service</h1>
                             
                             <div class="list-group">
-                                <a href="#" class="list-group-item">Category 1</a>
-                                <a href="#" class="list-group-item">Category 2</a>
-                                <a href="#" class="list-group-item">Category 3</a>
+                                <!--
+                                <a href="#" class="list-group-item">All ads</a>
+                                <a href="#" class="list-group-item">Buy</a>
+                                <a href="#" class="list-group-item">Sell</a>
+                                -->
+                                @Html.ActionLink("All ads", "Index", "Home", new { area = "" }, new { @class = "list-group-item" })
+                                @Html.ActionLink("Selling", "AdType", "Home", new { type = "selling" }, new { @class = "list-group-item" })
+                                @Html.ActionLink("Buying", "AdType", "Home", new { type = "buying" }, new { @class = "list-group-item" })
+                                @Html.ActionLink("Service offers", "AdType", "Home", new { type = "offer" }, new { @class = "list-group-item" })
+                                @Html.ActionLink("Service requests", "AdType", "Home", new { type = "request" }, new { @class = "list-group-item" })
+                                @Html.ActionLink("Events", "AdType", "Home", new { type = "event" }, new { @class = "list-group-item" })
+                                @Html.ActionLink("Other", "AdType", "Home", new { type = "other" }, new { @class = "list-group-item" })
                             </div>
                           
                         </div>
@@ -79,49 +88,7 @@
                                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                            <a href="#"><img class="card-img-top" src="https://placehold.it/200x100?text=IMAGE" alt=""></a>
-                                            <div class="card-body">
-                                                <h4 class="card-title">
-                                                    <a href="#">@ad.Title</a>
-                                                </h4>
-                                                <h5>Posted by @ad.Author.Name</h5>
-                                                <h5>On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</h5>
-                                               
-                                                <p class="card-text">@ad.Content</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 mb-4">
-                                        <div class="card h-100">
-                                            <a href="#"><img class="card-img-top" src="https://placehold.it/200x100?text=IMAGE" alt=""></a>
-                                            <div class="card-body">
-                                                <h4 class="card-title">
-                                                    <a href="#">@ad.Title++</a>
-                                                </h4>
-                                                <h5>Posted by @ad.Author.Name</h5>
-                                                <h5>On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</h5>
-                                                <p class="card-text">@ad.Content</p>
-                                            </div>
-                                            <div class="card-footer">
-                                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                            </div>
-                                        </div>
-                                    </div>
-                               
-
-                               
-
-                                 
-
-                             
+                                    </div>      
           <!-- /.row -->
 
                          

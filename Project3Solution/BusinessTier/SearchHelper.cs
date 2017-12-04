@@ -25,6 +25,8 @@ namespace BusinessTier
             IList<string> keywords = query.Split(' ').ToList();
             keywords.FilterOutSearchWords();
 
+            keywords.FilterOutEmptyStrings();
+
             return keywords;
         }
 
@@ -40,13 +42,29 @@ namespace BusinessTier
             string[] blacklist = { "a", "an" , "that", "i", "you", "it", "we", "they", "as",
                 "use", "for", "in", "there", "order", "to", "need", "want", "like", "looking" };
 
-            foreach (var word in list)
-            {
-                if (blacklist.Contains(word))
-                    list.Remove(word);
-            }
+            var words = list as List<string>;
+            words.RemoveAll(word => blacklist.Contains(word));
 
             return list;
+        }
+
+        public static IList<string> FilterOutEmptyStrings(this IList<string> list)
+        {
+            var words = list as List<string>;
+            words.RemoveAll(word => word == "");
+
+            return list;
+        }
+
+        public static string ToStringList(this IList<string> list)
+        {
+            string str = "";
+            foreach(var word in list)
+            {
+                str += String.Format("\"{0}\" ",word);
+            }
+
+            return str;
         }
     }
 }

@@ -190,27 +190,42 @@ namespace BusinessTier
         /// <returns>A page of ads that match the criteria.</returns>
         public IList<Ad> FindAds(int skip, int amount, string location, string searchQuery, AdType type = AdType.All)
         {
+            //Throttle amount of ads found, to reduce load
             if (amount > Throttle)
                 amount = Throttle;
 
+            //Get a DB context
             var db = DbContextControl.GetNew();
 
-            var possibleLocations = GetPossibleLocationNames(location);
-
+            //Get all locations that the ad is within
+            IList<string> possibleLocations;
+            try
+            {
+                possibleLocations = GetPossibleLocationNames(location);
+            }
+            catch (LocationNotFoundException)
+            {
+                possibleLocations = new List<string>();
+            }
+            
+            //Get the keywords for searching in ad content
             var keywords = searchQuery.GetKeywords();
 
-            //Delimit to ads that are within a location 
+            //Delimit to ads that are within a location, use this as base for the search query
             IQueryable<Ad> query = db.Ads.OrderBy(a => a.DatePosted)
                 .Include("Location");
 
-            //A complex and heavy SQL query to find the search query within ad titles, contents and categories
+            //A complex and heavy SQL query to find the searchQuery string within ad titles, contents and categories
+            //We are using the keywords list instead of the searchQuery directly
             query = (from ad in query
-            where (type == AdType.All || ad.Type == type)
-                   && possibleLocations.Any(loc => ad.Location.Name == loc)
-                   && keywords.Any(kw => ad.Title.ToLower().Contains(kw)
-                                   || ad.Content.ToLower().Contains(kw))
-                                   ///TODO: Add category search
-                                   //|| ad.Categories.Contains(kw))
+            where (type == AdType.All || ad.Type == type) //Check type, all or one
+                   && (possibleLocations.Count == 0 //Check location, ignore if none apply
+                        || possibleLocations.Any(loc => ad.Location.Name == loc))
+                   && (keywords.Count == 0 //Check for keywords, ignore if none apply
+                        || keywords.Any(kw => ad.Title.ToLower().Contains(kw)
+                        || ad.Content.ToLower().Contains(kw)))
+                        ///TODO: Add category search
+                        //|| ad.Categories.Contains(kw)))
              select ad);
 
             //Delimit the query to take only a page of results and append the Authors to the ads

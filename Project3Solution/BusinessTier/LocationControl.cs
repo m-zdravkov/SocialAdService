@@ -76,12 +76,12 @@ namespace BusinessTier
         public Location GetLocation(string name)
         {
             var db = DbContextControl.GetLastOrNew();
-            return db.Locations.Include("Parent").FirstOrDefault(l => l.Name == name);
+            return db.Locations.Include("Parent").FirstOrDefault(l => l.Name.ToLower() == name.ToLower());
         }
 
         public Location GetLocation(ServiceDbContext context, string name)
         {
-            return context.Locations.Include("Parent").FirstOrDefault(l => l.Name == name);
+            return context.Locations.Include("Parent").FirstOrDefault(l => l.Name.ToLower() == name.ToLower());
         }
 
         /// <summary>

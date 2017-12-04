@@ -24,9 +24,6 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <!--<li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>-->
                     <li>@Html.ActionLink("Search", "Index", "Search")</li>
                     @{
                         if (AuthHelper.IsLoggedIn())
@@ -47,11 +44,22 @@
                     }
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-
-                </ul>
+                @{
+                    if (AuthHelper.IsLoggedIn())
+                    {
+                        <ul class="nav navbar-nav navbar-right">
+                            <!--
+                            <li>
+                                <span class="glyphicon glyphicon-user"></span>
+                                @Html.ActionLink("Your account", "Index", "Home")
+                            </li>-->
+                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                            <!--
+                            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                            -->
+                        </ul>
+                    }
+                }
             </div>
         </div>
     </div>
