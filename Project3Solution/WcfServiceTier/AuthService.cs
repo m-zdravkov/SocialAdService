@@ -7,9 +7,11 @@ using BusinessTier;
 using System.ServiceModel.Web;
 using System.Net;
 using Model;
+using System.ServiceModel;
 
 namespace WcfServiceTier
 {
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class AuthService : IAuthService
     {
         public bool Login(string email, string password)

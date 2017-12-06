@@ -12,6 +12,7 @@ using System.Text;
 
 namespace WcfServiceTier
 {
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class SocialAdService : ISocialAdService
     {
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
@@ -184,6 +185,19 @@ namespace WcfServiceTier
         public User GetCurrentUser()
         {
             return UserControl.GetInstance().GetUser(GetServiceUserEmail());
+        }
+
+        public void PostComment(string adId, string content)
+        {
+            ///TODO: Move to BusinessTier
+            Comment c = new Comment
+            {
+                Author = UserControl.GetInstance().GetUser(GetServiceUserEmail()),
+                Content = content,
+                ReplyId = adId,
+            };
+
+            CommentControl.GetInstance().AddComment(c);
         }
     }
 }

@@ -61,5 +61,8 @@ namespace WcfServiceTier
 
         [OperationContract]
         User GetCurrentUser();
+
+        [OperationContract]
+        void PostComment(string adId, string content);
     }
 }
