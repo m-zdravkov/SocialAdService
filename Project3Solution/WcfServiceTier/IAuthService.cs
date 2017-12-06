@@ -25,5 +25,8 @@ namespace WcfServiceTier
 
         [OperationContract]
         IList<Ad> FindAds(int skip, int amount, string location, string searchQuery, AdType type);
+
+        [OperationContract]
+        IList<Comment> GetAdReplies(int skip, int amount, string adId);
     }
 }

@@ -63,5 +63,10 @@ namespace WcfServiceTier
         {
             return AdControl.GetInstance().FindAds(skip, amount, location, searchQuery, adType);
         }
+
+        public IList<Comment> GetAdReplies(int skip, int amount, string adId)
+        {
+            return AdControl.GetInstance().GetComments(skip, amount, adId);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿@model List<MvcClient.AuthService.Ad>
+﻿@using MvcClient.Helpers;
+@model List<MvcClient.AuthService.Ad>
 
 @{
     ViewBag.Title = "Home Page";
@@ -83,7 +84,20 @@
                                                 <h5>On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</h5>
                                                 <p class="card-text">@ad.Content</p>
 
+                                                @if (ad.ReservedBy == null)
+                                                {
+                                                    if (ad.Type == MvcClient.AuthService.AdType.Selling && AuthHelper.IsLoggedIn())
+                                                    {
+                                                        @Html.ActionLink("Reserve", "Reserve", "Post", new { id = ad.Id }, new {  });
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <h4>This ad has been reserved.</h4>
+                                                }
+                                            
                                             </div>
+                                            
                                             <div class="card-footer">
                                                 <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
                                             </div>
@@ -91,44 +105,38 @@
                                     </div>      
           <!-- /.row -->
 
-                         
+
         <!-- /.col-lg-9 -->
 
       <!-- /.row -->
 
     <!-- /.container -->
-                     
+
 
     <!-- Bootstrap core JavaScript -->
                                     <script src="vendor/jquery/jquery.min.js"></script>
                                     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-                             
                                 }
                                 @*@foreach (var ad in Model)
                                 {
+                                    <div class="panel panel-primary">
+                                    <div class="panel-heading">@ad.Title</div>
+                                    <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+                                    <div class="panel-footer">@ad.Content</div>
+                                    <div class="panel-footer">Posted by @ad.Author.Name </div>
+                                    <div class="panel-footer">On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</div>
 
-                                        <div class="panel panel-primary">
-                                            <div class="panel-heading">@ad.Title</div>
-                                            <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
-                                            <div class="panel-footer">@ad.Content</div>
-                                            <div class="panel-footer">Posted by @ad.Author.Name </div>
-                                            <div class="panel-footer">On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</div>
+                                    </div>
 
-                                        </div>
-
-                                        @*<h4>@ad.Author.Name posted</h4>
+                                    @*<h4>@ad.Author.Name posted</h4>
                                     <h5>On @ad.DatePosted.ToShortDateString() at @ad.DatePosted.ToShortTimeString() in @ad.Location.Name</h5>
                                     <h2>@ad.Title</h2>
                                     <p class="modal-body">
                                         @ad.Content
-                                    </p>*@
+                                    </p>
+                                }*@
                                 <hr />
-
-                                
-
                             </div>
-
                 <br />
                 <h2>Local Ads</h2>
                 <p id="title">

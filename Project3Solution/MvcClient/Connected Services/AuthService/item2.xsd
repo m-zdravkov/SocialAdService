@@ -97,4 +97,21 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="AdType" nillable="true" type="tns:AdType" />
+  <xs:complexType name="ArrayOfComment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Comment" nillable="true" type="tns:Comment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfComment" nillable="true" type="tns:ArrayOfComment" />
+  <xs:complexType name="Comment">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Post">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Indent" type="xs:int" />
+          <xs:element minOccurs="0" name="ReplyId" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Comment" nillable="true" type="tns:Comment" />
 </xs:schema>

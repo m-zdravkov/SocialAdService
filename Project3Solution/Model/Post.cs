@@ -28,6 +28,9 @@ namespace Model
         public Post()
         {
             Id = Guid.NewGuid().ToString();
+            Content = "";
+            DatePosted = DateTime.Now;
+            Author = null;
         }
     }
 }

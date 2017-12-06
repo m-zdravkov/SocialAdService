@@ -20,6 +20,7 @@ namespace BusinessTierTests
         public void TestNestedLocations()
         {
             var control = LocationControl.GetInstance();
+
             control.RegisterLocation("Unit Test Country", LocationType.Country);
             control.RegisterLocation("Unit Test City 1", LocationType.City, "Unit Test Country");
             control.RegisterLocation("Unit Test City 2", LocationType.City, "Unit Test Country");

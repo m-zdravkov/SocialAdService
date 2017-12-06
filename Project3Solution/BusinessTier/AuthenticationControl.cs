@@ -35,7 +35,7 @@ namespace BusinessTier
 
             User user;
 
-            user = _users.GetUser(query);
+            user = _users.GetUser(email);
             if (user == null)
                 throw new UserNotFoundException();
 

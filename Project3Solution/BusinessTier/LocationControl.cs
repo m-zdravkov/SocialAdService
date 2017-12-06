@@ -50,7 +50,7 @@ namespace BusinessTier
         /// </summary>
         public void RegisterLocation(string name, LocationType type, string parentName = null)
         {
-            var db = DbContextControl.GetLastOrNew();
+            var db = DbContextControl.GetNew();
 
             Location parent = null;
 
@@ -109,7 +109,8 @@ namespace BusinessTier
         {
             var db = DbContextControl.GetNew();
             var toDelete = new Location { Name = name };
-            db.Entry(toDelete).State = EntityState.Deleted;
+            db.Locations.Attach(toDelete);
+            db.Locations.Remove(toDelete);
             db.SaveChanges();
         }
 

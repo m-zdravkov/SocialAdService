@@ -65,7 +65,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestPostAd()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.","Aalborg");
             Assert.IsTrue(control.GetAd(ad)?.Id == ad.Id);
             control.DeleteAd(ad.Id, author);
@@ -75,7 +75,7 @@ namespace BusinessTierTests
         [ExpectedException(typeof(PostNotFoundException))]
         public void TestDeleteAd()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.", "Aalborg");
             control.DeleteAd(ad.Id, author);
             Assert.IsTrue(control.GetAd(ad) == null);
@@ -84,7 +84,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestPostAdWithLocation()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
             control.DeleteAd(ad.Id, author);
         }
@@ -113,7 +113,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestGetAdWithinLocation()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
             
             var results = control.GetAdsWithinLocation(0, 100, "Denmark");
@@ -124,7 +124,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestFindAd()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark.", "Denmark");
             var results = control.FindAds(0, 100, "Denmark", "unit test");
             Assert.IsTrue(results.Count > 0);
@@ -134,7 +134,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestFindAdDifficult()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark. I want Dinosours.", "Aalborg");
             var results = control.FindAds(0, 100, "Denmark", "dinosours");
             Assert.IsTrue(results.Count > 0);
@@ -144,7 +144,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestFindAdType()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test in Denmark. I want to buy Dinosours.", "Aalborg", AdType.Buying);
             var results = control.FindAds(0, 100, "Denmark", "dinosours", AdType.Buying);
             var wrongResults = control.FindAds(0, 100, "Denmark", "dinosours", AdType.Selling);
@@ -156,7 +156,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestFindAdNoContent()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "Should not matter what I type here.", "Aalborg", AdType.Buying);
             var results = control.FindAds(0, 100, "Denmark", "", AdType.Buying);
             Assert.IsTrue(results.Count > 0);
@@ -166,7 +166,7 @@ namespace BusinessTierTests
         [TestMethod]
         public void TestFindAdTypeOnly()
         {
-            User author = new User { Email = "max.damage@test.com" };
+            var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "Should not matter what I type here.", "Aalborg", AdType.Buying);
             var results = control.FindAds(0, 100, "", "", AdType.Buying);
             Assert.IsTrue(results.Count > 0);

@@ -764,10 +764,52 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> FetchAdsAsync(int skip, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostAd", ReplyAction="http://tempuri.org/ISocialAdService/PostAdResponse")]
-        void PostAd(string title, string content, string location);
+        void PostAd(string title, string content, string location, MvcClient.SocialAdService.AdType type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostAd", ReplyAction="http://tempuri.org/ISocialAdService/PostAdResponse")]
-        System.Threading.Tasks.Task PostAdAsync(string title, string content, string location);
+        System.Threading.Tasks.Task PostAdAsync(string title, string content, string location, MvcClient.SocialAdService.AdType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/ReserveAd", ReplyAction="http://tempuri.org/ISocialAdService/ReserveAdResponse")]
+        void ReserveAd(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/ReserveAd", ReplyAction="http://tempuri.org/ISocialAdService/ReserveAdResponse")]
+        System.Threading.Tasks.Task ReserveAdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/UnreserveAd", ReplyAction="http://tempuri.org/ISocialAdService/UnreserveAdResponse")]
+        void UnreserveAd(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/UnreserveAd", ReplyAction="http://tempuri.org/ISocialAdService/UnreserveAdResponse")]
+        System.Threading.Tasks.Task UnreserveAdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/BuyReservations", ReplyAction="http://tempuri.org/ISocialAdService/BuyReservationsResponse")]
+        void BuyReservations();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/BuyReservations", ReplyAction="http://tempuri.org/ISocialAdService/BuyReservationsResponse")]
+        System.Threading.Tasks.Task BuyReservationsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/BuyBoosts", ReplyAction="http://tempuri.org/ISocialAdService/BuyBoostsResponse")]
+        void BuyBoosts();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/BuyBoosts", ReplyAction="http://tempuri.org/ISocialAdService/BuyBoostsResponse")]
+        System.Threading.Tasks.Task BuyBoostsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetPostedAdsResponse")]
+        MvcClient.SocialAdService.Ad[] GetPostedAds();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetPostedAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetPostedAdsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetReservedAdsResponse")]
+        MvcClient.SocialAdService.Ad[] GetReservedAds();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetReservedAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetReservedAdsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
+        MvcClient.SocialAdService.User GetCurrentUser();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
+        System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetCurrentUserAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -869,12 +911,68 @@ namespace MvcClient.SocialAdService {
             return base.Channel.FetchAdsAsync(skip, amount);
         }
         
-        public void PostAd(string title, string content, string location) {
-            base.Channel.PostAd(title, content, location);
+        public void PostAd(string title, string content, string location, MvcClient.SocialAdService.AdType type) {
+            base.Channel.PostAd(title, content, location, type);
         }
         
-        public System.Threading.Tasks.Task PostAdAsync(string title, string content, string location) {
-            return base.Channel.PostAdAsync(title, content, location);
+        public System.Threading.Tasks.Task PostAdAsync(string title, string content, string location, MvcClient.SocialAdService.AdType type) {
+            return base.Channel.PostAdAsync(title, content, location, type);
+        }
+        
+        public void ReserveAd(string id) {
+            base.Channel.ReserveAd(id);
+        }
+        
+        public System.Threading.Tasks.Task ReserveAdAsync(string id) {
+            return base.Channel.ReserveAdAsync(id);
+        }
+        
+        public void UnreserveAd(string id) {
+            base.Channel.UnreserveAd(id);
+        }
+        
+        public System.Threading.Tasks.Task UnreserveAdAsync(string id) {
+            return base.Channel.UnreserveAdAsync(id);
+        }
+        
+        public void BuyReservations() {
+            base.Channel.BuyReservations();
+        }
+        
+        public System.Threading.Tasks.Task BuyReservationsAsync() {
+            return base.Channel.BuyReservationsAsync();
+        }
+        
+        public void BuyBoosts() {
+            base.Channel.BuyBoosts();
+        }
+        
+        public System.Threading.Tasks.Task BuyBoostsAsync() {
+            return base.Channel.BuyBoostsAsync();
+        }
+        
+        public MvcClient.SocialAdService.Ad[] GetPostedAds() {
+            return base.Channel.GetPostedAds();
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetPostedAdsAsync() {
+            return base.Channel.GetPostedAdsAsync();
+        }
+        
+        public MvcClient.SocialAdService.Ad[] GetReservedAds() {
+            return base.Channel.GetReservedAds();
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetReservedAdsAsync() {
+            return base.Channel.GetReservedAdsAsync();
+        }
+        
+        public MvcClient.SocialAdService.User GetCurrentUser() {
+            return base.Channel.GetCurrentUser();
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetCurrentUserAsync() {
+            return base.Channel.GetCurrentUserAsync();
         }
     }
 }

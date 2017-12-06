@@ -15,8 +15,31 @@ namespace MvcClient.Controllers
         public ActionResult Index()
         {
             var client = ServiceHelper.GetServiceClientLoggedIn();
-            IList < User > list = client.GetUsers(0, 100);
-            return View(list);
+            var reserved = client.GetReservedAds();
+            var posted = client.GetPostedAds();
+            TempData["reservedAds"] = reserved;
+            TempData["postedAds"] = posted;
+
+            return View(client.GetCurrentUser());
+        }
+
+        [HttpPost]
+        public ActionResult Index(string buttonValue)
+        {
+            var client = ServiceHelper.GetServiceClientLoggedIn();
+
+            switch(buttonValue)
+            {
+                case "Buy Reservations":
+                    client.BuyReservations();
+                    break;
+                case "Buy Boosts":
+                    client.BuyBoosts();
+                    break;
+                default: break;
+            }
+
+            return View(client.GetCurrentUser());
         }
 
         // GET: User/Details/5

@@ -34,12 +34,7 @@ namespace BusinessTierTests
             testUser = users.RegisterUser(
                 "Unit Tester", "register1@unit.test", "http://unit.test/image.jpg", "-#un1tT3st#");
 
-            User query = new User
-            {
-                Email = testUser.Email
-            };
-
-            User userFound = users.GetUser(query);
+            User userFound = users.GetUser(testUser.Email);
             Assert.IsTrue(userFound.Id.Equals(testUser.Id));
 
             users.DeleteUser(testUser.Id);
@@ -49,12 +44,7 @@ namespace BusinessTierTests
         [ExpectedException(typeof(UserNotFoundException))]
         public void TestGetNonExistentUser()
         {
-            User query = new User
-            {
-                Email = "ASDJAOJDAIODJOWIQJD"
-            };
-
-            User userTest = users.GetUser(query);
+            User userTest = users.GetUser("A honest politician");
         }
 
         [TestMethod]

@@ -63,6 +63,12 @@
   <wsdl:message name="IAuthService_FindAds_OutputMessage">
     <wsdl:part name="parameters" element="tns:FindAdsResponse" />
   </wsdl:message>
+  <wsdl:message name="IAuthService_GetAdReplies_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdReplies" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_GetAdReplies_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdRepliesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAuthService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/Login" message="tns:IAuthService_Login_InputMessage" />
@@ -83,6 +89,10 @@
     <wsdl:operation name="FindAds">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/FindAds" message="tns:IAuthService_FindAds_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/FindAdsResponse" message="tns:IAuthService_FindAds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAdReplies">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/GetAdReplies" message="tns:IAuthService_GetAdReplies_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/GetAdRepliesResponse" message="tns:IAuthService_GetAdReplies_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IAuthService" type="tns:IAuthService">
@@ -126,6 +136,15 @@
     </wsdl:operation>
     <wsdl:operation name="FindAds">
       <soap12:operation soapAction="http://tempuri.org/IAuthService/FindAds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdReplies">
+      <soap12:operation soapAction="http://tempuri.org/IAuthService/GetAdReplies" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

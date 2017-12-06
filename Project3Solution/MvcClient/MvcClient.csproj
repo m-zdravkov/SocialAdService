@@ -217,6 +217,9 @@
     <Content Include="Connected Services\AuthService\MvcClient.AuthService.Ad.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Connected Services\AuthService\MvcClient.AuthService.Comment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\SocialAdService\configuration91.svcinfo" />
     <None Include="Connected Services\SocialAdService\configuration.svcinfo" />
     <None Include="Connected Services\AuthService\item.disco" />

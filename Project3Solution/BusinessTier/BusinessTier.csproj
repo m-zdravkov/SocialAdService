@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlreadyReservedException.cs" />
     <Compile Include="DbContextControl.cs" />
     <Compile Include="LocationControl.cs" />
     <Compile Include="AuthenticationControl.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="CommentControl.cs" />
     <Compile Include="LocationExtendedMethods.cs" />
     <Compile Include="LocationNotFoundException.cs" />
+    <Compile Include="NotEnoughReservationsException.cs" />
     <Compile Include="PostControl.cs" />
     <Compile Include="PostNotFoundException.cs" />
     <Compile Include="ReviewControl.cs" />

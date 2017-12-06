@@ -92,12 +92,32 @@ namespace BusinessTier
         /// </summary>
         /// <param name="query">A User containing at least Id or Email</param>
         /// <returns></returns>
-        public User GetUser(User query)
+        public User GetUser(string email)
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
             
             
-            User user = db.Users.FirstOrDefault(u => u.Email.Equals(query.Email));
+            User user = db.Users.FirstOrDefault(u => u.Email.Equals(email));
+
+            if (user == null)
+                throw new UserNotFoundException();
+
+            return user;
+        }
+
+        public User GetUserNullable(string email)
+        {
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            User user = db.Users.FirstOrDefault(u => u.Email.Equals(email));
+            return user;
+        }
+
+        public User GetUserById(string id)
+        {
+            Model.ServiceDbContext db = new Model.ServiceDbContext();
+
+
+            User user = db.Users.FirstOrDefault(u => u.Id.Equals(id));
 
             if (user == null)
                 throw new UserNotFoundException();
@@ -126,9 +146,31 @@ namespace BusinessTier
 
         public void DeleteUser(string id)
         {
+            if (id == null) return;
+
             var db = DbContextControl.GetNew();
             User toDelete = new User { Id = id };
             db.Entry(toDelete).State = EntityState.Deleted;
+            db.SaveChanges();
+        }
+
+        public void BuyReservations(string email)
+        {
+            var db = DbContextControl.GetNew();
+            User user = db.Users.FirstOrDefault(u => u.Email == email);
+            user = db.Users.Attach(user);
+            db.Entry(user).Property("Reservations").IsModified = true;
+            user.Reservations += 5;
+            db.SaveChanges();
+        }
+
+        public void BuyBoosts(string email)
+        {
+            var db = DbContextControl.GetNew();
+            User user = db.Users.FirstOrDefault(u => u.Email == email);
+            user = db.Users.Attach(user);
+            db.Entry(user).Property("Boosts").IsModified = true;
+            user.Boosts += 5;
             db.SaveChanges();
         }
     }

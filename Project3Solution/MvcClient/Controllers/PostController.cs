@@ -21,7 +21,7 @@ namespace MvcClient.Controllers
         {
             try
             {
-                ServiceHelper.GetServiceClientLoggedIn().PostAd(ad.Title, ad.Content, ad.Location);
+                ServiceHelper.GetServiceClientLoggedIn().PostAd(ad.Title, ad.Content, ad.Location, ad.Type);
             }
             catch (Exception ex)
             {
@@ -29,6 +29,29 @@ namespace MvcClient.Controllers
                 return View();
             }
             return RedirectToAction("Index","Home");
+        }
+
+        public ActionResult Reserve(string id)
+        {
+            try
+            {
+                ServiceHelper.GetServiceClientLoggedIn().ReserveAd(id);
+                ViewBag.SuccessMessage = "Ad reserved successfully.";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage += ex.Message;
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Page(string id)
+        {
+            var client = ServiceHelper.GetAuthServiceClient();
+            throw new NotImplementedException("Not implemented yet!");
+
+            return View();
         }
     }
 }

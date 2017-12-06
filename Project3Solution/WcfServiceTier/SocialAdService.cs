@@ -16,6 +16,14 @@ namespace WcfServiceTier
     {
         [PrincipalPermission(SecurityAction.Demand, Role = "Admin")]
 
+        //When we need to pass the current user to the business logic
+        private string GetServiceUserEmail()
+        {
+            OperationContext oc = OperationContext.Current;
+            ServiceSecurityContext ssc = oc.ServiceSecurityContext;
+            return ssc.PrimaryIdentity.Name;
+        }
+
         public int CountUsers()
         {
             return UserControl.GetInstance().CountUsers();
@@ -23,7 +31,7 @@ namespace WcfServiceTier
 
         public User GetUser(string userId)
         {
-            return UserControl.GetInstance().GetUser(new User { Id = userId });
+            return UserControl.GetInstance().GetUserById(userId);
         }
 
         public IList<User> GetUsers(int skip, int amount)
@@ -46,10 +54,12 @@ namespace WcfServiceTier
             UserControl.GetInstance().RegisterUser(name, email, pictureURL, password);
         }
 
+        ///TODO: DELETE THIS METHOD
         public User GetAuthenticatedUser()
         {
             return AuthenticationControl.GetInstance().AuthenticatedUser;
         }
+
         public int GetData()
         {
             return 123;
@@ -77,30 +87,103 @@ namespace WcfServiceTier
         {
             try
             {
-                //Get the author's identity from the service
-                OperationContext oc = OperationContext.Current;
-                ServiceSecurityContext ssc = oc.ServiceSecurityContext;
-                string userEmail = ssc.PrimaryIdentity.Name;
-
-                User author = new User
-                {
-                    Email = userEmail
-                };
-
+                var author = GetServiceUserEmail();
                 AdControl.GetInstance().PostAd(author, title, content, location, type);
             }
-            catch (InvalidOperationException)
+            catch (InvalidOperationException ex)
             {
-                throw new WebFaultException<Exception>(new Exception("The post details were invalid."), HttpStatusCode.BadRequest);
+                throw new WebFaultException<InvalidOperationException>
+                    (new InvalidOperationException("The post details were invalid. "+ex.Message), HttpStatusCode.BadRequest);
             }
             catch (UserNotFoundException)
             {
-                throw new WebFaultException<Exception>(new Exception("The post author was not found."), HttpStatusCode.Unauthorized);
+                throw new WebFaultException<UserNotFoundException>(
+                    new UserNotFoundException("The post author was not found."), HttpStatusCode.Unauthorized);
             }
             catch (LocationNotFoundException)
             {
-                throw new WebFaultException<Exception>(new Exception("The post location was not found."), HttpStatusCode.NotFound);
+                throw new WebFaultException<LocationNotFoundException>
+                    (new LocationNotFoundException("The post location was not found."), HttpStatusCode.NotFound);
             }
+        }
+
+        public void ReserveAd(string id)
+        {
+            try
+            {
+                var user = GetServiceUserEmail();
+                AdControl.GetInstance().ReserveAd(id, user);
+            }
+            catch (AlreadyReservedException ex)
+            {
+                throw new WebFaultException<AlreadyReservedException>(ex,HttpStatusCode.Forbidden);
+            }
+            catch (NotEnoughReservationsException ex)
+            {
+                throw new WebFaultException<NotEnoughReservationsException>(ex,HttpStatusCode.Forbidden);
+            }
+            catch (PostNotFoundException ex)
+            {
+                throw new WebFaultException<PostNotFoundException>(ex, HttpStatusCode.Forbidden);
+            }
+            catch (UserNotFoundException ex)
+            {
+                throw new WebFaultException<UserNotFoundException>(ex, HttpStatusCode.Forbidden);
+            }
+            catch (Exception ex)
+            {
+                throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public void UnreserveAd(string id)
+        {
+            try
+            {
+                var user = GetServiceUserEmail();
+                AdControl.GetInstance().UnreserveAd(id, user);
+            }
+            catch (ArgumentException ex)
+            {
+                throw new WebFaultException<ArgumentException>(ex, HttpStatusCode.Forbidden);
+            }
+            catch (PostNotFoundException ex)
+            {
+                throw new WebFaultException<PostNotFoundException>(ex, HttpStatusCode.Forbidden);
+            }
+            catch (UserNotFoundException ex)
+            {
+                throw new WebFaultException<UserNotFoundException>(ex, HttpStatusCode.Forbidden);
+            }
+            catch (Exception ex)
+            {
+                throw new WebFaultException<Exception>(ex, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public void BuyReservations()
+        {
+            UserControl.GetInstance().BuyReservations(GetServiceUserEmail());
+        }
+
+        public void BuyBoosts()
+        {
+            UserControl.GetInstance().BuyBoosts(GetServiceUserEmail());
+        }
+
+        public IList<Ad> GetPostedAds()
+        {
+            return AdControl.GetInstance().GetPostedAds(GetServiceUserEmail());
+        }
+
+        public IList<Ad> GetReservedAds()
+        {
+            return AdControl.GetInstance().GetReservedAds(GetServiceUserEmail());
+        }
+
+        public User GetCurrentUser()
+        {
+            return UserControl.GetInstance().GetUser(GetServiceUserEmail());
         }
     }
 }

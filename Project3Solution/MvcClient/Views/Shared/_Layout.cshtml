@@ -30,7 +30,6 @@
                         {
                             <li><p class="navbar-text">Logged in with @AuthHelper.CurrentUser.Email</p></li>
                             <li>@Html.ActionLink("Log out", "LogOut", "Auth")</li>
-                            <li>@Html.ActionLink("All Users", "Index", "User")</li>
                             <li>@Html.ActionLink("Post", "Ad", "Post")</li>
 
 
@@ -51,9 +50,9 @@
                             <!--
                             <li>
                                 <span class="glyphicon glyphicon-user"></span>
-                                @Html.ActionLink("Your account", "Index", "Home")
+                                @Html.ActionLink("Your account", "Index", "User")
                             </li>-->
-                            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                            <li><a href="User/Index"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
                             <!--
                             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                             -->

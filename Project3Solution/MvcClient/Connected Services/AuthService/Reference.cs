@@ -25,6 +25,8 @@ namespace MvcClient.AuthService {
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Price))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.PriceType))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.AdType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Comment[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Comment))]
     public partial class Ad : MvcClient.AuthService.Post {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -176,6 +178,7 @@ namespace MvcClient.AuthService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Post", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Comment))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Ad))]
     public partial class Post : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
@@ -473,6 +476,45 @@ namespace MvcClient.AuthService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Comment", Namespace="http://schemas.datacontract.org/2004/07/Model")]
+    [System.SerializableAttribute()]
+    public partial class Comment : MvcClient.AuthService.Post {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IndentField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ReplyIdField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Indent {
+            get {
+                return this.IndentField;
+            }
+            set {
+                if ((this.IndentField.Equals(value) != true)) {
+                    this.IndentField = value;
+                    this.RaisePropertyChanged("Indent");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ReplyId {
+            get {
+                return this.ReplyIdField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ReplyIdField, value) != true)) {
+                    this.ReplyIdField = value;
+                    this.RaisePropertyChanged("ReplyId");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Location", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
     public partial class Location : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -737,6 +779,12 @@ namespace MvcClient.AuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
         System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
+        MvcClient.AuthService.Comment[] GetAdReplies(int skip, int amount, string adId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
+        System.Threading.Tasks.Task<MvcClient.AuthService.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -804,6 +852,14 @@ namespace MvcClient.AuthService {
         
         public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type) {
             return base.Channel.FindAdsAsync(skip, amount, location, searchQuery, type);
+        }
+        
+        public MvcClient.AuthService.Comment[] GetAdReplies(int skip, int amount, string adId) {
+            return base.Channel.GetAdReplies(skip, amount, adId);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId) {
+            return base.Channel.GetAdRepliesAsync(skip, amount, adId);
         }
     }
 }

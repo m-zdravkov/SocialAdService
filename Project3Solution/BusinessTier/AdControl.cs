@@ -27,7 +27,7 @@ namespace BusinessTier
             return _instance;
         }
 
-        public Ad PostAd(User author, string title, string content, string locationName=null, AdType type = AdType.Other)
+        public Ad PostAd(string authorEmail, string title, string content, string locationName=null, AdType type = AdType.Other)
         {
             var db = DbContextControl.GetNew();
 
@@ -46,7 +46,7 @@ namespace BusinessTier
 
             //Find a user and attach him to the DB context
             var authorFull = db.Users.Attach(
-                db.Users.FirstOrDefault(u => u.Email == author.Email));
+                db.Users.FirstOrDefault(u => u.Email == authorEmail));
             //Attach the user to the Ad
             ad.Author = authorFull;
 
@@ -72,12 +72,23 @@ namespace BusinessTier
             db.SaveChanges();
         }
 
-        public void DeleteAd(string id, User author)
+        public void DeleteAd(string id, string author)
         {
             var db = DbContextControl.GetNew();
-            Ad toDelete = new Ad { Id = id, Author = UserControl.GetInstance().GetUser(author) };
+            Ad toDelete = new Ad { Id = id };
+            toDelete.Author = UserControl.GetInstance().GetUser(author);//TODO:change
+
             db.Ads.Attach(toDelete);
+
+            Price price = toDelete.Price;
+            if (price != null)
+            {
+                db.Prices.Attach(toDelete.Price);
+                db.Prices.Remove(price);
+            }
+
             db.Ads.Remove(toDelete);
+            
             //db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
         }
@@ -86,7 +97,8 @@ namespace BusinessTier
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
-            Ad post = db.Ads.Include("Author").Include("Location").FirstOrDefault(a => a.Id.Equals(query.Id));
+            Ad post = db.Ads.Include("Author").Include("Location").Include("Price")
+                .Include("ReservedBy").FirstOrDefault(a => a.Id.Equals(query.Id));
 
             if (post == null)
             {
@@ -237,27 +249,50 @@ namespace BusinessTier
             return pagedQuery;
         }
 
-        private IList<Comment> GetComments(Ad ad)
+        public IList<Comment> GetComments(int skip, int amount, string adId)
         {
             CommentControl comments = CommentControl.GetInstance();
-            return comments.GetReplies(ad.Id, 0, 64);
+            return comments.GetReplies(adId, skip, amount);
         }
 
-        public bool ReserveAd(string adId, string userEmail)
+        /// <summary>
+        /// Reserves an ad
+        /// </summary>
+        /// <param name="adId">Id of ad</param>
+        /// <param name="userEmail">Email of the reserving user</param>
+        /// <exception cref="PostNotFoundException"></exception>
+        /// <exception cref="UserNotFoundException"></exception>
+        /// <exception cref="ArgumentException">Users can not reserve their own Ad.</exception>
+        /// <exception cref="AlreadyReservedException"></exception>
+        /// <exception cref="NotEnoughReservationsException"></exception>
+        public void ReserveAd(string adId, string userEmail)
         {
+            Ad ad = GetAd(new Ad { Id = adId });
+            User user = UserControl.GetInstance().GetUser(userEmail);
+
+            if (user.Id == ad.ReservedBy?.Id)
+                throw new ArgumentException("Users can not reserve their own ads.");
+
+            if (ad.ReservedBy != null)
+                throw new AlreadyReservedException(String.Format(
+                    "Ad with id '{0}' is already reserved by user with id '{1}'", ad.Id, ad.ReservedBy.Id));
+
+            if (user.Reservations < 1)
+                throw new NotEnoughReservationsException("This user can not reserve any more ads.");
+
             var db = DbContextControl.GetNew();
+            //Get ad into context
+            db.Ads.Attach(ad);
+            db.Entry(ad).State = EntityState.Modified;
+
+            //Get user into context
+            db.Users.Attach(user);
+            db.Entry(user).State = EntityState.Modified;
 
             using (var reserveTransaction = db.Database.BeginTransaction(System.Data.IsolationLevel.ReadCommitted))
             {
                 try
                 {
-                    //Get ad
-                    Ad ad = db.Ads.Attach(new Ad { Id = adId });
-                    db.Entry(ad).State = EntityState.Modified;
-
-                    //Get user
-                    var user = db.Users.Attach(new User { Email = userEmail });
-
                     //Modify ad, reserve
                     ad.ReservedBy = user;
 
@@ -265,15 +300,75 @@ namespace BusinessTier
                     user.Reservations -= 1;
 
                     db.SaveChanges();
+                    reserveTransaction.Commit();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     reserveTransaction.Rollback();
-                    throw;
+                    throw ex;
                 }
             }
+        }
 
-            return false;
+        /// <summary>
+        /// Unreserves a user's ad, doesn't refund reservations.
+        /// </summary>
+        /// <param name="adId">Id of the Ad</param>
+        /// <param name="userEmail">Email of the user</param>
+        /// <exception cref="PostNotFoundException"></exception>
+        /// <exception cref="UserNotFoundException"></exception>
+        /// <exception cref="ArgumentException">If ad is not reserved or the author is different.</exception>
+        public void UnreserveAd(string adId, string userEmail)
+        {
+            Ad ad = GetAd(new Ad { Id = adId });
+            User user = UserControl.GetInstance().GetUser(userEmail);
+
+            if (ad.ReservedBy == null)
+                throw new ArgumentException("Can not unreserve: Ad is not reserved.");
+
+            if (user.Id != ad.ReservedBy.Id)
+                throw new ArgumentException("Users can not unreserve other people's ads.");
+
+            var db = DbContextControl.GetNew();
+            //Get ad into context
+            db.Ads.Attach(ad);
+            db.Entry(ad).State = EntityState.Modified;
+
+            ad.ReservedBy = null;
+
+            db.SaveChanges();
+        }
+
+        /// <summary>
+        /// Gets all ads posted by a specific user
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
+        /// <exception cref="UserNotFoundException"></exception>
+        public IList<Ad> GetPostedAds(string userEmail)
+        {
+            User user = UserControl.GetInstance().GetUser(userEmail);
+            var userId = user.Id;
+            var db = DbContextControl.GetNew();
+            return db.Ads.Include("Author").Include("Location")
+                .Include("Price").Include("ReservedBy")
+                .Where(a => a.Author.Id == userId).ToList();
+        }
+
+        /// <summary>
+        /// Gets all ads reserved by a specific user
+        /// </summary>
+        /// <param name="userEmail"></param>
+        /// <returns></returns>
+        /// <exception cref="UserNotFoundException"></exception>
+        public IList<Ad> GetReservedAds(string userEmail)
+        {
+            User user = UserControl.GetInstance().GetUser(userEmail);
+            var userId = user.Id;
+            var db = DbContextControl.GetNew();
+            return db.Ads.Include("Author").Include("Location")
+                .Include("Price").Include("ReservedBy")
+                .Where(a => a.ReservedBy.Id == userId).ToList();
         }
     }
 }

@@ -40,5 +40,26 @@ namespace WcfServiceTier
 
         [OperationContract]
         void PostAd(string title, string content, string location, AdType type);
+
+        [OperationContract]
+        void ReserveAd(string id);
+
+        [OperationContract]
+        void UnreserveAd(string id);
+
+        [OperationContract]
+        void BuyReservations();
+
+        [OperationContract]
+        void BuyBoosts();
+
+        [OperationContract]
+        IList<Ad> GetPostedAds();
+
+        [OperationContract]
+        IList<Ad> GetReservedAds();
+
+        [OperationContract]
+        User GetCurrentUser();
     }
 }
