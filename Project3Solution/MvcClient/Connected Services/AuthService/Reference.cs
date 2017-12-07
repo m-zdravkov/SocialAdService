@@ -785,6 +785,12 @@ namespace MvcClient.AuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
         System.Threading.Tasks.Task<MvcClient.AuthService.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
+        MvcClient.AuthService.Ad GetAd(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
+        System.Threading.Tasks.Task<MvcClient.AuthService.Ad> GetAdAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -860,6 +866,14 @@ namespace MvcClient.AuthService {
         
         public System.Threading.Tasks.Task<MvcClient.AuthService.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId) {
             return base.Channel.GetAdRepliesAsync(skip, amount, adId);
+        }
+        
+        public MvcClient.AuthService.Ad GetAd(string id) {
+            return base.Channel.GetAd(id);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad> GetAdAsync(string id) {
+            return base.Channel.GetAdAsync(id);
         }
     }
 }

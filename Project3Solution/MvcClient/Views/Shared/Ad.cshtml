@@ -1,0 +1,42 @@
+﻿@using MvcClient.AuthService
+@model Ad
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        <h2>@Model.Title</h2>
+        <hr />
+    </div>
+    <div>
+        @Model.Content
+    </div>
+    <hr />
+    <div>
+        @if (TempData["comments"] == null)
+        {
+            <div class="alert-warning">
+                This ad has no comments yet.
+            </div>
+        }
+        else
+        {
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @{
+                        Comment[] comments = TempData["comments"] as Comment[];
+                        foreach (var c in comments)
+                        {
+                            <h4>@c.Author</h4>
+                            <div>
+                                On @c.DatePosted.ToShortDateString() at
+                                @c.DatePosted.ToShortTimeString()
+                            </div>
+                            <div>
+                                @c.Content
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>

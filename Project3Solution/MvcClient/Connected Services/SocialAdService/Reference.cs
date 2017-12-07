@@ -810,6 +810,12 @@ namespace MvcClient.SocialAdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
         System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetCurrentUserAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostComment", ReplyAction="http://tempuri.org/ISocialAdService/PostCommentResponse")]
+        void PostComment(string adId, string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostComment", ReplyAction="http://tempuri.org/ISocialAdService/PostCommentResponse")]
+        System.Threading.Tasks.Task PostCommentAsync(string adId, string content);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -973,6 +979,14 @@ namespace MvcClient.SocialAdService {
         
         public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetCurrentUserAsync() {
             return base.Channel.GetCurrentUserAsync();
+        }
+        
+        public void PostComment(string adId, string content) {
+            base.Channel.PostComment(adId, content);
+        }
+        
+        public System.Threading.Tasks.Task PostCommentAsync(string adId, string content) {
+            return base.Channel.PostCommentAsync(adId, content);
         }
     }
 }

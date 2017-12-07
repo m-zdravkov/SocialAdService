@@ -93,12 +93,12 @@ namespace BusinessTier
             db.SaveChanges();
         }
 
-        public Ad GetAd (Ad query)
+        public Ad GetAd(string id)
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
 
             Ad post = db.Ads.Include("Author").Include("Location").Include("Price")
-                .Include("ReservedBy").FirstOrDefault(a => a.Id.Equals(query.Id));
+                .Include("ReservedBy").FirstOrDefault(a => a.Id.Equals(id));
 
             if (post == null)
             {
@@ -258,16 +258,16 @@ namespace BusinessTier
         /// <summary>
         /// Reserves an ad
         /// </summary>
-        /// <param name="adId">Id of ad</param>
+        /// <param name="id">Id of ad</param>
         /// <param name="userEmail">Email of the reserving user</param>
         /// <exception cref="PostNotFoundException"></exception>
         /// <exception cref="UserNotFoundException"></exception>
         /// <exception cref="ArgumentException">Users can not reserve their own Ad.</exception>
         /// <exception cref="AlreadyReservedException"></exception>
         /// <exception cref="NotEnoughReservationsException"></exception>
-        public void ReserveAd(string adId, string userEmail)
+        public void ReserveAd(string id, string userEmail)
         {
-            Ad ad = GetAd(new Ad { Id = adId });
+            Ad ad = GetAd(id);
             User user = UserControl.GetInstance().GetUser(userEmail);
 
             if (user.Id == ad.ReservedBy?.Id)
@@ -313,14 +313,14 @@ namespace BusinessTier
         /// <summary>
         /// Unreserves a user's ad, doesn't refund reservations.
         /// </summary>
-        /// <param name="adId">Id of the Ad</param>
+        /// <param name="id">Id of the Ad</param>
         /// <param name="userEmail">Email of the user</param>
         /// <exception cref="PostNotFoundException"></exception>
         /// <exception cref="UserNotFoundException"></exception>
         /// <exception cref="ArgumentException">If ad is not reserved or the author is different.</exception>
-        public void UnreserveAd(string adId, string userEmail)
+        public void UnreserveAd(string id, string userEmail)
         {
-            Ad ad = GetAd(new Ad { Id = adId });
+            Ad ad = GetAd(id);
             User user = UserControl.GetInstance().GetUser(userEmail);
 
             if (ad.ReservedBy == null)

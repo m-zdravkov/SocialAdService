@@ -28,5 +28,8 @@ namespace WcfServiceTier
 
         [OperationContract]
         IList<Comment> GetAdReplies(int skip, int amount, string adId);
+
+        [OperationContract]
+        Ad GetAd(string id);
     }
 }

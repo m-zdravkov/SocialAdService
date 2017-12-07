@@ -192,6 +192,7 @@
     <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PostAdViewModel.cs" />
+    <Compile Include="Models\PostCommentViewModel.cs" />
     <Compile Include="Models\SearchQueryViewModel.cs" />
     <Compile Include="Models\UserRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -313,6 +314,10 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <Content Include="Views\Post\Display.cshtml" />
+    <Content Include="Views\User\About.cshtml" />
+    <Content Include="Views\Shared\Ad.cshtml" />
+    <Content Include="Views\Shared\PostComment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

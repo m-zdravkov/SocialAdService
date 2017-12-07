@@ -46,10 +46,18 @@ namespace MvcClient.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Page(string id)
+        public ActionResult Display(string id)
         {
             var client = ServiceHelper.GetAuthServiceClient();
-            throw new NotImplementedException("Not implemented yet!");
+            var ad = client.GetAd(id);
+            return View(ad);
+        }
+
+        [HttpPost]
+        public ActionResult Comment(PostCommentViewModel comment)
+        {
+            var client = ServiceHelper.GetServiceClientLoggedIn();
+            client.PostComment()
 
             return View();
         }

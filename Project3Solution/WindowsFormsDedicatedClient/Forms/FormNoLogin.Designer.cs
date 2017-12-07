@@ -1,0 +1,232 @@
+﻿namespace WindowsFormsDedicatedClient
+{
+    partial class FormNoLogin
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.GbViewing = new System.Windows.Forms.GroupBox();
+            this.RbOther = new System.Windows.Forms.RadioButton();
+            this.RbEvents = new System.Windows.Forms.RadioButton();
+            this.RbServiceRequests = new System.Windows.Forms.RadioButton();
+            this.RbServiceOffers = new System.Windows.Forms.RadioButton();
+            this.RbBuying = new System.Windows.Forms.RadioButton();
+            this.RbSelling = new System.Windows.Forms.RadioButton();
+            this.RbAll = new System.Windows.Forms.RadioButton();
+            this.BtnSearch = new System.Windows.Forms.Button();
+            this.lblLoggedIn = new System.Windows.Forms.Label();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
+            this.PanelDashboard = new System.Windows.Forms.Panel();
+            this.GbViewing.SuspendLayout();
+            this.PanelDashboard.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(143, 37);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(340, 255);
+            this.richTextBox1.TabIndex = 1;
+            this.richTextBox1.Text = "";
+            // 
+            // GbViewing
+            // 
+            this.GbViewing.Controls.Add(this.RbOther);
+            this.GbViewing.Controls.Add(this.RbEvents);
+            this.GbViewing.Controls.Add(this.RbServiceRequests);
+            this.GbViewing.Controls.Add(this.RbServiceOffers);
+            this.GbViewing.Controls.Add(this.RbBuying);
+            this.GbViewing.Controls.Add(this.RbSelling);
+            this.GbViewing.Controls.Add(this.RbAll);
+            this.GbViewing.Location = new System.Drawing.Point(15, 37);
+            this.GbViewing.Name = "GbViewing";
+            this.GbViewing.Size = new System.Drawing.Size(122, 187);
+            this.GbViewing.TabIndex = 2;
+            this.GbViewing.TabStop = false;
+            this.GbViewing.Text = "Viewing";
+            // 
+            // RbOther
+            // 
+            this.RbOther.AutoSize = true;
+            this.RbOther.Location = new System.Drawing.Point(6, 161);
+            this.RbOther.Name = "RbOther";
+            this.RbOther.Size = new System.Drawing.Size(51, 17);
+            this.RbOther.TabIndex = 6;
+            this.RbOther.TabStop = true;
+            this.RbOther.Text = "Other";
+            this.RbOther.UseVisualStyleBackColor = true;
+            // 
+            // RbEvents
+            // 
+            this.RbEvents.AutoSize = true;
+            this.RbEvents.Location = new System.Drawing.Point(6, 138);
+            this.RbEvents.Name = "RbEvents";
+            this.RbEvents.Size = new System.Drawing.Size(58, 17);
+            this.RbEvents.TabIndex = 5;
+            this.RbEvents.TabStop = true;
+            this.RbEvents.Text = "Events";
+            this.RbEvents.UseVisualStyleBackColor = true;
+            // 
+            // RbServiceRequests
+            // 
+            this.RbServiceRequests.AutoSize = true;
+            this.RbServiceRequests.Location = new System.Drawing.Point(6, 115);
+            this.RbServiceRequests.Name = "RbServiceRequests";
+            this.RbServiceRequests.Size = new System.Drawing.Size(104, 17);
+            this.RbServiceRequests.TabIndex = 4;
+            this.RbServiceRequests.TabStop = true;
+            this.RbServiceRequests.Text = "Service requests";
+            this.RbServiceRequests.UseVisualStyleBackColor = true;
+            // 
+            // RbServiceOffers
+            // 
+            this.RbServiceOffers.AutoSize = true;
+            this.RbServiceOffers.Location = new System.Drawing.Point(6, 91);
+            this.RbServiceOffers.Name = "RbServiceOffers";
+            this.RbServiceOffers.Size = new System.Drawing.Size(90, 17);
+            this.RbServiceOffers.TabIndex = 3;
+            this.RbServiceOffers.TabStop = true;
+            this.RbServiceOffers.Text = "Service offers";
+            this.RbServiceOffers.UseVisualStyleBackColor = true;
+            // 
+            // RbBuying
+            // 
+            this.RbBuying.AutoSize = true;
+            this.RbBuying.Location = new System.Drawing.Point(6, 67);
+            this.RbBuying.Name = "RbBuying";
+            this.RbBuying.Size = new System.Drawing.Size(77, 17);
+            this.RbBuying.TabIndex = 2;
+            this.RbBuying.TabStop = true;
+            this.RbBuying.Text = "Buying ads";
+            this.RbBuying.UseVisualStyleBackColor = true;
+            // 
+            // RbSelling
+            // 
+            this.RbSelling.AutoSize = true;
+            this.RbSelling.Location = new System.Drawing.Point(6, 43);
+            this.RbSelling.Name = "RbSelling";
+            this.RbSelling.Size = new System.Drawing.Size(76, 17);
+            this.RbSelling.TabIndex = 1;
+            this.RbSelling.TabStop = true;
+            this.RbSelling.Text = "Selling ads";
+            this.RbSelling.UseVisualStyleBackColor = true;
+            // 
+            // RbAll
+            // 
+            this.RbAll.AutoSize = true;
+            this.RbAll.Location = new System.Drawing.Point(6, 19);
+            this.RbAll.Name = "RbAll";
+            this.RbAll.Size = new System.Drawing.Size(56, 17);
+            this.RbAll.TabIndex = 0;
+            this.RbAll.TabStop = true;
+            this.RbAll.Text = "All ads";
+            this.RbAll.UseVisualStyleBackColor = true;
+            // 
+            // BtnSearch
+            // 
+            this.BtnSearch.Location = new System.Drawing.Point(15, 230);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(122, 23);
+            this.BtnSearch.TabIndex = 3;
+            this.BtnSearch.Text = "Search";
+            this.BtnSearch.UseVisualStyleBackColor = true;
+            // 
+            // lblLoggedIn
+            // 
+            this.lblLoggedIn.AutoSize = true;
+            this.lblLoggedIn.Location = new System.Drawing.Point(175, 6);
+            this.lblLoggedIn.Name = "lblLoggedIn";
+            this.lblLoggedIn.Size = new System.Drawing.Size(112, 13);
+            this.lblLoggedIn.TabIndex = 0;
+            this.lblLoggedIn.Text = "Currently not logged in";
+            // 
+            // btnLogin
+            // 
+            this.btnLogin.Location = new System.Drawing.Point(0, 0);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(75, 23);
+            this.btnLogin.TabIndex = 1;
+            this.btnLogin.Text = "Log in";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Location = new System.Drawing.Point(81, 0);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(75, 23);
+            this.btnRegister.TabIndex = 2;
+            this.btnRegister.Text = "Sign up";
+            this.btnRegister.UseVisualStyleBackColor = true;
+            // 
+            // PanelDashboard
+            // 
+            this.PanelDashboard.Controls.Add(this.btnRegister);
+            this.PanelDashboard.Controls.Add(this.btnLogin);
+            this.PanelDashboard.Controls.Add(this.lblLoggedIn);
+            this.PanelDashboard.Location = new System.Drawing.Point(12, 3);
+            this.PanelDashboard.Name = "PanelDashboard";
+            this.PanelDashboard.Size = new System.Drawing.Size(471, 28);
+            this.PanelDashboard.TabIndex = 0;
+            // 
+            // FormNoLogin
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(495, 295);
+            this.Controls.Add(this.BtnSearch);
+            this.Controls.Add(this.GbViewing);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.PanelDashboard);
+            this.Name = "FormNoLogin";
+            this.Text = "Social Ad Service for Windows";
+            this.GbViewing.ResumeLayout(false);
+            this.GbViewing.PerformLayout();
+            this.PanelDashboard.ResumeLayout(false);
+            this.PanelDashboard.PerformLayout();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox GbViewing;
+        private System.Windows.Forms.RadioButton RbServiceRequests;
+        private System.Windows.Forms.RadioButton RbServiceOffers;
+        private System.Windows.Forms.RadioButton RbBuying;
+        private System.Windows.Forms.RadioButton RbSelling;
+        private System.Windows.Forms.RadioButton RbAll;
+        private System.Windows.Forms.RadioButton RbOther;
+        private System.Windows.Forms.RadioButton RbEvents;
+        private System.Windows.Forms.Button BtnSearch;
+        private System.Windows.Forms.Label lblLoggedIn;
+        private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Panel PanelDashboard;
+    }
+}
+

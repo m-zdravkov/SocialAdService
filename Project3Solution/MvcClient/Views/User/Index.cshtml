@@ -36,6 +36,8 @@
             <hr />
             foreach (var ad in list)
             {
+                Html.Partial("Ad", ad);
+                <!--
                 <div>
                     <h4>
                         "@ad.Title" by @ad.Author.Name in @ad.Location.Name
@@ -44,6 +46,7 @@
                     @ad.Content
                     <hr />
                 </div>
+                 -->
             }
         }
     }
@@ -59,14 +62,7 @@
 
             foreach (var ad in list)
             {
-                <div>
-                    <h4>
-                        "@ad.Title" by you in @ad.Location.Name
-                    </h4>
-                    <br />
-                    @ad.Content
-                    <hr />
-                </div>
+                Html.Partial("Ad", ad);
             }
         }
     }

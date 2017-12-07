@@ -1,0 +1,18 @@
+﻿@using MvcClient.AuthService;
+@model MvcClient.AuthService.Ad
+
+@{
+    ViewBag.Title = "Ad";
+}
+
+@Html.Partial("Ad", Model);
+
+@using (Html.BeginForm())
+{
+
+}
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -70,5 +70,10 @@ namespace WcfServiceTier
         {
             return AdControl.GetInstance().GetComments(skip, amount, adId);
         }
+
+        public Ad GetAd(string id)
+        {
+            return AdControl.GetInstance().GetAd(id);
+        }
     }
 }
