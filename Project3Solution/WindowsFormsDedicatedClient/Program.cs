@@ -16,7 +16,7 @@ namespace WindowsFormsDedicatedClient
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormNoLogin());
+            Application.Run(new HomeForm());
         }
     }
 }

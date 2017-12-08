@@ -1,6 +1,6 @@
-﻿namespace WindowsFormsDedicatedClient.Forms
+﻿namespace WindowsFormsDedicatedClient.Views
 {
-    partial class FormUserProfile
+    partial class UserProfileForm
     {
         /// <summary>
         /// Required designer variable.

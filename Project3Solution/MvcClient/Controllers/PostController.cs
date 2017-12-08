@@ -57,7 +57,7 @@ namespace MvcClient.Controllers
         public ActionResult Comment(PostCommentViewModel comment)
         {
             var client = ServiceHelper.GetServiceClientLoggedIn();
-            client.PostComment()
+            client.PostComment(comment.Id, comment.Content);
 
             return View();
         }

@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsDedicatedClient.Forms
+namespace WindowsFormsDedicatedClient.Views
 {
-    public partial class FormUserProfile : Form
+    public partial class DashboardUserControl : UserControl
     {
-        public FormUserProfile()
+        public DashboardUserControl()
         {
             InitializeComponent();
         }

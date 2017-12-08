@@ -34,6 +34,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,43 +47,96 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\FormAd.cs">
+    <Compile Include="Connected Services\SaServicePrivate\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\SaServicePublic\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\ViewController.cs" />
+    <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Models\SignupViewModel.cs" />
+    <Compile Include="Views\AdForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAd.Designer.cs">
-      <DependentUpon>FormAd.cs</DependentUpon>
+    <Compile Include="Views\AdForm.Designer.cs">
+      <DependentUpon>AdForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormNoLogin.cs">
+    <Compile Include="Views\DashboardUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\DashboardUserControl.Designer.cs">
+      <DependentUpon>DashboardUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormNoLogin.Designer.cs">
-      <DependentUpon>FormNoLogin.cs</DependentUpon>
+    <Compile Include="Views\HomeForm.Designer.cs">
+      <DependentUpon>HomeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSearch.cs">
+    <Compile Include="Views\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormSearch.Designer.cs">
-      <DependentUpon>FormSearch.cs</DependentUpon>
+    <Compile Include="Views\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormUserProfile.cs">
+    <Compile Include="Views\SignupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormUserProfile.Designer.cs">
-      <DependentUpon>FormUserProfile.cs</DependentUpon>
+    <Compile Include="Views\SignupForm.Designer.cs">
+      <DependentUpon>SignupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserProfileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\UserProfileForm.Designer.cs">
+      <DependentUpon>UserProfileForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginDashboardUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LoginDashboardUserControl.Designer.cs">
+      <DependentUpon>LoginDashboardUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\AuthHelper.cs" />
+    <Compile Include="Helpers\ServiceHelper.cs" />
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\FormAd.resx">
-      <DependentUpon>FormAd.cs</DependentUpon>
+    <EmbeddedResource Include="Views\AdForm.resx">
+      <DependentUpon>AdForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormNoLogin.resx">
-      <DependentUpon>FormNoLogin.cs</DependentUpon>
+    <EmbeddedResource Include="Views\DashboardUserControl.resx">
+      <DependentUpon>DashboardUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSearch.resx">
-      <DependentUpon>FormSearch.cs</DependentUpon>
+    <EmbeddedResource Include="Views\HomeForm.resx">
+      <DependentUpon>HomeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormUserProfile.resx">
-      <DependentUpon>FormUserProfile.cs</DependentUpon>
+    <EmbeddedResource Include="Views\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SignupForm.resx">
+      <DependentUpon>SignupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LoginDashboardUserControl.resx">
+      <DependentUpon>LoginDashboardUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserProfileForm.resx">
+      <DependentUpon>UserProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -92,6 +147,38 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Connected Services\SaServicePrivate\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaServicePrivate\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaServicePrivate\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaServicePrivate\SocialAdService.wsdl" />
+    <None Include="Connected Services\SaServicePrivate\WindowsFormsDedicatedClient.SaServicePrivate.Ad.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SaServicePrivate\WindowsFormsDedicatedClient.SaServicePrivate.User.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SaServicePublic\AuthService.wsdl" />
+    <None Include="Connected Services\SaServicePublic\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaServicePublic\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaServicePublic\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SaServicePublic\WindowsFormsDedicatedClient.SaServicePublic.Ad.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\SaServicePublic\WindowsFormsDedicatedClient.SaServicePublic.Comment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -105,9 +192,43 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Helpers\" />
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\SaServicePrivate\" />
+    <WCFMetadataStorage Include="Connected Services\SaServicePublic\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePrivate\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePrivate\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePrivate\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePrivate\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePublic\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePublic\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePublic\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\SaServicePublic\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsDedicatedClient
 {
-    partial class FormNoLogin
+    partial class HomeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.GbViewing = new System.Windows.Forms.GroupBox();
             this.RbOther = new System.Windows.Forms.RadioButton();
             this.RbEvents = new System.Windows.Forms.RadioButton();
@@ -38,21 +37,12 @@
             this.RbSelling = new System.Windows.Forms.RadioButton();
             this.RbAll = new System.Windows.Forms.RadioButton();
             this.BtnSearch = new System.Windows.Forms.Button();
-            this.lblLoggedIn = new System.Windows.Forms.Label();
-            this.btnLogin = new System.Windows.Forms.Button();
-            this.btnRegister = new System.Windows.Forms.Button();
             this.PanelDashboard = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
             this.GbViewing.SuspendLayout();
-            this.PanelDashboard.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(143, 37);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(340, 255);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
             // 
             // GbViewing
             // 
@@ -155,65 +145,49 @@
             this.BtnSearch.TabIndex = 3;
             this.BtnSearch.Text = "Search";
             this.BtnSearch.UseVisualStyleBackColor = true;
-            // 
-            // lblLoggedIn
-            // 
-            this.lblLoggedIn.AutoSize = true;
-            this.lblLoggedIn.Location = new System.Drawing.Point(175, 6);
-            this.lblLoggedIn.Name = "lblLoggedIn";
-            this.lblLoggedIn.Size = new System.Drawing.Size(112, 13);
-            this.lblLoggedIn.TabIndex = 0;
-            this.lblLoggedIn.Text = "Currently not logged in";
-            // 
-            // btnLogin
-            // 
-            this.btnLogin.Location = new System.Drawing.Point(0, 0);
-            this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(75, 23);
-            this.btnLogin.TabIndex = 1;
-            this.btnLogin.Text = "Log in";
-            this.btnLogin.UseVisualStyleBackColor = true;
-            // 
-            // btnRegister
-            // 
-            this.btnRegister.Location = new System.Drawing.Point(81, 0);
-            this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(75, 23);
-            this.btnRegister.TabIndex = 2;
-            this.btnRegister.Text = "Sign up";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // PanelDashboard
             // 
-            this.PanelDashboard.Controls.Add(this.btnRegister);
-            this.PanelDashboard.Controls.Add(this.btnLogin);
-            this.PanelDashboard.Controls.Add(this.lblLoggedIn);
             this.PanelDashboard.Location = new System.Drawing.Point(12, 3);
             this.PanelDashboard.Name = "PanelDashboard";
             this.PanelDashboard.Size = new System.Drawing.Size(471, 28);
             this.PanelDashboard.TabIndex = 0;
             // 
-            // FormNoLogin
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.vScrollBar1);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(143, 37);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 246);
+            this.flowLayoutPanel1.TabIndex = 4;
+            // 
+            // vScrollBar1
+            // 
+            this.vScrollBar1.Location = new System.Drawing.Point(0, 0);
+            this.vScrollBar1.Name = "vScrollBar1";
+            this.vScrollBar1.Size = new System.Drawing.Size(17, 80);
+            this.vScrollBar1.TabIndex = 0;
+            // 
+            // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 295);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.GbViewing);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.PanelDashboard);
-            this.Name = "FormNoLogin";
+            this.Name = "HomeForm";
             this.Text = "Social Ad Service for Windows";
             this.GbViewing.ResumeLayout(false);
             this.GbViewing.PerformLayout();
-            this.PanelDashboard.ResumeLayout(false);
-            this.PanelDashboard.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.GroupBox GbViewing;
         private System.Windows.Forms.RadioButton RbServiceRequests;
         private System.Windows.Forms.RadioButton RbServiceOffers;
@@ -223,10 +197,9 @@
         private System.Windows.Forms.RadioButton RbOther;
         private System.Windows.Forms.RadioButton RbEvents;
         private System.Windows.Forms.Button BtnSearch;
-        private System.Windows.Forms.Label lblLoggedIn;
-        private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Panel PanelDashboard;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }
 

@@ -16,5 +16,6 @@ namespace MvcClient.Models
         [DataType(DataType.Password)]
         [StringLength(100, ErrorMessage = "Password needs to be from {2} to {0} symbols long.", MinimumLength = 6)]
         public string Password { get; set; }
+        public string Name { get; set; }
     }
 }

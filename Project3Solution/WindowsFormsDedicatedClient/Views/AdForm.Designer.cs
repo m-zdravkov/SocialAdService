@@ -78,7 +78,7 @@
             this.Controls.Add(this.TbComment);
             this.Controls.Add(this.richTextBox1);
             this.Name = "FormAd";
-            this.Text = "FormAd";
+            this.Text = "AdForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

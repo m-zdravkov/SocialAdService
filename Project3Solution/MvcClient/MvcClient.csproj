@@ -189,7 +189,6 @@
     </Compile>
     <Compile Include="Helpers\AuthHelper.cs" />
     <Compile Include="Helpers\ServiceHelper.cs" />
-    <Compile Include="Helpers\UserHelper.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PostAdViewModel.cs" />
     <Compile Include="Models\PostCommentViewModel.cs" />

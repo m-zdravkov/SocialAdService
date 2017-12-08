@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsDedicatedClient
+namespace WindowsFormsDedicatedClient.Views
 {
-    public partial class FormNoLogin : Form
+    public partial class SignupForm : Form
     {
-        public FormNoLogin()
+        public SignupForm()
         {
             InitializeComponent();
         }
