@@ -104,11 +104,11 @@
     <Compile Include="Views\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserProfileForm.cs">
+    <Compile Include="Views\YourProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\UserProfileForm.Designer.cs">
-      <DependentUpon>UserProfileForm.cs</DependentUpon>
+    <Compile Include="Views\YourProfileForm.Designer.cs">
+      <DependentUpon>YourProfileForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginDashboardUserControl.cs">
       <SubType>UserControl</SubType>
@@ -145,8 +145,8 @@
     <EmbeddedResource Include="Views\SearchForm.resx">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserProfileForm.resx">
-      <DependentUpon>UserProfileForm.cs</DependentUpon>
+    <EmbeddedResource Include="Views\YourProfileForm.resx">
+      <DependentUpon>YourProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

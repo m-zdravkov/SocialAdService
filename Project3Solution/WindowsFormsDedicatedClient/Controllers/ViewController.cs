@@ -21,6 +21,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         public static LoginForm LoginForm { get; private set; }
         public static SignupForm SignupForm { get; private set; }
         public static AdForm AdForm { get; private set; }
+        public static YourProfileForm YourProfileForm { get; set; }
 
         public static IReadOnlyDictionary<string, Form> Forms{
             get { return _forms as IReadOnlyDictionary<string, Form>; }
@@ -42,8 +43,15 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static void LogIn(LoginViewModel lvm)
         {
-            AuthController.LogIn(lvm);
-            HomeForm.LogIn(lvm);
+            if(AuthController.LogIn(lvm))
+            {
+                HomeForm.LogIn(lvm);
+                LoginForm.Close();
+            }else
+            {
+                MessageBox.Show("Could not log you in with these credentials.",
+                        "Authentication error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void SignUpView()
@@ -54,23 +62,39 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static void SignUp(SignupViewModel svm)
         {
-            AuthController.SignUp(svm);
-
-            LogIn(new LoginViewModel
+            if (AuthController.SignUp(svm))
             {
-                Email = svm.Email,
-                Password = svm.Password
-            });
+
+                LogIn(new LoginViewModel
+                {
+                    Email = svm.Email,
+                    Password = svm.Password
+                });
+
+                SignupForm.Close();
+            }else
+            {
+                MessageBox.Show("Could not register you with these credentials.",
+                        "Authentication error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void LogOut()
         {
+            AuthController.LogOut();
             HomeForm.LogOut();
         }
 
         public static void ViewAd(string id)
         {
             AdForm = new AdForm();
+            AdForm.Show();
+        }
+
+        public static void ViewYourProfile()
+        {
+            YourProfileForm = new YourProfileForm();
+            YourProfileForm.Show();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsDedicatedClient.Views
 {
-    partial class UserProfileForm
+    partial class YourProfileForm
     {
         /// <summary>
         /// Required designer variable.
@@ -116,6 +116,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.LblReservations);
@@ -147,17 +149,18 @@
             this.LblUserEmail.TabIndex = 10;
             this.LblUserEmail.Text = "user@email";
             // 
-            // FormUserProfile
+            // UserProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(371, 334);
             this.Controls.Add(this.LblUserEmail);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.LblUserName);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "FormUserProfile";
+            this.Name = "UserProfileForm";
             this.Text = "Your Profile";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

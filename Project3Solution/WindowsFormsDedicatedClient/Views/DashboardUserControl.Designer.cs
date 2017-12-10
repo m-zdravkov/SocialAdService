@@ -28,29 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BtnLogOut = new System.Windows.Forms.Button();
+            this.BtnProfile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.LblUserEmail = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // BtnLogOut
             // 
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Log out";
-            this.button1.UseVisualStyleBackColor = true;
+            this.BtnLogOut.Location = new System.Drawing.Point(3, 3);
+            this.BtnLogOut.Name = "BtnLogOut";
+            this.BtnLogOut.Size = new System.Drawing.Size(75, 23);
+            this.BtnLogOut.TabIndex = 0;
+            this.BtnLogOut.Text = "Log out";
+            this.BtnLogOut.UseVisualStyleBackColor = true;
+            this.BtnLogOut.Click += new System.EventHandler(this.BtnLogOut_Click);
             // 
-            // button2
+            // BtnProfile
             // 
-            this.button2.Location = new System.Drawing.Point(84, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Profile";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnProfile.Location = new System.Drawing.Point(84, 3);
+            this.BtnProfile.Name = "BtnProfile";
+            this.BtnProfile.Size = new System.Drawing.Size(75, 23);
+            this.BtnProfile.TabIndex = 1;
+            this.BtnProfile.Text = "Profile";
+            this.BtnProfile.UseVisualStyleBackColor = true;
+            this.BtnProfile.Click += new System.EventHandler(this.BtnProfile_Click);
             // 
             // label1
             // 
@@ -76,8 +78,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.LblUserEmail);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnProfile);
+            this.Controls.Add(this.BtnLogOut);
             this.Name = "DashboardUserControl";
             this.Size = new System.Drawing.Size(377, 34);
             this.ResumeLayout(false);
@@ -87,8 +89,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button BtnLogOut;
+        private System.Windows.Forms.Button BtnProfile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label LblUserEmail;
     }

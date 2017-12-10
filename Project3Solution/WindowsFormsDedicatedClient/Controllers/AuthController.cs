@@ -12,30 +12,50 @@ namespace WindowsFormsDedicatedClient.Controllers
 {
     public static class AuthController
     {
-        public static void LogIn(LoginViewModel lvm)
+        public static bool LogIn(LoginViewModel lvm)
         {
-            try
+            using (var client = ServiceHelper.GetAuthServiceClient())
             {
-                AuthHelper.LogIn(lvm);
-            }catch (Exception ex)
-            {
-                MessageBox.Show("Could not log you in with these credentials.","Authentication error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    if (client.Login(lvm.Email, lvm.Password))
+                    {
+                        AuthHelper.LogIn(lvm);
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An internal error occured while trying to log in. Details:\n"+ex.Message,
+                        "Internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
         }
 
-        public static void SignUp(SignupViewModel svm)
+        public static bool SignUp(SignupViewModel svm)
         {
-            try
+            using (var client = ServiceHelper.GetAuthServiceClient())
             {
-                var client = ServiceHelper.GetAuthServiceClient();
-                client.Register(svm.Email, svm.Name, svm.Password, "http://test.com/image.jpg");
+                try
+                {
+                    client.Register(svm.Email, svm.Name, svm.Password, "http://test.com/image.jpg");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("An internal error occured while trying to register. Details:\n" + ex.Message,
+                        "Internal error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Could not register with these credentials.", "Authentication error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+        }
+
+        public static void LogOut()
+        {
+            AuthHelper.LogOut();
         }
     }
 }

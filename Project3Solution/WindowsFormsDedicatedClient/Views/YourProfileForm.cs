@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsDedicatedClient.Views
 {
-    public partial class UserProfileForm : Form
+    public partial class YourProfileForm : Form
     {
-        public UserProfileForm()
+        public YourProfileForm()
         {
             InitializeComponent();
         }
