@@ -41,7 +41,7 @@ namespace MvcClient.Controllers
             catch (Exception ex)
             {
                 ViewBag.ErrorMessage += ex.Message;
-                return View();
+                return RedirectToAction("Index", "Home");
             }
             return RedirectToAction("Index", "Home");
         }

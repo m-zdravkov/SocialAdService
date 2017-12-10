@@ -57,9 +57,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
-    <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Models\AdList.cs" />
     <Compile Include="Models\SignupViewModel.cs" />
     <Compile Include="Views\AdForm.cs">
       <SubType>Form</SubType>
@@ -84,6 +85,12 @@
     </Compile>
     <Compile Include="Views\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShortAdUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ShortAdUserControl.Designer.cs">
+      <DependentUpon>ShortAdUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\SignupForm.cs">
       <SubType>Form</SubType>
@@ -125,6 +132,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ShortAdUserControl.resx">
+      <DependentUpon>ShortAdUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\SignupForm.resx">
       <DependentUpon>SignupForm.cs</DependentUpon>

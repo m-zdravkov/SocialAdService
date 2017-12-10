@@ -38,10 +38,8 @@
             this.RbAll = new System.Windows.Forms.RadioButton();
             this.BtnSearch = new System.Windows.Forms.Button();
             this.PanelDashboard = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
+            this.AdPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.GbViewing.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // GbViewing
@@ -149,32 +147,31 @@
             // 
             // PanelDashboard
             // 
+            this.PanelDashboard.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelDashboard.Location = new System.Drawing.Point(12, 3);
             this.PanelDashboard.Name = "PanelDashboard";
-            this.PanelDashboard.Size = new System.Drawing.Size(471, 28);
+            this.PanelDashboard.Size = new System.Drawing.Size(531, 28);
             this.PanelDashboard.TabIndex = 0;
             // 
-            // flowLayoutPanel1
+            // AdPanel
             // 
-            this.flowLayoutPanel1.Controls.Add(this.vScrollBar1);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(143, 37);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(340, 246);
-            this.flowLayoutPanel1.TabIndex = 4;
-            // 
-            // vScrollBar1
-            // 
-            this.vScrollBar1.Location = new System.Drawing.Point(0, 0);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(17, 80);
-            this.vScrollBar1.TabIndex = 0;
+            this.AdPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdPanel.AutoScroll = true;
+            this.AdPanel.Location = new System.Drawing.Point(143, 37);
+            this.AdPanel.Name = "AdPanel";
+            this.AdPanel.Size = new System.Drawing.Size(400, 246);
+            this.AdPanel.TabIndex = 0;
+            this.AdPanel.MouseEnter += new System.EventHandler(this.AdPanel_MouseEnter);
             // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(495, 295);
-            this.Controls.Add(this.flowLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(555, 295);
+            this.Controls.Add(this.AdPanel);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.GbViewing);
             this.Controls.Add(this.PanelDashboard);
@@ -182,7 +179,6 @@
             this.Text = "Social Ad Service for Windows";
             this.GbViewing.ResumeLayout(false);
             this.GbViewing.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -198,8 +194,7 @@
         private System.Windows.Forms.RadioButton RbEvents;
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.Panel PanelDashboard;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.VScrollBar vScrollBar1;
+        private System.Windows.Forms.FlowLayoutPanel AdPanel;
     }
 }
 

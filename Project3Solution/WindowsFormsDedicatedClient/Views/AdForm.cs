@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsDedicatedClient
 {
-    public partial class FormAd : Form
+    public partial class AdForm : Form
     {
-        public FormAd()
+        public AdForm()
         {
             InitializeComponent();
         }

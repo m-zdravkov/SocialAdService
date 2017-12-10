@@ -19,21 +19,25 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static HomeForm HomeForm { get; private set; }
         public static LoginForm LoginForm { get; private set; }
-        public static SignupForm SignupForm { get; set; }
+        public static SignupForm SignupForm { get; private set; }
+        public static AdForm AdForm { get; private set; }
 
         public static IReadOnlyDictionary<string, Form> Forms{
             get { return _forms as IReadOnlyDictionary<string, Form>; }
             private set { }
         }
 
-        public static void Start()
+        public static void Start(HomeForm homeForm)
         {
-            HomeForm = new HomeForm();
+            if (HomeForm == null)
+                HomeForm = homeForm;
+            else throw new InvalidOperationException("View controller already started.");
         }
 
         public static void LogInView()
         {
             LoginForm = new LoginForm();
+            LoginForm.Show();
         }
 
         public static void LogIn(LoginViewModel lvm)
@@ -45,6 +49,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         public static void SignUpView()
         {
             SignupForm = new SignupForm();
+            SignupForm.Show();
         }
 
         public static void SignUp(SignupViewModel svm)
@@ -61,6 +66,11 @@ namespace WindowsFormsDedicatedClient.Controllers
         public static void LogOut()
         {
             HomeForm.LogOut();
+        }
+
+        public static void ViewAd(string id)
+        {
+            AdForm = new AdForm();
         }
     }
 }

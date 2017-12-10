@@ -240,8 +240,10 @@ namespace BusinessTier
                         //|| ad.Categories.Contains(kw)))
              select ad);
 
+            //Order the query by list
             //Delimit the query to take only a page of results and append the Authors to the ads
-            var pagedQuery = query.Skip(skip)
+            var pagedQuery = query.OrderBy(a => a.DatePosted)
+                .Skip(skip)
                 .Take(amount)
                 .Include(a => a.Author)
                 .ToList();

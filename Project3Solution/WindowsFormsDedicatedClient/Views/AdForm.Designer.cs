@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsDedicatedClient
 {
-    partial class FormAd
+    partial class AdForm
     {
         /// <summary>
         /// Required designer variable.

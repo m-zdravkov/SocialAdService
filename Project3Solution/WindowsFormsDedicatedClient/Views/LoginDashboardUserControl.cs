@@ -22,5 +22,10 @@ namespace WindowsFormsDedicatedClient.Views
         {
             ViewController.LogInView();
         }
+
+        private void BtnSignUp_Click(object sender, EventArgs e)
+        {
+            ViewController.SignUpView();
+        }
     }
 }

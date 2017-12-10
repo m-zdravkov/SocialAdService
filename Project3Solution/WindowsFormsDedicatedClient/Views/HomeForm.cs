@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using WindowsFormsDedicatedClient.Views;
 using WindowsFormsDedicatedClient.Models;
 using WindowsFormsDedicatedClient.SaServicePublic;
+using WindowsFormsDedicatedClient.Controllers;
 
 namespace WindowsFormsDedicatedClient
 {
@@ -18,7 +19,10 @@ namespace WindowsFormsDedicatedClient
         public HomeForm()
         {
             InitializeComponent();
+            ViewController.Start(this);
             LogOut(); //Need this to initialize the components in the dashboard
+            LoadAds(AdController.GetAds().ToShortAdList());
+            RbAll.Select();
         }
 
         /// <summary>
@@ -41,14 +45,28 @@ namespace WindowsFormsDedicatedClient
             PanelDashboard.Controls.Add(ctlDashboard);
         }
 
-        public void LoadAds(Ad[] list)
+        public void LoadAds(ShortAdUserControl[] list, bool clearFirst = true)
         {
+            if (clearFirst)
+                AdPanel.Controls.Clear();
 
+            if (list != null)
+            {
+                foreach (var ad in list)
+                {
+                    AdPanel.Controls.Add(ad);
+                }
+            }
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AdPanel_MouseEnter(object sender, EventArgs e)
+        {
+            AdPanel.Focus();
         }
     }
 }
