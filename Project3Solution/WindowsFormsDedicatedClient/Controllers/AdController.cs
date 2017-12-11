@@ -61,32 +61,6 @@ namespace WindowsFormsDedicatedClient.Controllers
             return ads;
         }
 
-        public static Comment[] GetAdComments(string adId)
-        {
-            Comment[] comments = null;
-
-            using (var client = ServiceHelper.GetAuthServiceClient())
-            {
-                comments = client.GetAdReplies(0, 64, adId);
-            }
-
-            return comments;
-        }
-
-        public static void PostComment(string adId, string content)
-        {
-            if (AuthHelper.IsLoggedIn())
-            {
-                using (var client = ServiceHelper.GetServiceClientLoggedIn())
-                {
-                    client.PostComment(adId, content);
-                }
-            }else
-            {
-                MessageBox.Show("You need to be logged in to comment.", "Unauthorized", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         public static Ad GetAd(string id)
         {
             using (var client = ServiceHelper.GetAuthServiceClient())
@@ -100,6 +74,38 @@ namespace WindowsFormsDedicatedClient.Controllers
             using (var client = ServiceHelper.GetAuthServiceClient())
             {
                 return client.FindAds(0, 1024, location, query, type);
+            }
+        }
+
+        public static void ReserveAd(string id)
+        {
+            try
+            {
+                using (var client = ServiceHelper.GetServiceClientLoggedIn())
+                {
+                    client.ReserveAd(id);
+                    AuthController.GetUpdatedCurrentUserDetails();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Something went wrong and the ad couldn't be reserved.\nTechnical details:\n\n"+ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void DeleteAd(string id)
+        {
+            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            {
+                try
+                {
+                    client.DeleteAd(id);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not delete ad.\nTechnical details\n\n"+ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

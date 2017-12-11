@@ -64,5 +64,11 @@ namespace WcfServiceTier
 
         [OperationContract]
         void PostComment(string adId, string content);
+
+        [OperationContract]
+        void DeleteComment(string id);
+
+        [OperationContract]
+        void DeleteAd(string id);
     }
 }

@@ -816,6 +816,18 @@ namespace WindowsFormsDedicatedClient.SaServicePrivate {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostComment", ReplyAction="http://tempuri.org/ISocialAdService/PostCommentResponse")]
         System.Threading.Tasks.Task PostCommentAsync(string adId, string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteComment", ReplyAction="http://tempuri.org/ISocialAdService/DeleteCommentResponse")]
+        void DeleteComment(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteComment", ReplyAction="http://tempuri.org/ISocialAdService/DeleteCommentResponse")]
+        System.Threading.Tasks.Task DeleteCommentAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteAd", ReplyAction="http://tempuri.org/ISocialAdService/DeleteAdResponse")]
+        void DeleteAd(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteAd", ReplyAction="http://tempuri.org/ISocialAdService/DeleteAdResponse")]
+        System.Threading.Tasks.Task DeleteAdAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -987,6 +999,22 @@ namespace WindowsFormsDedicatedClient.SaServicePrivate {
         
         public System.Threading.Tasks.Task PostCommentAsync(string adId, string content) {
             return base.Channel.PostCommentAsync(adId, content);
+        }
+        
+        public void DeleteComment(string id) {
+            base.Channel.DeleteComment(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCommentAsync(string id) {
+            return base.Channel.DeleteCommentAsync(id);
+        }
+        
+        public void DeleteAd(string id) {
+            base.Channel.DeleteAd(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAdAsync(string id) {
+            return base.Channel.DeleteAdAsync(id);
         }
     }
 }

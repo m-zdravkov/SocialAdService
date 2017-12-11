@@ -50,10 +50,16 @@ namespace BusinessTier
             return comment;
         }
 
-        public void DeleteComment(string id)
+        public void DeleteComment(string id, string userEmail)
         {
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
-            Comment toDelete = new Comment { Id = id };
+            var db = DbContextControl.GetNew();
+            
+            Comment toDelete = db.Comments.Attach(
+                db.Comments.FirstOrDefault(c => c.Id == id));
+
+            if (toDelete.Author.Email != userEmail)
+                throw new InvalidOperationException("Can not delete another person's comment.");
+            
             db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
         }

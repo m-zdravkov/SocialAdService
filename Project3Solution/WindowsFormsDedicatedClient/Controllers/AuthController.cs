@@ -62,16 +62,25 @@ namespace WindowsFormsDedicatedClient.Controllers
             AuthHelper.LogOut();
         }
 
+        /// <summary>
+        /// Updates user details to the ones from the database and returns them.
+        /// </summary>
+        /// <returns></returns>
         public static SaServicePrivate.User GetUpdatedCurrentUserDetails()
         {
-            SaServicePrivate.User user = null;
-            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            if (AuthHelper.IsLoggedIn())
             {
-                user = client.GetCurrentUser();
-                AuthHelper.CurrentUserDetails = user;
-            }
+                SaServicePrivate.User user = null;
+                using (var client = ServiceHelper.GetServiceClientLoggedIn())
+                {
+                    user = client.GetCurrentUser();
+                    AuthHelper.CurrentUserDetails = user;
+                }
 
-            return user;
+                return user;
+            }
+            else
+                return null;
         }
     }
 }

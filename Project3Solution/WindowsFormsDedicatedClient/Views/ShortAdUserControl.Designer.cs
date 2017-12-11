@@ -39,6 +39,7 @@
             this.GroupBox = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.LblAuthor = new System.Windows.Forms.Label();
+            this.BtnReserve = new System.Windows.Forms.Button();
             this.GroupBox.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -138,6 +139,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.BtnReserve);
             this.panel1.Controls.Add(this.LblAuthor);
             this.panel1.Controls.Add(this.LblTitle);
             this.panel1.Controls.Add(this.LblLocation);
@@ -161,6 +163,16 @@
             this.LblAuthor.Size = new System.Drawing.Size(38, 13);
             this.LblAuthor.TabIndex = 18;
             this.LblAuthor.Text = "Author";
+            // 
+            // BtnReserve
+            // 
+            this.BtnReserve.Location = new System.Drawing.Point(83, 54);
+            this.BtnReserve.Name = "BtnReserve";
+            this.BtnReserve.Size = new System.Drawing.Size(75, 23);
+            this.BtnReserve.TabIndex = 19;
+            this.BtnReserve.Text = "Reserve";
+            this.BtnReserve.UseVisualStyleBackColor = true;
+            this.BtnReserve.Click += new System.EventHandler(this.BtnReserve_Click);
             // 
             // ShortAdUserControl
             // 
@@ -190,5 +202,6 @@
         private System.Windows.Forms.GroupBox GroupBox;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label LblAuthor;
+        private System.Windows.Forms.Button BtnReserve;
     }
 }

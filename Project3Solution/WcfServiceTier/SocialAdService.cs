@@ -192,5 +192,21 @@ namespace WcfServiceTier
             CommentControl.GetInstance().PostComment(adId, content,
                 GetServiceUserEmail());
         }
+
+        public void DeleteAd(string id)
+        {
+            AdControl.GetInstance().DeleteAd(id, GetServiceUserEmail());
+        }
+
+        public void DeleteComment(string id)
+        {
+            try
+            {
+                CommentControl.GetInstance().DeleteComment(id, GetServiceUserEmail());
+            }catch(InvalidOperationException)
+            {
+                throw new WebFaultException<string>("Can not delete other people's comments", HttpStatusCode.Unauthorized);
+            }
+        }
     }
 }

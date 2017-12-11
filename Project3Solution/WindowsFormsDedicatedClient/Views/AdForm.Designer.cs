@@ -43,13 +43,16 @@
             this.LblTitle = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PanelComments = new System.Windows.Forms.Panel();
+            this.BtnReserve = new System.Windows.Forms.Button();
+            this.BtnDelete = new System.Windows.Forms.Button();
+            this.LblReservedBy = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TbComment
             // 
-            this.TbComment.Location = new System.Drawing.Point(13, 344);
+            this.TbComment.Location = new System.Drawing.Point(13, 368);
             this.TbComment.Multiline = true;
             this.TbComment.Name = "TbComment";
             this.TbComment.Size = new System.Drawing.Size(435, 68);
@@ -58,7 +61,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 328);
+            this.label1.Location = new System.Drawing.Point(14, 352);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 2;
@@ -66,17 +69,18 @@
             // 
             // btnPostComment
             // 
-            this.btnPostComment.Location = new System.Drawing.Point(373, 418);
+            this.btnPostComment.Location = new System.Drawing.Point(373, 442);
             this.btnPostComment.Name = "btnPostComment";
             this.btnPostComment.Size = new System.Drawing.Size(75, 23);
             this.btnPostComment.TabIndex = 3;
             this.btnPostComment.Text = "Post";
             this.btnPostComment.UseVisualStyleBackColor = true;
-            this.btnPostComment.Click += new System.EventHandler(this.btnPostComment_Click);
+            this.btnPostComment.Click += new System.EventHandler(this.BtnPostComment_Click);
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.LblReservedBy);
             this.panel1.Controls.Add(this.RtbContent);
             this.panel1.Controls.Add(this.LblAuthor);
             this.panel1.Controls.Add(this.LblLocation);
@@ -186,7 +190,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.PanelComments);
-            this.groupBox1.Location = new System.Drawing.Point(13, 202);
+            this.groupBox1.Location = new System.Drawing.Point(13, 226);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(432, 123);
             this.groupBox1.TabIndex = 5;
@@ -203,11 +207,44 @@
             this.PanelComments.Size = new System.Drawing.Size(420, 105);
             this.PanelComments.TabIndex = 0;
             // 
+            // BtnReserve
+            // 
+            this.BtnReserve.Location = new System.Drawing.Point(326, 201);
+            this.BtnReserve.Name = "BtnReserve";
+            this.BtnReserve.Size = new System.Drawing.Size(119, 23);
+            this.BtnReserve.TabIndex = 18;
+            this.BtnReserve.Text = "Reserve";
+            this.BtnReserve.UseVisualStyleBackColor = true;
+            this.BtnReserve.Click += new System.EventHandler(this.BtnReserve_Click);
+            // 
+            // BtnDelete
+            // 
+            this.BtnDelete.Location = new System.Drawing.Point(19, 201);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(75, 23);
+            this.BtnDelete.TabIndex = 19;
+            this.BtnDelete.Text = "Delete";
+            this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // LblReservedBy
+            // 
+            this.LblReservedBy.AutoSize = true;
+            this.LblReservedBy.ForeColor = System.Drawing.Color.DarkOliveGreen;
+            this.LblReservedBy.Location = new System.Drawing.Point(303, 24);
+            this.LblReservedBy.Name = "LblReservedBy";
+            this.LblReservedBy.Size = new System.Drawing.Size(123, 13);
+            this.LblReservedBy.TabIndex = 18;
+            this.LblReservedBy.Text = "Reserved by User Name";
+            this.LblReservedBy.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
             // AdForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 453);
+            this.ClientSize = new System.Drawing.Size(460, 477);
+            this.Controls.Add(this.BtnDelete);
+            this.Controls.Add(this.BtnReserve);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnPostComment);
@@ -239,5 +276,8 @@
         private System.Windows.Forms.RichTextBox RtbContent;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel PanelComments;
+        private System.Windows.Forms.Button BtnReserve;
+        private System.Windows.Forms.Button BtnDelete;
+        private System.Windows.Forms.Label LblReservedBy;
     }
 }

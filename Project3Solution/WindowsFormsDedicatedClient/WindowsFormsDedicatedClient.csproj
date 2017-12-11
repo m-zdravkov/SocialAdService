@@ -59,6 +59,7 @@
     </Compile>
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
     <Compile Include="Models\PostExtendedMethods.cs" />
     <Compile Include="Models\ServiceConversionExtendedMethods.cs" />

@@ -33,6 +33,7 @@ namespace WindowsFormsDedicatedClient
             var ctlDashboard = new DashboardUserControl();
             PanelDashboard.Controls.Clear();
             PanelDashboard.Controls.Add(ctlDashboard);
+            UpdateAds();
         }
 
         /// <summary>
@@ -43,6 +44,13 @@ namespace WindowsFormsDedicatedClient
             var ctlDashboard = new LoginDashboardUserControl();
             PanelDashboard.Controls.Clear();
             PanelDashboard.Controls.Add(ctlDashboard);
+            UpdateAds();
+        }
+
+        private void UpdateAds()
+        {
+            LoadAds(AdController.GetAds().ToShortAdUcList());
+            RbAll.Checked = true;
         }
 
         public void LoadAds(ShortAdUserControl[] list, bool clearFirst = true)

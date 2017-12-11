@@ -39,6 +39,7 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static void LogInView()
         {
+            LogInForm?.Close();
             LogInForm = new LogInForm();
             LogInForm.Show();
         }
