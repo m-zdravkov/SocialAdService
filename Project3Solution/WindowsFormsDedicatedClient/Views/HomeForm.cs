@@ -21,7 +21,7 @@ namespace WindowsFormsDedicatedClient
             InitializeComponent();
             ViewController.Start(this);
             LogOut(); //Need this to initialize the components in the dashboard
-            LoadAds(AdController.GetAds().ToShortAdList());
+            LoadAds(AdController.GetAds().ToShortAdUcList());
             RbAll.Select();
         }
 
@@ -61,12 +61,53 @@ namespace WindowsFormsDedicatedClient
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
-
+            ViewController.SearchView();
         }
 
         private void AdPanel_MouseEnter(object sender, EventArgs e)
         {
-            AdPanel.Focus();
+            if(this.ContainsFocus)
+                AdPanel.Focus();
+        }
+
+        private void LoadAdsType(AdType type)
+        {
+            LoadAds(AdController.GetAdsOfType(type).ToShortAdUcList());
+        }
+
+        private void RbAll_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAds(AdController.GetAds().ToShortAdUcList());
+        }
+
+        private void RbSelling_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAdsType(AdType.Selling);
+        }
+
+        private void RbBuying_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAdsType(AdType.Buying);
+        }
+
+        private void RbServiceOffers_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAdsType(AdType.ServiceOffer);
+        }
+
+        private void RbServiceRequests_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAdsType(AdType.ServiceRequest);
+        }
+
+        private void RbEvents_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAdsType(AdType.Event);
+        }
+
+        private void RbOther_CheckedChanged(object sender, EventArgs e)
+        {
+            LoadAdsType(AdType.Other);
         }
     }
 }

@@ -189,15 +189,8 @@ namespace WcfServiceTier
 
         public void PostComment(string adId, string content)
         {
-            ///TODO: Move to BusinessTier
-            Comment c = new Comment
-            {
-                Author = UserControl.GetInstance().GetUser(GetServiceUserEmail()),
-                Content = content,
-                ReplyId = adId,
-            };
-
-            CommentControl.GetInstance().AddComment(c);
+            CommentControl.GetInstance().PostComment(adId, content,
+                GetServiceUserEmail());
         }
     }
 }

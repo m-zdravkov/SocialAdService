@@ -14,16 +14,16 @@ namespace Model
 
         public ushort RatingScore { get; set; }
 
-
-
         // public string ReviewerId { get; private set; }
 
-        public Review(ushort ratingScore, string comment)
+        public Review() : base() { }
+
+        public Review(ushort ratingScore, string comment) : base()
         {
             this.user.Id = user.Id;
             if (!this.IsRatingScoreValid(ratingScore))
             {
-                throw new ReviewExistsException(
+                throw new ReviewException(
                     string.Format("Rating score {0} falls outside the bounds of acceptable rating score between {1} and {2}",
                     ratingScore,
                     MinRatingScore,

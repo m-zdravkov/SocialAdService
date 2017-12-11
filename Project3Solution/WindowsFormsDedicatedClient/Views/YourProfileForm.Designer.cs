@@ -34,12 +34,18 @@
             this.BtnBuyBoosts = new System.Windows.Forms.Button();
             this.LblReservations = new System.Windows.Forms.Label();
             this.LblBoosts = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.LblUserName = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.LblUserEmail = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.LblDateRegistered = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.PanelReservedAds = new System.Windows.Forms.Panel();
+            this.PanelYourAds = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -62,18 +68,20 @@
             // 
             // BtnBuyReservations
             // 
-            this.BtnBuyReservations.Location = new System.Drawing.Point(266, 11);
+            this.BtnBuyReservations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnBuyReservations.Location = new System.Drawing.Point(320, 11);
             this.BtnBuyReservations.Name = "BtnBuyReservations";
-            this.BtnBuyReservations.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuyReservations.Size = new System.Drawing.Size(106, 23);
             this.BtnBuyReservations.TabIndex = 2;
             this.BtnBuyReservations.Text = "Buy more!";
             this.BtnBuyReservations.UseVisualStyleBackColor = true;
             // 
             // BtnBuyBoosts
             // 
-            this.BtnBuyBoosts.Location = new System.Drawing.Point(266, 34);
+            this.BtnBuyBoosts.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnBuyBoosts.Location = new System.Drawing.Point(320, 34);
             this.BtnBuyBoosts.Name = "BtnBuyBoosts";
-            this.BtnBuyBoosts.Size = new System.Drawing.Size(75, 23);
+            this.BtnBuyBoosts.Size = new System.Drawing.Size(106, 23);
             this.BtnBuyBoosts.TabIndex = 3;
             this.BtnBuyBoosts.Text = "Buy more!";
             this.BtnBuyBoosts.UseVisualStyleBackColor = true;
@@ -96,16 +104,10 @@
             this.LblBoosts.TabIndex = 5;
             this.LblBoosts.Text = "0";
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(12, 169);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(347, 154);
-            this.richTextBox1.TabIndex = 6;
-            this.richTextBox1.Text = "";
-            // 
             // LblUserName
             // 
+            this.LblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.LblUserName.AutoSize = true;
             this.LblUserName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblUserName.Location = new System.Drawing.Point(8, 9);
@@ -126,19 +128,10 @@
             this.groupBox1.Controls.Add(this.BtnBuyReservations);
             this.groupBox1.Location = new System.Drawing.Point(12, 68);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(347, 72);
+            this.groupBox1.Size = new System.Drawing.Size(432, 72);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Your Extras";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Related ads";
             // 
             // LblUserEmail
             // 
@@ -149,21 +142,91 @@
             this.LblUserEmail.TabIndex = 10;
             this.LblUserEmail.Text = "user@email";
             // 
-            // UserProfileForm
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label3.Location = new System.Drawing.Point(12, 46);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Joined:";
+            // 
+            // LblDateRegistered
+            // 
+            this.LblDateRegistered.AutoSize = true;
+            this.LblDateRegistered.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.LblDateRegistered.Location = new System.Drawing.Point(50, 46);
+            this.LblDateRegistered.Name = "LblDateRegistered";
+            this.LblDateRegistered.Size = new System.Drawing.Size(49, 13);
+            this.LblDateRegistered.TabIndex = 12;
+            this.LblDateRegistered.Text = "00.00.00";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.PanelReservedAds);
+            this.groupBox2.Location = new System.Drawing.Point(12, 278);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(432, 124);
+            this.groupBox2.TabIndex = 13;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Your reserved ads";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.PanelYourAds);
+            this.groupBox3.Location = new System.Drawing.Point(12, 146);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(432, 125);
+            this.groupBox3.TabIndex = 14;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Your ads";
+            // 
+            // PanelReservedAds
+            // 
+            this.PanelReservedAds.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelReservedAds.AutoScroll = true;
+            this.PanelReservedAds.Location = new System.Drawing.Point(7, 20);
+            this.PanelReservedAds.Name = "PanelReservedAds";
+            this.PanelReservedAds.Size = new System.Drawing.Size(419, 100);
+            this.PanelReservedAds.TabIndex = 0;
+            // 
+            // PanelYourAds
+            // 
+            this.PanelYourAds.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelYourAds.AutoScroll = true;
+            this.PanelYourAds.Location = new System.Drawing.Point(7, 20);
+            this.PanelYourAds.Name = "PanelYourAds";
+            this.PanelYourAds.Size = new System.Drawing.Size(419, 100);
+            this.PanelYourAds.TabIndex = 0;
+            // 
+            // YourProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(371, 334);
+            this.ClientSize = new System.Drawing.Size(456, 414);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.LblDateRegistered);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.LblUserEmail);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.LblUserName);
-            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.groupBox1);
-            this.Name = "UserProfileForm";
+            this.Name = "YourProfileForm";
             this.Text = "Your Profile";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,10 +240,14 @@
         private System.Windows.Forms.Button BtnBuyBoosts;
         private System.Windows.Forms.Label LblReservations;
         private System.Windows.Forms.Label LblBoosts;
-        private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Label LblUserName;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label LblUserEmail;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label LblDateRegistered;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel PanelReservedAds;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Panel PanelYourAds;
     }
 }

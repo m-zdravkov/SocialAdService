@@ -16,7 +16,6 @@ namespace WcfServiceTier
     {
         public bool Login(string email, string password)
         {
-            //return "Mein Schaft" == username && "!# test password #!" == password;
             var auth = AuthenticationControl.GetInstance();
 
             try

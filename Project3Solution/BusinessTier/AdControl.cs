@@ -65,13 +65,6 @@ namespace BusinessTier
             return ad;
         }
 
-        public void AddAd (Ad ad)
-        {
-            var db = DbContextControl.GetNew();
-            db.Ads.Add(ad);
-            db.SaveChanges();
-        }
-
         public void DeleteAd(string id, string author)
         {
             var db = DbContextControl.GetNew();
@@ -224,7 +217,8 @@ namespace BusinessTier
             var keywords = searchQuery.GetKeywords();
 
             //Delimit to ads that are within a location, use this as base for the search query
-            IQueryable<Ad> query = db.Ads.OrderBy(a => a.DatePosted)
+            //Also order by date posted
+            IQueryable<Ad> query = db.Ads.OrderByDescending(a => a.DatePosted)
                 .Include("Location");
 
             //A complex and heavy SQL query to find the searchQuery string within ad titles, contents and categories
@@ -353,7 +347,7 @@ namespace BusinessTier
             var userId = user.Id;
             var db = DbContextControl.GetNew();
             return db.Ads.Include("Author").Include("Location")
-                .Include("Price").Include("ReservedBy")
+                .Include("Price").Include("ReservedBy").OrderByDescending(a => a.DatePosted)
                 .Where(a => a.Author.Id == userId).ToList();
         }
 
@@ -369,7 +363,7 @@ namespace BusinessTier
             var userId = user.Id;
             var db = DbContextControl.GetNew();
             return db.Ads.Include("Author").Include("Location")
-                .Include("Price").Include("ReservedBy")
+                .Include("Price").Include("ReservedBy").OrderByDescending(a => a.DatePosted)
                 .Where(a => a.ReservedBy.Id == userId).ToList();
         }
     }

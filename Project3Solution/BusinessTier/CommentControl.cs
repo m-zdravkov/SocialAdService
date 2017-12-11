@@ -26,11 +26,28 @@ namespace BusinessTier
             return _instance;
         }
 
-        public void AddComment (Comment comment)
+        public Comment PostComment(string adId, string content, string authorEmail)
         {
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            var db = DbContextControl.GetNew();
+
+            var comment = new Comment {
+                Content = content,
+                DatePosted = DateTime.Now,
+                Indent = 0,
+                ImageSource = null,
+                LastEdited = DateTime.Now,
+                ReplyId = adId,
+            };
+
+            //Find a user and attach him to the DB context
+            var authorFull = db.Users.Attach(
+                db.Users.FirstOrDefault(u => u.Email == authorEmail));
+            //Attach the user to the Ad
+            comment.Author = authorFull;
+
             db.Comments.Add(comment);
-            db.SaveChanges();
+
+            return comment;
         }
 
         public void DeleteComment(string id)
@@ -83,7 +100,7 @@ namespace BusinessTier
             if (amount > 64)
                 amount = 64; //throttling the amount to spare the db server
 
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            var db = DbContextControl.GetNew();
 
             IQueryable<Comment> query = db.Comments.Where(c => c.ReplyId.Equals(replyId));
 

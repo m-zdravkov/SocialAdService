@@ -67,7 +67,7 @@ namespace BusinessTierTests
         {
             var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.","Aalborg");
-            Assert.IsTrue(control.GetAd(ad)?.Id == ad.Id);
+            Assert.IsTrue(control.GetAd(ad.Id)?.Id == ad.Id);
             control.DeleteAd(ad.Id, author);
         }
 
@@ -78,7 +78,7 @@ namespace BusinessTierTests
             var author = "max.damage@test.com";
             Ad ad = control.PostAd(author, "Unit Test", "This ad was written by a unit test.", "Aalborg");
             control.DeleteAd(ad.Id, author);
-            Assert.IsTrue(control.GetAd(ad) == null);
+            Assert.IsTrue(control.GetAd(ad.Id) == null);
         }
 
         [TestMethod]
@@ -170,6 +170,27 @@ namespace BusinessTierTests
             Ad ad = control.PostAd(author, "Unit Test", "Should not matter what I type here.", "Aalborg", AdType.Buying);
             var results = control.FindAds(0, 100, "", "", AdType.Buying);
             Assert.IsTrue(results.Count > 0);
+            control.DeleteAd(ad.Id, author);
+        }
+
+        [TestMethod]
+        public void TestGetAdComments()
+        {
+            var author = "max.damage@test.com";
+            Ad ad = control.PostAd(author, "Unit Test", "Should not matter what I type here.", "Aalborg", AdType.Buying);
+            CommentControl.GetInstance().PostComment(ad.Id, "Test comment", "max.damage@test.com");
+            var results = control.GetComments(0, 64, ad.Id);
+            Assert.IsTrue(results.Count == 0);
+            control.DeleteAd(ad.Id, author);
+        }
+
+        [TestMethod]
+        public void TestGetAdEmptyComments()
+        {
+            var author = "max.damage@test.com";
+            Ad ad = control.PostAd(author, "Unit Test", "Should not matter what I type here.", "Aalborg", AdType.Buying);
+            var results = control.GetComments(0, 64, ad.Id);
+            Assert.IsTrue(results.Count == 0);
             control.DeleteAd(ad.Id, author);
         }
     }

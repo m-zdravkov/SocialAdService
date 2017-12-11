@@ -12,9 +12,9 @@ using WindowsFormsDedicatedClient.Models;
 
 namespace WindowsFormsDedicatedClient.Views
 {
-    public partial class LoginForm : Form
+    public partial class LogInForm : Form
     {
-        public LoginForm()
+        public LogInForm()
         {
             InitializeComponent();
         }

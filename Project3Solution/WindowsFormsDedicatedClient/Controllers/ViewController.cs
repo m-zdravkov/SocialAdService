@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsDedicatedClient.Models;
+using WindowsFormsDedicatedClient.SaServicePublic;
 using WindowsFormsDedicatedClient.Views;
 
 namespace WindowsFormsDedicatedClient.Controllers
@@ -18,10 +19,11 @@ namespace WindowsFormsDedicatedClient.Controllers
         private static IDictionary<string, Form> _forms;
 
         public static HomeForm HomeForm { get; private set; }
-        public static LoginForm LoginForm { get; private set; }
-        public static SignupForm SignupForm { get; private set; }
+        public static LogInForm LogInForm { get; private set; }
+        public static SignUpForm SignUpForm { get; private set; }
         public static AdForm AdForm { get; private set; }
         public static YourProfileForm YourProfileForm { get; set; }
+        public static SearchForm SearchForm { get; set; }
 
         public static IReadOnlyDictionary<string, Form> Forms{
             get { return _forms as IReadOnlyDictionary<string, Form>; }
@@ -37,8 +39,8 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static void LogInView()
         {
-            LoginForm = new LoginForm();
-            LoginForm.Show();
+            LogInForm = new LogInForm();
+            LogInForm.Show();
         }
 
         public static void LogIn(LoginViewModel lvm)
@@ -46,7 +48,8 @@ namespace WindowsFormsDedicatedClient.Controllers
             if(AuthController.LogIn(lvm))
             {
                 HomeForm.LogIn(lvm);
-                LoginForm.Close();
+                LogInForm.Close();
+                AdForm?.ControlCommentPosting();
             }else
             {
                 MessageBox.Show("Could not log you in with these credentials.",
@@ -56,8 +59,9 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static void SignUpView()
         {
-            SignupForm = new SignupForm();
-            SignupForm.Show();
+            SignUpForm?.Close();
+            SignUpForm = new SignUpForm();
+            SignUpForm.Show();
         }
 
         public static void SignUp(SignupViewModel svm)
@@ -71,7 +75,7 @@ namespace WindowsFormsDedicatedClient.Controllers
                     Password = svm.Password
                 });
 
-                SignupForm.Close();
+                SignUpForm.Close();
             }else
             {
                 MessageBox.Show("Could not register you with these credentials.",
@@ -83,18 +87,34 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             AuthController.LogOut();
             HomeForm.LogOut();
+            AdForm?.ControlCommentPosting();
         }
 
         public static void ViewAd(string id)
         {
-            AdForm = new AdForm();
+            AdForm?.Close();
+            AdForm = new AdForm(AdController.GetAd(id));
             AdForm.Show();
         }
 
         public static void ViewYourProfile()
         {
+            YourProfileForm?.Close();
             YourProfileForm = new YourProfileForm();
             YourProfileForm.Show();
+        }
+
+        public static void SearchView()
+        {
+            SearchForm?.Close();
+            SearchForm = new SearchForm();
+            SearchForm.Show();
+        }
+
+        public static void FindAds(string query, string location, AdType type)
+        {
+            var ads = AdController.FindAds(location, query, type);
+            HomeForm.LoadAds(ads.ToShortAdUcList());
         }
     }
 }

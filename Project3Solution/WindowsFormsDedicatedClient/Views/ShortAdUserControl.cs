@@ -20,6 +20,21 @@ namespace WindowsFormsDedicatedClient.Views
         public ShortAdUserControl(Ad ad)
         {
             InitializeComponent();
+            DisplayAd(ad);
+        }
+
+        private void DisplayAd(Ad ad)
+        {
+            Id = ad.Id;
+            LblTitle.Text = ad.Title;
+            LblAuthor.Text = ad.Author.Name;
+            LblDate.Text = ad.DatePosted.ToShortDateString();
+            LblTime.Text = ad.DatePosted.ToShortTimeString();
+            LblLocation.Text = ad.Location?.Name;
+        }
+
+        private void DisplayAd(SaServicePrivate.Ad ad)
+        {
             Id = ad.Id;
             LblTitle.Text = ad.Title;
             LblDate.Text = ad.DatePosted.ToShortDateString();

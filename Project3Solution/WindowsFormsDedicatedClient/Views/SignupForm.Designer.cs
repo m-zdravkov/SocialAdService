@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsDedicatedClient.Views
 {
-    partial class SignupForm
+    partial class SignUpForm
     {
         /// <summary>
         /// Required designer variable.

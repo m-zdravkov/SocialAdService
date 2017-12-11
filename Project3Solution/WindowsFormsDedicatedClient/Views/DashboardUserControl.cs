@@ -17,7 +17,7 @@ namespace WindowsFormsDedicatedClient.Views
         public DashboardUserControl()
         {
             InitializeComponent();
-            LblUserEmail.Text = AuthHelper.CurrentUser.Email;
+            LblUserEmail.Text = AuthHelper.CurrentUserDetails.Name;
         }
 
         private void BtnLogOut_Click(object sender, EventArgs e)

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsDedicatedClient.Models;
+using WindowsFormsDedicatedClient.SaServicePrivate;
 
 namespace WindowsFormsDedicatedClient.Helpers
 {
@@ -17,11 +18,13 @@ namespace WindowsFormsDedicatedClient.Helpers
             {
                 return _currentUser;
             }
-            set
+            private set
             {
                 _currentUser = value;
             }
         }
+
+        public static User CurrentUserDetails { get; set; }
 
 
         public static bool IsLoggedIn()

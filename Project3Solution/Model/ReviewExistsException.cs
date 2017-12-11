@@ -4,21 +4,21 @@ using System.Runtime.Serialization;
 namespace Model
 {
     [Serializable]
-    internal class ReviewExistsException : Exception
+    internal class ReviewException : Exception
     {
-        public ReviewExistsException()
+        public ReviewException()
         {
         }
 
-        public ReviewExistsException(string message) : base(message)
+        public ReviewException(string message) : base(message)
         {
         }
 
-        public ReviewExistsException(string message, Exception innerException) : base(message, innerException)
+        public ReviewException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected ReviewExistsException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected ReviewException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

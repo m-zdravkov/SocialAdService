@@ -60,13 +60,20 @@
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ViewController.cs" />
-    <Compile Include="Models\AdList.cs" />
+    <Compile Include="Models\PostExtendedMethods.cs" />
+    <Compile Include="Models\ServiceConversionExtendedMethods.cs" />
     <Compile Include="Models\SignupViewModel.cs" />
     <Compile Include="Views\AdForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\AdForm.Designer.cs">
       <DependentUpon>AdForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommentUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CommentUserControl.Designer.cs">
+      <DependentUpon>CommentUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardUserControl.cs">
       <SubType>UserControl</SubType>
@@ -123,6 +130,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Views\AdForm.resx">
       <DependentUpon>AdForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CommentUserControl.resx">
+      <DependentUpon>CommentUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\DashboardUserControl.resx">
       <DependentUpon>DashboardUserControl.cs</DependentUpon>

@@ -21,6 +21,11 @@ namespace WindowsFormsDedicatedClient.Controllers
                     if (client.Login(lvm.Email, lvm.Password))
                     {
                         AuthHelper.LogIn(lvm);
+
+                        using (var privateClient = ServiceHelper.GetServiceClientLoggedIn())
+                        {
+                            AuthHelper.CurrentUserDetails = privateClient.GetAuthenticatedUser();
+                        }
                         return true;
                     }
                     else
@@ -41,8 +46,7 @@ namespace WindowsFormsDedicatedClient.Controllers
             {
                 try
                 {
-                    client.Register(svm.Email, svm.Name, svm.Password, "http://test.com/image.jpg");
-                    return true;
+                    return client.Register(svm.Email, svm.Name, svm.Password, "http://test.com/image.jpg");
                 }
                 catch (Exception ex)
                 {
@@ -56,6 +60,18 @@ namespace WindowsFormsDedicatedClient.Controllers
         public static void LogOut()
         {
             AuthHelper.LogOut();
+        }
+
+        public static SaServicePrivate.User GetUpdatedCurrentUserDetails()
+        {
+            SaServicePrivate.User user = null;
+            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            {
+                user = client.GetCurrentUser();
+                AuthHelper.CurrentUserDetails = user;
+            }
+
+            return user;
         }
     }
 }

@@ -68,6 +68,7 @@
             this.RbOther.TabStop = true;
             this.RbOther.Text = "Other";
             this.RbOther.UseVisualStyleBackColor = true;
+            this.RbOther.CheckedChanged += new System.EventHandler(this.RbOther_CheckedChanged);
             // 
             // RbEvents
             // 
@@ -79,6 +80,7 @@
             this.RbEvents.TabStop = true;
             this.RbEvents.Text = "Events";
             this.RbEvents.UseVisualStyleBackColor = true;
+            this.RbEvents.CheckedChanged += new System.EventHandler(this.RbEvents_CheckedChanged);
             // 
             // RbServiceRequests
             // 
@@ -90,6 +92,7 @@
             this.RbServiceRequests.TabStop = true;
             this.RbServiceRequests.Text = "Service requests";
             this.RbServiceRequests.UseVisualStyleBackColor = true;
+            this.RbServiceRequests.CheckedChanged += new System.EventHandler(this.RbServiceRequests_CheckedChanged);
             // 
             // RbServiceOffers
             // 
@@ -101,6 +104,7 @@
             this.RbServiceOffers.TabStop = true;
             this.RbServiceOffers.Text = "Service offers";
             this.RbServiceOffers.UseVisualStyleBackColor = true;
+            this.RbServiceOffers.CheckedChanged += new System.EventHandler(this.RbServiceOffers_CheckedChanged);
             // 
             // RbBuying
             // 
@@ -112,6 +116,7 @@
             this.RbBuying.TabStop = true;
             this.RbBuying.Text = "Buying ads";
             this.RbBuying.UseVisualStyleBackColor = true;
+            this.RbBuying.CheckedChanged += new System.EventHandler(this.RbBuying_CheckedChanged);
             // 
             // RbSelling
             // 
@@ -123,6 +128,7 @@
             this.RbSelling.TabStop = true;
             this.RbSelling.Text = "Selling ads";
             this.RbSelling.UseVisualStyleBackColor = true;
+            this.RbSelling.CheckedChanged += new System.EventHandler(this.RbSelling_CheckedChanged);
             // 
             // RbAll
             // 
@@ -134,6 +140,7 @@
             this.RbAll.TabStop = true;
             this.RbAll.Text = "All ads";
             this.RbAll.UseVisualStyleBackColor = true;
+            this.RbAll.CheckedChanged += new System.EventHandler(this.RbAll_CheckedChanged);
             // 
             // BtnSearch
             // 
