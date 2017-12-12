@@ -23,7 +23,6 @@ namespace WindowsFormsDedicatedClient
         {
             InitializeComponent();
             LoadAd(ad);
-            ReloadComments();
             ControlCommentPosting();
         }
 
@@ -40,6 +39,8 @@ namespace WindowsFormsDedicatedClient
             LblDate.Text = ad.DatePosted.ToShortDateString();
             LblTime.Text = ad.DatePosted.ToShortTimeString();
             RtbContent.Text = ad.Content;
+            TbId.Text = ad.Id;
+            this.Text = ad.Title + " - Social Ad Service";
 
             DetermineReserveText();
             DetermineReserveButton();
@@ -47,14 +48,14 @@ namespace WindowsFormsDedicatedClient
             ReloadComments();
         }
 
-        private void LoadComments(CommentUserControl[] comments, bool clearFirst = true)
+        private void LoadComments(CommentUserControl[] list, bool clearFirst = true)
         {
             if (clearFirst)
                 PanelComments.Controls.Clear();
 
-            if(comments.Length > 0)
+            if(list?.Length > 0)
             {
-                foreach (var comment in comments)
+                foreach (var comment in list)
                 {
                     PanelComments.Controls.Add(comment);
                 }

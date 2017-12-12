@@ -41,8 +41,8 @@
             this.LblDateRegistered = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.PanelReservedAds = new System.Windows.Forms.Panel();
-            this.PanelYourAds = new System.Windows.Forms.Panel();
+            this.PanelReservedAds = new System.Windows.Forms.FlowLayoutPanel();
+            this.PanelYourAds = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();

@@ -30,12 +30,12 @@
         {
             this.LblAuthor = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.PanelComment = new System.Windows.Forms.Panel();
+            this.RtbComment = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.LblDatePosted = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.LblTimePosted = new System.Windows.Forms.Label();
-            this.PanelComment = new System.Windows.Forms.Panel();
-            this.RtbComment = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.PanelComment.SuspendLayout();
             this.SuspendLayout();
@@ -58,6 +58,25 @@
             this.groupBox1.Size = new System.Drawing.Size(331, 78);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            // 
+            // PanelComment
+            // 
+            this.PanelComment.AutoScroll = true;
+            this.PanelComment.Controls.Add(this.RtbComment);
+            this.PanelComment.Location = new System.Drawing.Point(5, 9);
+            this.PanelComment.Name = "PanelComment";
+            this.PanelComment.Size = new System.Drawing.Size(320, 63);
+            this.PanelComment.TabIndex = 0;
+            // 
+            // RtbComment
+            // 
+            this.RtbComment.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.RtbComment.Location = new System.Drawing.Point(0, 4);
+            this.RtbComment.Name = "RtbComment";
+            this.RtbComment.ReadOnly = true;
+            this.RtbComment.Size = new System.Drawing.Size(317, 56);
+            this.RtbComment.TabIndex = 0;
+            this.RtbComment.Text = "";
             // 
             // label1
             // 
@@ -98,24 +117,6 @@
             this.LblTimePosted.Size = new System.Drawing.Size(53, 13);
             this.LblTimePosted.TabIndex = 5;
             this.LblTimePosted.Text = "00:00 AM";
-            // 
-            // PanelComment
-            // 
-            this.PanelComment.AutoScroll = true;
-            this.PanelComment.Controls.Add(this.RtbComment);
-            this.PanelComment.Location = new System.Drawing.Point(5, 9);
-            this.PanelComment.Name = "PanelComment";
-            this.PanelComment.Size = new System.Drawing.Size(320, 63);
-            this.PanelComment.TabIndex = 0;
-            // 
-            // RtbComment
-            // 
-            this.RtbComment.Enabled = false;
-            this.RtbComment.Location = new System.Drawing.Point(0, 4);
-            this.RtbComment.Name = "RtbComment";
-            this.RtbComment.Size = new System.Drawing.Size(317, 56);
-            this.RtbComment.TabIndex = 0;
-            this.RtbComment.Text = "";
             // 
             // CommentUserControl
             // 

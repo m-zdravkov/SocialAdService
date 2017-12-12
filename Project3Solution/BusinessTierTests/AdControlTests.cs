@@ -193,5 +193,18 @@ namespace BusinessTierTests
             Assert.IsTrue(results.Count == 0);
             control.DeleteAd(ad.Id, author);
         }
+
+        [TestMethod]
+        public void TestGetAdMultipleComments()
+        {
+            var author = "max.damage@test.com";
+            Ad ad = control.PostAd(author, "Unit Test", "Should not matter what I type here.", "Aalborg", AdType.Buying);
+            CommentControl.GetInstance().PostComment(ad.Id, "Test comment", "max.damage@test.com");
+            CommentControl.GetInstance().PostComment(ad.Id, "Test comment", "max.damage@test.com");
+            CommentControl.GetInstance().PostComment(ad.Id, "Test comment", "max.damage@test.com");
+            var results = control.GetComments(0, 64, ad.Id);
+            control.DeleteAd(ad.Id, author);
+            Assert.IsTrue(results.Count == 3);
+        }
     }
 }

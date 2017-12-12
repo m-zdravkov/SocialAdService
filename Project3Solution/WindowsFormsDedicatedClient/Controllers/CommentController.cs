@@ -20,7 +20,7 @@ namespace WindowsFormsDedicatedClient.Controllers
             {
                 comments = client.GetAdReplies(0, 64, adId);
             }
-
+            
             return comments;
         }
 

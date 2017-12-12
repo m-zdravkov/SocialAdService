@@ -46,6 +46,7 @@ namespace BusinessTier
             comment.Author = authorFull;
 
             db.Comments.Add(comment);
+            db.SaveChanges();
 
             return comment;
         }
@@ -108,9 +109,14 @@ namespace BusinessTier
 
             var db = DbContextControl.GetNew();
 
-            IQueryable<Comment> query = db.Comments.Where(c => c.ReplyId.Equals(replyId));
+            IQueryable<Comment> query = db.Comments;
 
-            var pagedQuery = query.OrderBy(p => p.DatePosted).Skip(skip).Take(amount).ToList();
+            var pagedQuery = query.Where(c => c.ReplyId == replyId)
+                .OrderByDescending(c => c.DatePosted)
+                .Skip(skip)
+                .Take(amount)
+                .Include(c => c.Author)
+                .ToList();
 
             return pagedQuery;
         }

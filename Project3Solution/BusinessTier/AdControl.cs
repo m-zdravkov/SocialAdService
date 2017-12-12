@@ -109,7 +109,7 @@ namespace BusinessTier
             if (amount > Throttle)
                 amount = Throttle;
 
-            Model.ServiceDbContext db = new Model.ServiceDbContext();
+            var db = DbContextControl.GetNew();
 
             IQueryable<Ad> query = db.Ads;
 
@@ -119,6 +119,7 @@ namespace BusinessTier
                 .Take(amount)
                 .Include(a => a.Author)
                 .Include(a => a.Location)
+                .Include(a => a.ReservedBy)
                 .ToList();
 
             return pagedQuery;
@@ -218,8 +219,7 @@ namespace BusinessTier
 
             //Delimit to ads that are within a location, use this as base for the search query
             //Also order by date posted
-            IQueryable<Ad> query = db.Ads.OrderByDescending(a => a.DatePosted)
-                .Include("Location");
+            IQueryable<Ad> query = db.Ads.Include(a => a.Location);
 
             //A complex and heavy SQL query to find the searchQuery string within ad titles, contents and categories
             //We are using the keywords list instead of the searchQuery directly
@@ -236,10 +236,12 @@ namespace BusinessTier
 
             //Order the query by list
             //Delimit the query to take only a page of results and append the Authors to the ads
-            var pagedQuery = query.OrderBy(a => a.DatePosted)
+            var pagedQuery = query.OrderByDescending(a => a.DatePosted)
                 .Skip(skip)
                 .Take(amount)
                 .Include(a => a.Author)
+                .Include(a => a.ReservedBy)
+                .Include(a => a.Price)
                 .ToList();
 
             return pagedQuery;
@@ -346,9 +348,13 @@ namespace BusinessTier
             User user = UserControl.GetInstance().GetUser(userEmail);
             var userId = user.Id;
             var db = DbContextControl.GetNew();
-            return db.Ads.Include("Author").Include("Location")
-                .Include("Price").Include("ReservedBy").OrderByDescending(a => a.DatePosted)
-                .Where(a => a.Author.Id == userId).ToList();
+            return db.Ads.Where(a => a.Author.Id == userId)
+                .Include("Author")
+                .Include("Location")
+                .Include("Price")
+                .Include("ReservedBy")
+                .OrderByDescending(a => a.DatePosted)
+                .ToList();
         }
 
         /// <summary>
@@ -362,9 +368,13 @@ namespace BusinessTier
             User user = UserControl.GetInstance().GetUser(userEmail);
             var userId = user.Id;
             var db = DbContextControl.GetNew();
-            return db.Ads.Include("Author").Include("Location")
-                .Include("Price").Include("ReservedBy").OrderByDescending(a => a.DatePosted)
-                .Where(a => a.ReservedBy.Id == userId).ToList();
+            return db.Ads.Where(a => a.ReservedBy.Id == userId)
+                .Include("Author")
+                .Include("Location")
+                .Include("Price")
+                .Include("ReservedBy")
+                .OrderByDescending(a => a.DatePosted)
+                .ToList();
         }
     }
 }
