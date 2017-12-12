@@ -23,7 +23,7 @@ namespace WindowsFormsDedicatedClient
         {
             InitializeComponent();
             LoadAd(ad);
-            ControlCommentPosting();
+            DetermineLoggedIn();
         }
 
         private void LoadAd(Ad ad)
@@ -41,10 +41,7 @@ namespace WindowsFormsDedicatedClient
             RtbContent.Text = ad.Content;
             TbId.Text = ad.Id;
             this.Text = ad.Title + " - Social Ad Service";
-
-            DetermineReserveText();
-            DetermineReserveButton();
-            DetermineDeleteButton();
+            
             ReloadComments();
         }
 
@@ -67,9 +64,12 @@ namespace WindowsFormsDedicatedClient
             LoadComments(CommentController.GetAdComments(_currentAd.Id).ToCommentUcList());
         }
 
-        public void ControlCommentPosting()
+        public void DetermineLoggedIn()
         {
             TbComment.Enabled = AuthHelper.IsLoggedIn();
+            DetermineReserveText();
+            DetermineReserveButton();
+            DetermineDeleteButton();
         }
 
         private void BtnPostComment_Click(object sender, EventArgs e)
@@ -141,6 +141,7 @@ namespace WindowsFormsDedicatedClient
         private void BtnDelete_Click(object sender, EventArgs e)
         {
             AdController.DeleteAd(_currentAd.Id);
+            this.Close();
         }
     }
 }

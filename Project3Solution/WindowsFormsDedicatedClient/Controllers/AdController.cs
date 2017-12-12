@@ -86,9 +86,9 @@ namespace WindowsFormsDedicatedClient.Controllers
                     client.ReserveAd(id);
                     AuthController.GetUpdatedCurrentUserDetails();
                 }
-            }catch(Exception ex)
+            } catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong and the ad couldn't be reserved.\nTechnical details:\n\n"+ex.Message,
+                MessageBox.Show("Something went wrong and the ad couldn't be reserved.\nTechnical details:\n\n" + ex.Message,
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -103,10 +103,30 @@ namespace WindowsFormsDedicatedClient.Controllers
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Could not delete ad.\nTechnical details\n\n"+ex.Message,
+                    MessageBox.Show("Could not delete ad.\nTechnical details\n\n" + ex.Message,
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+            ViewController.UpdateAds();
+        }
+
+        public static void PostAd(string title, string content, string location, SaServicePrivate.AdType type)
+        {
+            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            {
+                try
+                {
+                    client.PostAd(title, content, location, type);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Could not post ad.\nTechnical details\n\n" + ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+            ViewController.UpdateAds();
         }
     }
 }

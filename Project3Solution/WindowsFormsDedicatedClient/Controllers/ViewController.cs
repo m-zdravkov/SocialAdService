@@ -24,6 +24,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         public static AdForm AdForm { get; private set; }
         public static YourProfileForm YourProfileForm { get; set; }
         public static SearchForm SearchForm { get; set; }
+        public static PostAdForm PostAdForm { get; set; }
 
         public static IReadOnlyDictionary<string, Form> Forms{
             get { return _forms as IReadOnlyDictionary<string, Form>; }
@@ -50,7 +51,7 @@ namespace WindowsFormsDedicatedClient.Controllers
             {
                 HomeForm.LogIn(lvm);
                 LogInForm.Close();
-                AdForm?.ControlCommentPosting();
+                AdForm?.DetermineLoggedIn();
             }else
             {
                 MessageBox.Show("Could not log you in with these credentials.",
@@ -88,7 +89,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             AuthController.LogOut();
             HomeForm.LogOut();
-            AdForm?.ControlCommentPosting();
+            AdForm?.DetermineLoggedIn();
         }
 
         public static void ViewAd(string id)
@@ -116,6 +117,18 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             var ads = AdController.FindAds(location, query, type);
             HomeForm.LoadAds(ads.ToShortAdUcList());
+        }
+
+        public static void PostAdView()
+        {
+            PostAdForm?.Close();
+            PostAdForm = new PostAdForm();
+            PostAdForm.Show();
+        }
+
+        public static void UpdateAds()
+        {
+            HomeForm.UpdateAds();
         }
     }
 }

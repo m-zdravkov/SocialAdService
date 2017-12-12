@@ -23,6 +23,7 @@ namespace WindowsFormsDedicatedClient
             LogOut(); //Need this to initialize the components in the dashboard
             LoadAds(AdController.GetAds().ToShortAdUcList());
             RbAll.Select();
+            BtnPost.Enabled = false;
         }
 
         /// <summary>
@@ -34,6 +35,7 @@ namespace WindowsFormsDedicatedClient
             PanelDashboard.Controls.Clear();
             PanelDashboard.Controls.Add(ctlDashboard);
             UpdateAds();
+            BtnPost.Enabled = true;
         }
 
         /// <summary>
@@ -45,9 +47,10 @@ namespace WindowsFormsDedicatedClient
             PanelDashboard.Controls.Clear();
             PanelDashboard.Controls.Add(ctlDashboard);
             UpdateAds();
+            BtnPost.Enabled = false;
         }
 
-        private void UpdateAds()
+        public void UpdateAds()
         {
             LoadAds(AdController.GetAds().ToShortAdUcList());
             RbAll.Checked = true;
@@ -116,6 +119,11 @@ namespace WindowsFormsDedicatedClient
         private void RbOther_CheckedChanged(object sender, EventArgs e)
         {
             LoadAdsType(AdType.Other);
+        }
+
+        private void BtnPost_Click(object sender, EventArgs e)
+        {
+            ViewController.PostAdView();
         }
     }
 }

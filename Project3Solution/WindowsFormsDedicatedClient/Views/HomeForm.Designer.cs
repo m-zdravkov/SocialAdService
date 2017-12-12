@@ -39,6 +39,7 @@
             this.BtnSearch = new System.Windows.Forms.Button();
             this.PanelDashboard = new System.Windows.Forms.Panel();
             this.AdPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.BtnPost = new System.Windows.Forms.Button();
             this.GbViewing.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,11 +174,22 @@
             this.AdPanel.TabIndex = 0;
             this.AdPanel.MouseEnter += new System.EventHandler(this.AdPanel_MouseEnter);
             // 
+            // BtnPost
+            // 
+            this.BtnPost.Location = new System.Drawing.Point(15, 259);
+            this.BtnPost.Name = "BtnPost";
+            this.BtnPost.Size = new System.Drawing.Size(122, 23);
+            this.BtnPost.TabIndex = 4;
+            this.BtnPost.Text = "Post";
+            this.BtnPost.UseVisualStyleBackColor = true;
+            this.BtnPost.Click += new System.EventHandler(this.BtnPost_Click);
+            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 295);
+            this.Controls.Add(this.BtnPost);
             this.Controls.Add(this.AdPanel);
             this.Controls.Add(this.BtnSearch);
             this.Controls.Add(this.GbViewing);
@@ -202,6 +214,7 @@
         private System.Windows.Forms.Button BtnSearch;
         private System.Windows.Forms.Panel PanelDashboard;
         private System.Windows.Forms.FlowLayoutPanel AdPanel;
+        private System.Windows.Forms.Button BtnPost;
     }
 }
 
