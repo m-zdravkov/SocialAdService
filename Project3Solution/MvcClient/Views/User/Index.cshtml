@@ -8,6 +8,7 @@
 
 <h2>Your profile - @Model.User.Name</h2>
 <hr />
+Email: @Model.User.Email
 @using (Html.BeginForm("BuyReservations","User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()

@@ -7,7 +7,7 @@
     ViewBag.Title = Model.Ad.Title;
 }
 
-@Html.Partial("AdPartial", Model.Ad)
+@Html.Partial("AdPartial", Model)
 
 @if (AuthHelper.IsLoggedIn())
 {
