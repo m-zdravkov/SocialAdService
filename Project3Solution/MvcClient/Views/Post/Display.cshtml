@@ -1,20 +1,20 @@
 ﻿@using MvcClient.AuthService;
 @using MvcClient.Helpers;
 @using MvcClient.Models;
-@model MvcClient.AuthService.Ad
+@model AdWithCommentsViewModel
 
 @{
-    ViewBag.Title = "Ad";
+    ViewBag.Title = Model.Ad.Title;
 }
 
-@Html.Partial("AdPartial", Model)
+@Html.Partial("AdPartial", Model.Ad)
 
 @if (AuthHelper.IsLoggedIn())
 {
-    @Html.Partial("PostComment", new PostCommentViewModel { Id = Model.Id });
+    @Html.Partial("PostComment", new PostCommentViewModel { Id = Model.Ad.Id });
 }
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Ad.Id }) |
     @Html.ActionLink("Back to Home", "Index", "Home")
 </p>

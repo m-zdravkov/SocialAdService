@@ -1,25 +1,24 @@
-﻿@using MvcClient.AuthService
-@model Ad
+﻿@using MvcClient.AuthService;
+@using MvcClient.Models;
+@model AdWithCommentsViewModel
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h2>@Html.ActionLink(Model.Title,"Display","Post", new { id = Model.Id }, null)</h2>
+        <h2>@Html.ActionLink(Model.Ad.Title,"Display","Post", new { id = Model.Ad.Id }, null)</h2>
         <hr />
-    </div>
-    <div>
-        <p>By @Model.Author.Name</p>
+
+        <p>By @Model.Ad.Author.Name</p>
         <p class="text-muted">
-            Posted on @Model.DatePosted.ToShortDateString()
-            at @Model.DatePosted.ToShortTimeString()
-            in @Model.Location.Name
+            Posted on @Model.Ad.DatePosted.ToShortDateString()
+            at @Model.Ad.DatePosted.ToShortTimeString()
+            in @Model.Ad.Location.Name
         </p>
-    </div>
-    <div>
-        @Model.Content
+
+        <p>@Model.Ad.Content</p>
     </div>
     <hr />
     <div>
-        @if (TempData["comments"] == null)
+        @if (Model.Comments?.Length == 0)
         {
             <div class="alert-warning">
                 This ad has no comments yet.
@@ -31,8 +30,7 @@
                 <div class="panel-heading">Comments</div>
                 <div class="panel-body">
                     @{
-                        Comment[] comments = TempData["comments"] as Comment[];
-                        foreach (var c in comments)
+                        foreach (var c in Model.Comments)
                         {
                             <h4>@c.Author.Name</h4>
                             <div>

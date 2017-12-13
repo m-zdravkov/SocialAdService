@@ -53,8 +53,14 @@ namespace MvcClient.Controllers
 
             var client = ServiceHelper.GetAuthServiceClient();
             var ad = client.GetAd(id);
-            TempData["comments"] = client.GetAdReplies(0, 64, id);
-            return View(ad);
+            var comments = client.GetAdReplies(0, 64, id);
+            var adWithComments = new AdWithCommentsViewModel
+            {
+                Ad = ad,
+                Comments = comments,
+            };
+
+            return View(adWithComments);
         }
 
         [HttpPost]

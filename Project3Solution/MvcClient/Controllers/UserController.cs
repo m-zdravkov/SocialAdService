@@ -24,11 +24,14 @@ namespace MvcClient.Controllers
                 {
                     var reserved = publicClient.GetReservedAds(user.Email);
                     var posted = publicClient.GetPostedAds(user.Email);
+                    var awcReserved = reserved.AttachReplies(publicClient);
+                    var awcPosted = posted.AttachReplies(publicClient);
+
                     var profile = new ProfileViewModel
                     {
                         User = user,
-                        ReservedAds = reserved,
-                        PostedAds = posted,
+                        ReservedAds = awcReserved,
+                        PostedAds = awcPosted,
                     };
 
                     return View(profile);
