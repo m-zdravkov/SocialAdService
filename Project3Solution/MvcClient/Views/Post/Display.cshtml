@@ -1,18 +1,19 @@
 ﻿@using MvcClient.AuthService;
+@using MvcClient.Helpers;
 @model MvcClient.AuthService.Ad
 
 @{
     ViewBag.Title = "Ad";
 }
 
-@Html.Partial("Ad", Model);
+@Html.Partial("AdPartial", Model);
 
-@using (Html.BeginForm())
+@if (AuthHelper.IsLoggedIn())
 {
-
+    @Html.Partial("PostComment");
 }
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to Home", "Index", "Home")
 </p>

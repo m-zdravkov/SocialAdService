@@ -315,8 +315,9 @@
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\Post\Display.cshtml" />
     <Content Include="Views\User\About.cshtml" />
-    <Content Include="Views\Shared\Ad.cshtml" />
+    <Content Include="Views\Shared\AdPartial.cshtml" />
     <Content Include="Views\Shared\PostComment.cshtml" />
+    <Content Include="Views\Shared\ShortAdPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
