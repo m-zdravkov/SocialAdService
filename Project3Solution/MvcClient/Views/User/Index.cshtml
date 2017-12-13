@@ -8,7 +8,10 @@
 
 <h2>Your profile - @Model.User.Name</h2>
 <hr />
-Email: @Model.User.Email
+<ul class="list-group">
+    <li class="list-group-item">Email: @Model.User.Email</li>
+    <li class="list-group-item">Joined on @Model.User.DateRegistered.ToShortDateString()</li>
+</ul>
 @using (Html.BeginForm("BuyReservations","User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
@@ -37,13 +40,21 @@ Email: @Model.User.Email
     @{
         if (Model.ReservedAds?.Count() > 0)
         {
-            <h3>Your reserved ads (@Model.ReservedAds.Count())</h3>
+            <h3>
+                Your reserved ads (@Model.ReservedAds.Count())
+                <button class="btn btn-default btn-sm pull-right"
+                        data-toggle="collapse"
+                        data-target="#reserved">
+                    Hide
+                </button>
+            </h3>
             <hr />
-            foreach (AdWithCommentsViewModel awc in Model.ReservedAds)
-            {
-                Html.RenderPartial("AdPartial", awc);
-
-            }
+            <div id="reserved" class="collapse in">
+                @foreach (AdWithCommentsViewModel awc in Model.ReservedAds)
+                {
+                    Html.RenderPartial("AdPartial", awc);
+                }
+            </div>
         }
         else
         {
@@ -60,14 +71,23 @@ Email: @Model.User.Email
     @{
         if (Model.PostedAds?.Count() > 0)
         {
-            <h3>Your posted ads (@Model.PostedAds.Count())</h3>
+            <h3>
+                Your posted ads (@Model.PostedAds.Count())
+                <button class="btn btn-default btn-sm pull-right"
+                        data-toggle="collapse"
+                        data-target="#posted">
+                    Hide
+                </button>
+            </h3>
             <hr />
 
-            foreach (AdWithCommentsViewModel awc in Model.PostedAds)
-            {
-                Html.RenderPartial("AdPartial", awc);
+            <div id="posted" class="collapse in">
+                @foreach (AdWithCommentsViewModel awc in Model.PostedAds)
+                {
+                    Html.RenderPartial("AdPartial", awc);
 
-            }
+                }
+            </div>
         }
         else
         {

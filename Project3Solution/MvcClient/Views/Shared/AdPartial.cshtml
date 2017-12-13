@@ -7,7 +7,10 @@
         <h2>@Html.ActionLink(Model.Ad.Title,"Display","Post", new { id = Model.Ad.Id }, null)</h2>
         <hr />
 
-        <p>By @Model.Ad.Author.Name</p>
+        <p>
+            '@Html.DisplayFor(model => model.Ad.Type)' ad
+            by @Model.Ad.Author.Name
+        </p>
         <p class="text-muted">
             Posted on @Model.Ad.DatePosted.ToShortDateString()
             at @Model.Ad.DatePosted.ToShortTimeString()
@@ -27,8 +30,15 @@
         else
         {
             <div class="panel panel-default">
-                <div class="panel-heading">Comments</div>
-                <div class="panel-body">
+                <div class="panel-heading">
+                    Comments
+                    <button class="btn btn-default btn-sm pull-right"
+                            data-toggle="collapse"
+                            data-target="#comments_@Model.Ad.Id">
+                        Hide
+                    </button>
+                </div>
+                <div class="panel-body collapse in" id="comments_@Model.Ad.Id">
                     @{
                         foreach (var c in Model.Comments)
                         {
