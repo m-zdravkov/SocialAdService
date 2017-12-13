@@ -24,10 +24,14 @@ namespace MvcClient.Controllers
                 {
                     var reserved = publicClient.GetReservedAds(user.Email);
                     var posted = publicClient.GetPostedAds(user.Email);
-                    TempData["reservedAds"] = reserved;
-                    TempData["postedAds"] = posted;
+                    var profile = new ProfileViewModel
+                    {
+                        User = user,
+                        ReservedAds = reserved,
+                        PostedAds = posted,
+                    };
 
-                    return View(user);
+                    return View(profile);
                 } 
             }
         }

@@ -193,6 +193,7 @@
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\PostAdViewModel.cs" />
     <Compile Include="Models\PostCommentViewModel.cs" />
+    <Compile Include="Models\ProfileViewModel.cs" />
     <Compile Include="Models\SearchQueryViewModel.cs" />
     <Compile Include="Models\UserRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

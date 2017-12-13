@@ -1,18 +1,18 @@
-﻿@using MvcClient.SocialAdService;
-@model MvcClient.SocialAdService.User
+﻿@using MvcClient.AuthService;
+@model MvcClient.Models.ProfileViewModel
 
 @{
-    ViewBag.Title = Model.Name;
+    ViewBag.Title = Model.User.Name;
 }
 
-<h2>Your profile - @Model.Name</h2>
+<h2>Your profile - @Model.User.Name</h2>
 <hr />
 @using (Html.BeginForm("BuyReservations","User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        Available reservations: @Model.Reservations
+        Available reservations: @Model.User.Reservations
         <div class="col-md-10">
             <input type="submit" value="Buy Reservations" class="btn btn-default btn-sm"/>
         </div>
@@ -23,7 +23,7 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        Available post boosts: @Model.Boosts
+        Available post boosts: @Model.User.Boosts
         <div class="col-md-10">
             <input type="submit" value="Buy Boosts" class="btn btn-default btn-sm" />
         </div>
@@ -33,31 +33,45 @@
 <br />
 <div>
     @{
-        Ad[] list = TempData["reservedAds"] as Ad[];
-        if (list?.Count() > 0)
+        if (Model.ReservedAds?.Count() > 0)
         {
-            <h3>Your reserved ads (@list.Count())</h3>
+            <h3>Your reserved ads (@Model.ReservedAds.Count())</h3>
             <hr />
-            foreach (var ad in list)
+            foreach (Ad ad in Model.ReservedAds)
             {
                 Html.RenderPartial("AdPartial", ad);
             }
+        }
+        else
+        {
+            <div class="alert-warning">
+                We couldn't find any ads that you reserved.
+                <br />
+                Want to @Html.ActionLink("find", "Index", "Search") something to buy?
+            </div>
         }
     }
 </div>
 <br />
 <div>
     @{
-        list = TempData["postedAds"] as Ad[];
-        if (list?.Count() > 0)
+        if (Model.PostedAds?.Count() > 0)
         {
-            <h3>Your posted ads (@list.Count())</h3>
+            <h3>Your posted ads (@Model.PostedAds.Count())</h3>
             <hr />
 
-            foreach (var ad in list)
+            foreach (Ad ad in Model.PostedAds)
             {
                 Html.RenderPartial("AdPartial", ad);
             }
+        }
+        else
+        {
+            <div class="alert-warning">
+                We couldn't find any ads that you posted.
+                <br />
+                Want to @Html.ActionLink("get started", "Ad", "Post")?
+            </div>
         }
     }
 </div>
