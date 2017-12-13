@@ -80,10 +80,18 @@ namespace BusinessTier
                 db.Prices.Remove(price);
             }
 
+            var comments = db.Comments.Where(c => c.ReplyId == id);
+            db.Comments.RemoveRange(comments);
+
             db.Ads.Remove(toDelete);
             
             //db.Entry(toDelete).State = EntityState.Deleted;
             db.SaveChanges();
+        }
+
+        public IList<Ad> GetPostedAds(object userEmail)
+        {
+            throw new NotImplementedException();
         }
 
         public Ad GetAd(string id)

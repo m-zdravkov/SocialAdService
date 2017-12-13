@@ -791,6 +791,18 @@ namespace MvcClient.AuthService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
         System.Threading.Tasks.Task<MvcClient.AuthService.Ad> GetAdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetPostedAds", ReplyAction="http://tempuri.org/IAuthService/GetPostedAdsResponse")]
+        MvcClient.AuthService.Ad[] GetPostedAds(string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetPostedAds", ReplyAction="http://tempuri.org/IAuthService/GetPostedAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetPostedAdsAsync(string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetReservedAds", ReplyAction="http://tempuri.org/IAuthService/GetReservedAdsResponse")]
+        MvcClient.AuthService.Ad[] GetReservedAds(string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetReservedAds", ReplyAction="http://tempuri.org/IAuthService/GetReservedAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetReservedAdsAsync(string userEmail);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -874,6 +886,22 @@ namespace MvcClient.AuthService {
         
         public System.Threading.Tasks.Task<MvcClient.AuthService.Ad> GetAdAsync(string id) {
             return base.Channel.GetAdAsync(id);
+        }
+        
+        public MvcClient.AuthService.Ad[] GetPostedAds(string userEmail) {
+            return base.Channel.GetPostedAds(userEmail);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetPostedAdsAsync(string userEmail) {
+            return base.Channel.GetPostedAdsAsync(userEmail);
+        }
+        
+        public MvcClient.AuthService.Ad[] GetReservedAds(string userEmail) {
+            return base.Channel.GetReservedAds(userEmail);
+        }
+        
+        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetReservedAdsAsync(string userEmail) {
+            return base.Channel.GetReservedAdsAsync(userEmail);
         }
     }
 }

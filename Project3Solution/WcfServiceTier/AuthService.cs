@@ -74,5 +74,15 @@ namespace WcfServiceTier
         {
             return AdControl.GetInstance().GetAd(id);
         }
+
+        public IList<Ad> GetPostedAds(string userEmail)
+        {
+            return AdControl.GetInstance().GetPostedAds(userEmail);
+        }
+
+        public IList<Ad> GetReservedAds(string userEmail)
+        {
+            return AdControl.GetInstance().GetReservedAds(userEmail);
+        }
     }
 }

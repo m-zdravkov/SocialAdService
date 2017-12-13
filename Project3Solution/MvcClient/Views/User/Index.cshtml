@@ -2,27 +2,31 @@
 @model MvcClient.SocialAdService.User
 
 @{
-    ViewBag.Title = "Profile";
+    ViewBag.Title = Model.Name;
 }
 
 <h2>Your profile - @Model.Name</h2>
 <hr />
-@using (Html.BeginForm())
+@using (Html.BeginForm("BuyReservations","User", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
-    <div class="col-md-10">
+    <div class="form-group">
         Available reservations: @Model.Reservations
+        <div class="col-md-10">
+            <input type="submit" value="Buy Reservations" class="btn btn-default btn-sm"/>
+        </div>
     </div>
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Buy Reservations" class="btn btn-default"/>
-    </div>
+}
+@using (Html.BeginForm("BuyBoosts","User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
 
-    <div class="col-md-10">
+    <div class="form-group">
         Available post boosts: @Model.Boosts
-    </div>
-    <div class="col-md-offset-2 col-md-10">
-        <input type="submit" value="Buy Boosts" class="btn btn-default" />
+        <div class="col-md-10">
+            <input type="submit" value="Buy Boosts" class="btn btn-default btn-sm" />
+        </div>
     </div>
 }
 <br />
@@ -36,17 +40,7 @@
             <hr />
             foreach (var ad in list)
             {
-                Html.Partial("Ad", ad);
-                <!--
-                <div>
-                    <h4>
-                        "@ad.Title" by @ad.Author.Name in @ad.Location.Name
-                    </h4>
-                    <br />
-                    @ad.Content
-                    <hr />
-                </div>
-                 -->
+                Html.RenderPartial("AdPartial", ad);
             }
         }
     }
@@ -62,7 +56,7 @@
 
             foreach (var ad in list)
             {
-                Html.Partial("Ad", ad);
+                Html.RenderPartial("AdPartial", ad);
             }
         }
     }

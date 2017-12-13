@@ -75,6 +75,18 @@
   <wsdl:message name="IAuthService_GetAd_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAdResponse" />
   </wsdl:message>
+  <wsdl:message name="IAuthService_GetPostedAds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostedAds" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_GetPostedAds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPostedAdsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_GetReservedAds_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservedAds" />
+  </wsdl:message>
+  <wsdl:message name="IAuthService_GetReservedAds_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReservedAdsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IAuthService">
     <wsdl:operation name="Login">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/Login" message="tns:IAuthService_Login_InputMessage" />
@@ -103,6 +115,14 @@
     <wsdl:operation name="GetAd">
       <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/GetAd" message="tns:IAuthService_GetAd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/GetAdResponse" message="tns:IAuthService_GetAd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPostedAds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/GetPostedAds" message="tns:IAuthService_GetPostedAds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/GetPostedAdsResponse" message="tns:IAuthService_GetPostedAds_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReservedAds">
+      <wsdl:input wsaw:Action="http://tempuri.org/IAuthService/GetReservedAds" message="tns:IAuthService_GetReservedAds_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IAuthService/GetReservedAdsResponse" message="tns:IAuthService_GetReservedAds_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IAuthService" type="tns:IAuthService">
@@ -164,6 +184,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetAd">
       <soap12:operation soapAction="http://tempuri.org/IAuthService/GetAd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPostedAds">
+      <soap12:operation soapAction="http://tempuri.org/IAuthService/GetPostedAds" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReservedAds">
+      <soap12:operation soapAction="http://tempuri.org/IAuthService/GetReservedAds" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

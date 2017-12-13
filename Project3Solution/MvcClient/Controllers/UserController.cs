@@ -14,39 +14,49 @@ namespace MvcClient.Controllers
         // GET: User
         public ActionResult Index()
         {
-            var client = ServiceHelper.GetServiceClientLoggedIn();
-            var reserved = client.GetReservedAds();
-            var posted = client.GetPostedAds();
-            TempData["reservedAds"] = reserved;
-            TempData["postedAds"] = posted;
+            if (!AuthHelper.IsLoggedIn())
+                return RedirectToAction("Index", "Home");
+            
+            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            {
+                User user = client.GetCurrentUser();
+                using (var publicClient = ServiceHelper.GetAuthServiceClient())
+                {
+                    var reserved = publicClient.GetReservedAds(user.Email);
+                    var posted = publicClient.GetPostedAds(user.Email);
+                    TempData["reservedAds"] = reserved;
+                    TempData["postedAds"] = posted;
 
-            return View(client.GetCurrentUser());
+                    return View(user);
+                } 
+            }
         }
 
         [HttpPost]
-        public ActionResult Index(string buttonValue)
+        public ActionResult BuyReservations()
         {
-            var client = ServiceHelper.GetServiceClientLoggedIn();
-
-            switch(buttonValue)
+            using(var client = ServiceHelper.GetServiceClientLoggedIn())
             {
-                case "Buy Reservations":
-                    client.BuyReservations();
-                    break;
-                case "Buy Boosts":
-                    client.BuyBoosts();
-                    break;
-                default: break;
+                client.BuyReservations();
             }
-
-            return View(client.GetCurrentUser());
+            return RedirectToAction("Index");
         }
 
-        public ActionResult About(string id)
+        [HttpPost]
+        public ActionResult BuyBoosts()
+        {
+            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            {
+                client.BuyBoosts();
+            }
+            return RedirectToAction("Index");
+        }
+
+        /*public ActionResult About(string id)
         {
             var client = ServiceHelper.GetServiceClientLoggedIn();
             return View(client.GetUser(id));
-        }
+        }*/
         
         public ActionResult Register()
         {

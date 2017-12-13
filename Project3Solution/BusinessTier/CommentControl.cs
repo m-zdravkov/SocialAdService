@@ -120,5 +120,14 @@ namespace BusinessTier
 
             return pagedQuery;
         }
+
+        public void DeleteReplies(string replyId)
+        {
+            var db = DbContextControl.GetNew();
+
+            var comments = db.Comments.Where(c => c.ReplyId == replyId);
+            db.Comments.RemoveRange(comments);
+            db.SaveChanges();
+        }
     }
 }

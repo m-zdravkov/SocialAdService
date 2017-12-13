@@ -2,15 +2,13 @@
 @model List<MvcClient.AuthService.Ad>
 
 @{
-    ViewBag.Title = "Social Ad Service";
+    ViewBag.Title = "Home";
 }
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css"
-      integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
 
 <!-- Page Content -->
 <div class="container">
     <div class="row">
+        <!-- Side bar -->
         <div class="col-lg-3">
             
             <h1 class="my-4">Social Ad Service</h1>                
@@ -26,10 +24,13 @@
                           
         </div>
         
+        <!-- Main page -->
         <div class="col-lg-9">
             
             <p class="alert-danger">@ViewBag.ErrorMessage</p>
             
+            <p class="alert-success">@ViewBag.SuccessMessage</p>
+
             <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

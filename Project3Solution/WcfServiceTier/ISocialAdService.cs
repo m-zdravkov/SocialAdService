@@ -54,12 +54,6 @@ namespace WcfServiceTier
         void BuyBoosts();
 
         [OperationContract]
-        IList<Ad> GetPostedAds();
-
-        [OperationContract]
-        IList<Ad> GetReservedAds();
-
-        [OperationContract]
         User GetCurrentUser();
 
         [OperationContract]

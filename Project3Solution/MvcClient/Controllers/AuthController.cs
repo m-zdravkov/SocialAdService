@@ -42,6 +42,7 @@ namespace MvcClient.Controllers
             else
             {
                 AuthHelper.LogIn(lvm);
+                AuthHelper.UpdateLogInDetails();
                 return RedirectToAction("Index","Home");
             }
         }

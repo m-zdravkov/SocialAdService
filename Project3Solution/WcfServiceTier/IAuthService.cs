@@ -31,5 +31,11 @@ namespace WcfServiceTier
 
         [OperationContract]
         Ad GetAd(string id);
+
+        [OperationContract]
+        IList<Ad> GetPostedAds(string userEmail);
+
+        [OperationContract]
+        IList<Ad> GetReservedAds(string userEmail);
     }
 }

@@ -3,8 +3,16 @@
 
 <div class="panel panel-default">
     <div class="panel-body">
-        <h2>@Model.Title</h2>
+        <h2>@Html.ActionLink(Model.Title,"Display","Post", new { id = Model.Id }, null)</h2>
         <hr />
+    </div>
+    <div>
+        <p>By @Model.Author.Name</p>
+        <p class="text-muted">
+            Posted on @Model.DatePosted.ToShortDateString()
+            at @Model.DatePosted.ToShortTimeString()
+            in @Model.Location.Name
+        </p>
     </div>
     <div>
         @Model.Content
