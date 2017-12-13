@@ -11,7 +11,8 @@
         <!-- Side bar -->
         <div class="col-lg-3">
             
-            <h1 class="my-4">Social Ad Service</h1>                
+            <h2 class="my-4">Social Ad Service</h2>
+            <img src="https://png.pngtree.com/element_origin_min_pic/16/11/20/9a53eba2077b5e739f69399e48530818.jpg" class="img-thumbnail">
             <div class="list-group">
                 @Html.ActionLink("All ads", "Index", "Home", new { area = "" }, new { @class = "list-group-item" })
                 @Html.ActionLink("Selling", "AdType", "Home", new { type = "selling" }, new { @class = "list-group-item" })
@@ -51,7 +52,10 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            
+            <!-- Bootstrap core JavaScript -->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
             @if (!AuthHelper.IsLoggedIn())
             {
                 <div style="margin-top: 8px; margin-bottom: 8px;">
@@ -72,3 +76,10 @@
         </div>
     </div>
 </div>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; Social Ad Service</p>
+    </div>
+    <!-- /.container -->
+</footer>
