@@ -1,3 +1,64 @@
 ﻿@using MvcClient.AuthService
+@using MvcClient.Helpers
 @model Ad
 
+<!-- Grid -->
+<div class="col-lg-4 col-md-6 mb-4" >
+    <!-- Card -->
+    <div class="card h-100 w-100" style="margin-top: 16px;">
+        <img class="card-img-top" style="width: 100%;" src="https://placehold.it/200x100?text=IMAGE" alt="Image">
+        
+        <div class="card-body">
+            
+            <h4 class="card-title">
+                @Html.ActionLink(Model.Title, "Display", "Post", new { id = Model.Id }, null)
+            </h4>
+            
+            <p class="card-text text-muted">Posted by @Model.Author.Name</h5>
+            <p class="card-text text-muted">
+                On @Model.DatePosted.ToShortDateString()
+                at @Model.DatePosted.ToShortTimeString()
+                in @Model.Location.Name
+            </p>
+            
+            <br />
+
+            <div class="btn-group-vertical btn-group-xs btn-group-justified">
+                <!-- Expand text button -->
+                <button type="button" class="btn btn-default"
+                        data-toggle="collapse" data-target="#content-@Model.Id">Show text</button>
+                <p class="card-text collapse" id="content-@Model.Id">@Model.Content</p>
+
+                <!-- Display full button -->
+                @using (Html.BeginForm("Display", "Post", new { id = Model.Id }, FormMethod.Post, null))
+                {
+                    <input type="submit" class="btn btn-default btn-sm" style="width:100%;" value="Show full ad" />
+                }
+
+                <!-- Reserve button -->
+                @if (Model.ReservedBy == null)
+                {
+                    if (Model.Type == MvcClient.AuthService.AdType.Selling && AuthHelper.IsLoggedIn())
+                    {
+                        if (AuthHelper.CurrentUser.Email != Model.Author.Email)
+                        {
+                            using (Html.BeginForm("Reserve", "Post", new { id = Model.Id }, FormMethod.Post, null))
+                            {
+                                Html.AntiForgeryToken();
+                                <input type="submit" class="btn btn-primary btn-sm" style="width:100%;" value="Reserve" />
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    <b class="text-muted">This ad has been reserved.</b>
+                }
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+        </div>
+    </div>
+</div>

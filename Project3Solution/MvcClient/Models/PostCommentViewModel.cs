@@ -13,6 +13,8 @@ namespace MvcClient.Models
 
         [Required]
         [StringLength(2048, ErrorMessage = "Comments have to be between {0} and {2} symbols long.", MinimumLength = 2)]
+        [DisplayName("Your comment")]
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
     }
 }

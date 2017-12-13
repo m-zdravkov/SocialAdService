@@ -1,16 +1,17 @@
 ﻿@using MvcClient.AuthService;
 @using MvcClient.Helpers;
+@using MvcClient.Models;
 @model MvcClient.AuthService.Ad
 
 @{
     ViewBag.Title = "Ad";
 }
 
-@Html.Partial("AdPartial", Model);
+@Html.Partial("AdPartial", Model)
 
 @if (AuthHelper.IsLoggedIn())
 {
-    @Html.Partial("PostComment");
+    @Html.Partial("PostComment", new PostCommentViewModel { Id = Model.Id });
 }
 
 <p>

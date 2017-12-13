@@ -48,8 +48,12 @@ namespace MvcClient.Controllers
 
         public ActionResult Display(string id)
         {
+            if (id == null)
+                return RedirectToAction("Index", "Home");
+
             var client = ServiceHelper.GetAuthServiceClient();
             var ad = client.GetAd(id);
+            TempData["comments"] = client.GetAdReplies(0, 64, id);
             return View(ad);
         }
 

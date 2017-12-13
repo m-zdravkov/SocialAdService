@@ -25,7 +25,7 @@
                         Comment[] comments = TempData["comments"] as Comment[];
                         foreach (var c in comments)
                         {
-                            <h4>@c.Author</h4>
+                            <h4>@c.Author.Name</h4>
                             <div>
                                 On @c.DatePosted.ToShortDateString() at
                                 @c.DatePosted.ToShortTimeString()
@@ -33,6 +33,7 @@
                             <div>
                                 @c.Content
                             </div>
+                            <hr />
                         }
                     }
                 </div>
