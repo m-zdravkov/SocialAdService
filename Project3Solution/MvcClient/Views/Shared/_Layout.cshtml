@@ -24,11 +24,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Search", "Index", "Search")</li>
                     @{
                         if (AuthHelper.IsLoggedIn())
                         {
-                            <li><p class="navbar-text">Logged in with @AuthHelper.CurrentUser.Email</p></li>
+                            <li><p class="navbar-text">Welcome, @AuthHelper.CurrentUser.Name</p></li>
                             <li>@Html.ActionLink("Log out", "LogOut", "Auth")</li>
                             <li>@Html.ActionLink("Post", "Ad", "Post")</li>
 
@@ -40,6 +39,7 @@
                             <li>@Html.ActionLink("Sign up", "Register", "User")</li>
 
                         }
+                        <li>@Html.ActionLink("Search", "Index", "Search")</li>
                     }
                 </ul>
 

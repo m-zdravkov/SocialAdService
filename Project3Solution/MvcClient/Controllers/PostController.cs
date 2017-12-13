@@ -63,7 +63,8 @@ namespace MvcClient.Controllers
             var client = ServiceHelper.GetServiceClientLoggedIn();
             client.PostComment(comment.Id, comment.Content);
 
-            return View();
+            //Back to the ad
+            return RedirectToAction("Display", new { id = comment.Id });
         }
     }
 }
