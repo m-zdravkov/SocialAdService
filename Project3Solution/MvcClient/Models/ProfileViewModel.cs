@@ -9,7 +9,7 @@ namespace MvcClient.Models
     public class ProfileViewModel
     {
         public User User { get; set; }
-        public AuthService.Ad[] ReservedAds { get; set; }
-        public AuthService.Ad[] PostedAds { get; set; }
+        public AdWithCommentsViewModel[] ReservedAds { get; set; }
+        public AdWithCommentsViewModel[] PostedAds { get; set; }
     }
 }
