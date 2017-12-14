@@ -25,3 +25,31 @@
     display: inline-grid;
 
 }
+
+#image {
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    width: auto;
+    height: auto;
+    margin-top: -50px; /* Half the height */
+    margin-left: -50px; /* Half the width */
+}
+
+#panel {
+    position: absolute;
+    display: inline-block;
+    vertical-align: central;
+    margin-top: 200px; /* Half the height */
+    margin-left: 50px;
+}
+
+
+html {
+    background-image: url('https://wallpaperscraft.com/image/green_spot_background_bright_65614_1920x1080.jpg');
+    background-repeat: no-repeat;
+}
+
+#SAS {
+    font-style: italic;
+}
