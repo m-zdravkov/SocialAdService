@@ -27,9 +27,9 @@ namespace BusinessTier
             if (context == null)
             {
                 //Since a lot of old code generates a new context, this helps minimize refactoring
-                if (ServiceDbContext.lastContext == null)
+                if (ServiceDbContext.LastContext == null)
                     context = new ServiceDbContext();
-                else context = ServiceDbContext.lastContext;
+                else context = ServiceDbContext.LastContext;
             }
 
             return context;

@@ -192,18 +192,6 @@
   <wsdl:message name="ISocialAdService_BuyBoosts_OutputMessage">
     <wsdl:part name="parameters" element="tns:BuyBoostsResponse" />
   </wsdl:message>
-  <wsdl:message name="ISocialAdService_GetPostedAds_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetPostedAds" />
-  </wsdl:message>
-  <wsdl:message name="ISocialAdService_GetPostedAds_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetPostedAdsResponse" />
-  </wsdl:message>
-  <wsdl:message name="ISocialAdService_GetReservedAds_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetReservedAds" />
-  </wsdl:message>
-  <wsdl:message name="ISocialAdService_GetReservedAds_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetReservedAdsResponse" />
-  </wsdl:message>
   <wsdl:message name="ISocialAdService_GetCurrentUser_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrentUser" />
   </wsdl:message>
@@ -215,6 +203,18 @@
   </wsdl:message>
   <wsdl:message name="ISocialAdService_PostComment_OutputMessage">
     <wsdl:part name="parameters" element="tns:PostCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialAdService_DeleteComment_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteComment" />
+  </wsdl:message>
+  <wsdl:message name="ISocialAdService_DeleteComment_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteCommentResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISocialAdService_DeleteAd_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAd" />
+  </wsdl:message>
+  <wsdl:message name="ISocialAdService_DeleteAd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteAdResponse" />
   </wsdl:message>
   <wsdl:portType name="ISocialAdService">
     <wsdl:operation name="Register">
@@ -273,14 +273,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/BuyBoosts" message="tns:ISocialAdService_BuyBoosts_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/BuyBoostsResponse" message="tns:ISocialAdService_BuyBoosts_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetPostedAds">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/GetPostedAds" message="tns:ISocialAdService_GetPostedAds_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/GetPostedAdsResponse" message="tns:ISocialAdService_GetPostedAds_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetReservedAds">
-      <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/GetReservedAds" message="tns:ISocialAdService_GetReservedAds_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/GetReservedAdsResponse" message="tns:ISocialAdService_GetReservedAds_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="GetCurrentUser">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/GetCurrentUser" message="tns:ISocialAdService_GetCurrentUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/GetCurrentUserResponse" message="tns:ISocialAdService_GetCurrentUser_OutputMessage" />
@@ -288,6 +280,14 @@
     <wsdl:operation name="PostComment">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/PostComment" message="tns:ISocialAdService_PostComment_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/PostCommentResponse" message="tns:ISocialAdService_PostComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComment">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/DeleteComment" message="tns:ISocialAdService_DeleteComment_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/DeleteCommentResponse" message="tns:ISocialAdService_DeleteComment_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAd">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/DeleteAd" message="tns:ISocialAdService_DeleteAd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/DeleteAdResponse" message="tns:ISocialAdService_DeleteAd_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ISocialAdService" type="tns:ISocialAdService">
@@ -419,24 +419,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetPostedAds">
-      <soap12:operation soapAction="http://tempuri.org/ISocialAdService/GetPostedAds" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetReservedAds">
-      <soap12:operation soapAction="http://tempuri.org/ISocialAdService/GetReservedAds" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="GetCurrentUser">
       <soap12:operation soapAction="http://tempuri.org/ISocialAdService/GetCurrentUser" style="document" />
       <wsdl:input>
@@ -448,6 +430,24 @@
     </wsdl:operation>
     <wsdl:operation name="PostComment">
       <soap12:operation soapAction="http://tempuri.org/ISocialAdService/PostComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteComment">
+      <soap12:operation soapAction="http://tempuri.org/ISocialAdService/DeleteComment" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteAd">
+      <soap12:operation soapAction="http://tempuri.org/ISocialAdService/DeleteAd" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

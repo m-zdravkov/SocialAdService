@@ -178,30 +178,6 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetPostedAds">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetPostedAdsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetPostedAdsResult" nillable="true" type="q6:ArrayOfAd" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetReservedAds">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetReservedAdsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetReservedAdsResult" nillable="true" type="q7:ArrayOfAd" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="GetCurrentUser">
     <xs:complexType>
       <xs:sequence />
@@ -210,7 +186,7 @@
   <xs:element name="GetCurrentUserResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetCurrentUserResult" nillable="true" type="q8:User" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Model" minOccurs="0" name="GetCurrentUserResult" nillable="true" type="q6:User" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -223,6 +199,30 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="PostCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteComment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteAdResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

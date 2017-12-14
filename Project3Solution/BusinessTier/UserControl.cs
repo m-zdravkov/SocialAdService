@@ -33,7 +33,7 @@ namespace BusinessTier
         private void SeedUsers()
         {
             Model.ServiceDbContext db = new Model.ServiceDbContext();
-            int count = db.Users.Count<User>();
+            int count = db.Users.Count();
             if (count == 0)
             {
                 MigrationSeed.SeedUsers();

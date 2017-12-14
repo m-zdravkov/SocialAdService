@@ -1,5 +1,6 @@
 ﻿@using MvcClient.AuthService;
 @using MvcClient.Models;
+@using MvcClient.Helpers;
 @model AdWithCommentsViewModel
 
 <div class="panel panel-default">
@@ -11,13 +12,38 @@
             '@Html.DisplayFor(model => model.Ad.Type)' ad
             by @Model.Ad.Author.Name
         </p>
+
         <p class="text-muted">
             Posted on @Model.Ad.DatePosted.ToShortDateString()
             at @Model.Ad.DatePosted.ToShortTimeString()
             in @Model.Ad.Location.Name
         </p>
 
+        @if (Model.Ad.DatePosted != Model.Ad.LastEdited)
+        {
+            <p class="text-muted">
+                Last edited on @Model.Ad.DatePosted.ToShortDateString()
+                at @Model.Ad.DatePosted.ToShortTimeString()
+            </p>
+        }
+
         <p>@Model.Ad.Content</p>
+
+        @if(Model.Ad.ReservedBy != null)
+        {
+            <p class="alert-warning">
+                This ad has been reserved by @Model.Ad.ReservedBy.Name
+            </p>
+        }
+        else if (Model.Ad.Author.Email != AuthHelper.CurrentUser.Email)
+        {
+            using (Html.BeginForm("Reserve", "Post", new { id = Model.Ad.Id }, FormMethod.Post, null))
+            {
+                Html.AntiForgeryToken();
+                <input type="submit" class="btn btn-primary btn-sm" value="Reserve" />
+            }
+        }
+
     </div>
     <hr />
     <div>

@@ -15,7 +15,24 @@ namespace BusinessTier
 
         private AdControl ()
         {
+            //REFACTOR
+            //THIS IS A QUICK FIX
+            var db = DbContextControl.GetNew();
+            if(db.Ads.Count() == 0)
+            {
+                if (db.Users.Count() == 0)
+                    MigrationSeed.SeedUsers();
+                MigrationSeed.SeedAds();
 
+                foreach (var ad in MigrationSeed.Ads)
+                {
+                    PostAd(ad.Author.Email, ad.Title, ad.Content, ad.Location.Name, ad.Type);
+                }
+
+                var blueCar = MigrationSeed.Ads.FirstOrDefault(a => a.Title == "Selling blue sports car");
+                ReserveAd(blueCar?.Id, "dan.wallace@test.com");
+                CommentControl.GetInstance().PostComment(blueCar.Id, "Interested!", "dan.wallace@test.com");
+            }
         }
 
         public static AdControl GetInstance ()

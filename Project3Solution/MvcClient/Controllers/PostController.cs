@@ -35,14 +35,39 @@ namespace MvcClient.Controllers
         {
             try
             {
-                ServiceHelper.GetServiceClientLoggedIn().ReserveAd(id);
-                ViewBag.SuccessMessage = "Ad reserved successfully.";
+                using (var client = ServiceHelper.GetServiceClientLoggedIn())
+                {
+                    client.ReserveAd(id);
+                    ViewBag.SuccessMessage = "Ad reserved successfully.";
+                }
             }
             catch (Exception ex)
             {
+                ViewBag.ErrorMessage = "Unable to reserve ad.\n";
                 ViewBag.ErrorMessage += ex.Message;
                 return RedirectToAction("Index", "Home");
             }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Delete(string id)
+        {
+            try
+            {
+                using (var client = ServiceHelper.GetServiceClientLoggedIn())
+                {
+                    client.DeleteAd(id);
+                    ViewBag.SuccessMessage = "Ad deleted successfuly.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage = "Unable to delete ad.\n";
+                ViewBag.ErrorMessage += ex.Message;
+                return RedirectToAction("Index", "Home");
+            }
+
             return RedirectToAction("Index", "Home");
         }
 

@@ -793,18 +793,6 @@ namespace MvcClient.SocialAdService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/BuyBoosts", ReplyAction="http://tempuri.org/ISocialAdService/BuyBoostsResponse")]
         System.Threading.Tasks.Task BuyBoostsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetPostedAdsResponse")]
-        MvcClient.SocialAdService.Ad[] GetPostedAds();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetPostedAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetPostedAdsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetReservedAdsResponse")]
-        MvcClient.SocialAdService.Ad[] GetReservedAds();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetReservedAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetReservedAdsAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
         MvcClient.SocialAdService.User GetCurrentUser();
         
@@ -816,6 +804,18 @@ namespace MvcClient.SocialAdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostComment", ReplyAction="http://tempuri.org/ISocialAdService/PostCommentResponse")]
         System.Threading.Tasks.Task PostCommentAsync(string adId, string content);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteComment", ReplyAction="http://tempuri.org/ISocialAdService/DeleteCommentResponse")]
+        void DeleteComment(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteComment", ReplyAction="http://tempuri.org/ISocialAdService/DeleteCommentResponse")]
+        System.Threading.Tasks.Task DeleteCommentAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteAd", ReplyAction="http://tempuri.org/ISocialAdService/DeleteAdResponse")]
+        void DeleteAd(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteAd", ReplyAction="http://tempuri.org/ISocialAdService/DeleteAdResponse")]
+        System.Threading.Tasks.Task DeleteAdAsync(string id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -957,22 +957,6 @@ namespace MvcClient.SocialAdService {
             return base.Channel.BuyBoostsAsync();
         }
         
-        public MvcClient.SocialAdService.Ad[] GetPostedAds() {
-            return base.Channel.GetPostedAds();
-        }
-        
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetPostedAdsAsync() {
-            return base.Channel.GetPostedAdsAsync();
-        }
-        
-        public MvcClient.SocialAdService.Ad[] GetReservedAds() {
-            return base.Channel.GetReservedAds();
-        }
-        
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> GetReservedAdsAsync() {
-            return base.Channel.GetReservedAdsAsync();
-        }
-        
         public MvcClient.SocialAdService.User GetCurrentUser() {
             return base.Channel.GetCurrentUser();
         }
@@ -987,6 +971,22 @@ namespace MvcClient.SocialAdService {
         
         public System.Threading.Tasks.Task PostCommentAsync(string adId, string content) {
             return base.Channel.PostCommentAsync(adId, content);
+        }
+        
+        public void DeleteComment(string id) {
+            base.Channel.DeleteComment(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteCommentAsync(string id) {
+            return base.Channel.DeleteCommentAsync(id);
+        }
+        
+        public void DeleteAd(string id) {
+            base.Channel.DeleteAd(id);
+        }
+        
+        public System.Threading.Tasks.Task DeleteAdAsync(string id) {
+            return base.Channel.DeleteAdAsync(id);
         }
     }
 }

@@ -14,11 +14,13 @@ namespace Model
     {
         public static ICollection<User> Users { get; set; } = new LinkedList<User>();
         public static ICollection<Location> Locations { get; set; } = new LinkedList<Location>();
+        public static ICollection<Ad> Ads { get; set; } = new LinkedList<Ad>();
 
         public static void SeedAll()
         {
             SeedUsers();
             SeedLocations();
+            SeedAds();
         }
 
         public static void SeedUsers()
@@ -143,6 +145,20 @@ namespace Model
 
             Locations.Add(new Location
             {
+                Name = "Odense",
+                Type = LocationType.City,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Syddanmark")
+            });
+
+            Locations.Add(new Location
+            {
+                Name = "Aarhus",
+                Type = LocationType.City,
+                Parent = Locations.FirstOrDefault(l => l.Name == "Midtjylland")
+            });
+
+            Locations.Add(new Location
+            {
                 Name = "Hirtshals",
                 Type = LocationType.City,
                 Parent = Locations.FirstOrDefault(l => l.Name == "Nordjylland")
@@ -184,6 +200,23 @@ namespace Model
                 Parent = Locations.FirstOrDefault(l => l.Name == "Aalborg")
             });
             
+        }
+
+        public static void SeedAds()
+        {
+
+            Ads.Add(new Ad { Author = new User { Name = "max.damage@test.com" }, Title = "Welcome to SAS", Content = "We'd like to welcome you to our service. You can begin browsing and posting your ads immediately. We wish you good luck!", Location = new Location { Name = "Aalborg" }, Type = AdType.Other});
+            Ads.Add(new Ad { Author = new User { Name = "alfred.woden@test.com" }, Title = "Black sedan", Content = "I am selling my old black car. It's a sedan from 1994. Address: ####", Location = new Location { Name = "USA" }, Type = AdType.Selling});
+            Ads.Add(new Ad { Author = new User { Name = "dan.wallace@test.com" }, Title = "Selling my old airsoft gun", Content = "I wish to sell my old airsoft gun. It's an M16, comes with gas cannister. Price negotiable.", Location = new Location { Name = "Aarhus" }, Type = AdType.Selling});
+            Ads.Add(new Ad { Author = new User { Name = "max.damage@test.com" }, Title = "Selling red sports car", Content = "Red sports car for sale in Copenhagen. Come pick it up for 50 000 dkk.", Location = new Location { Name = "Copenhagen" }, Type = AdType.Selling});
+            Ads.Add(new Ad { Author = new User { Name = "max.damage@test.com" }, Title = "Competition", Content = "We are organizing a jogging competition in Odense. Run 15 km for charity.", Location = new Location { Name = "Odense" }, Type = AdType.Event});
+            Ads.Add(new Ad { Author = new User { Name = "max.payne@test.com" }, Title = "Painkillers", Content = "Does anyone have any good painkillers? I've run out. I got 5$, near Roscoe Str.", Location = new Location { Name = "USA" }, Type = AdType.Buying});
+            Ads.Add(new Ad { Author = new User { Name = "max.damage@test.com" }, Title = "Selling blue sports car", Content = "Blue sports car for sale in Aarhus. 50 000 dkk and it's yours.", Location = new Location { Name = "Aarhus" }, Type = AdType.Selling});
+            Ads.Add(new Ad { Author = new User { Name = "lauren.sharp@test.com" }, Title = "Need plumber ASAP", Content = "Can anyone recommend me a good plumber? My plumbing broke down in the bathroom, don't know who to call.", Location = new Location { Name = "Aalborg" }, Type = AdType.ServiceRequest});
+            Ads.Add(new Ad { Author = new User { Name = "rebecca.james@test.com" }, Title = "Business Pictures", Content = "Hi. I'm a professional photographer with a studio in Aalborg and I take and edit pictures for your CV, LinkedIn, etc. 6 for 150 dkk.", Location = new Location { Name = "Aalborg" }, Type = AdType.ServiceOffer});
+            Ads.Add(new Ad { Author = new User { Name = "max.damage@test.com" }, Title = "Selling black sports car", Content = "Black sports car for sale in Aalborg. Pick up for 45 000 dkk.", Location = new Location { Name = "Aalborg" }, Type = AdType.Selling});
+            Ads.Add(new Ad { Author = new User { Name = "ian.avery@test.com" }, Title = "Record player", Content = "Selling my old 80s record player. Good condition. 200 dkk.", Location = new Location { Name = "Aalborg" }, Type = AdType.Selling});
+            Ads.Add(new Ad { Author = new User { Name = "george.orwell@test.com" }, Title = "Books", Content = "Selling some of my books.", Location = new Location { Name = "Aarhus" }, Type = AdType.Selling});
         }
     }
 }
