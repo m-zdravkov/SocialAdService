@@ -12,7 +12,9 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body background="https://wallpaperscraft.com/image/green_spot_background_bright_65614_1920x1080.jpg">
+<body style = "background-image: url('https://wallpaperscraft.com/image/green_spot_background_bright_65614_1920x1080.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -49,12 +51,12 @@
                     if (AuthHelper.IsLoggedIn())
                     {
                         <ul class="nav navbar-nav navbar-right">
-                            <!--
                             <li>
-                                <span class="glyphicon glyphicon-user"></span>
-                                @Html.ActionLink("Your account", "Index", "User")
-                            </li>-->
-                            <li><a href="User/Index"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
+                                <a href="@Url.Action("Index", "User")">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    Your Account
+                                </a>
+                            </li>
                             <!--
                             <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                             -->
