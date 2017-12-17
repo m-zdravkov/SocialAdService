@@ -82,11 +82,50 @@ namespace BusinessTier
             return ad;
         }
 
-        public void DeleteAd(string id, string author)
+        public Ad UpdateAd(string authorEmail, string id, string title, string content, string locationName = null, AdType type = AdType.Other)
+        {
+            using (var db = DbContextControl.GetNew())
+            {
+                Ad ad = db.Ads.FirstOrDefault(a => a.Id == id);
+                var entry = db.Entry(ad);
+
+                if (ad.Author.Email != authorEmail)
+                    throw new InvalidOperationException("Can not edit another person's ad!");
+
+                if(title != null && title != ad.Title)
+                {
+                    ad.Title = title;
+                    entry.Property("Title").IsModified = true;
+                }
+
+                //Find a location and attach it to the DB context and to the Ad
+                if (locationName != null && locationName != ad.Location.Name)
+                {
+                    var locationFull = db.Locations.Attach(new Location { Name = locationName });
+                    //ad.Location = locationFull;
+                    entry.Reference("Location").CurrentValue = locationFull;
+                }
+
+                if (content != null && content != ad.Content)
+                {
+                    ad.Content = content;
+                    entry.Property("Content").IsModified = true;
+                }
+
+                ad.LastEdited = DateTime.Now;
+                entry.Property("LastEdited").IsModified = true;
+                
+                db.SaveChanges();
+
+                return ad;
+            }
+        }
+
+        public void DeleteAd(string id, string authorEmail)
         {
             var db = DbContextControl.GetNew();
             Ad toDelete = new Ad { Id = id };
-            toDelete.Author = UserControl.GetInstance().GetUser(author);//TODO:change
+            toDelete.Author = UserControl.GetInstance().GetUser(authorEmail);//TODO:change
 
             db.Ads.Attach(toDelete);
 

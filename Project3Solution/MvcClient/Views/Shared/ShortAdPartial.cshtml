@@ -1,4 +1,4 @@
-﻿@using MvcClient.AuthService
+﻿@using MvcClient.SasPublic
 @using MvcClient.Helpers
 @model Ad
 
@@ -18,7 +18,10 @@
             <p class="card-text text-muted">
                 On @Model.DatePosted.ToShortDateString()
                 at @Model.DatePosted.ToShortTimeString()
-                in @Model.Location.Name
+                @if (Model.Location != null)
+                {
+                    @:in @Model.Location.Name
+                }
             </p>
             
             <br />
@@ -38,7 +41,7 @@
                 <!-- Reserve button -->
                 @if (Model.ReservedBy == null)
                 {
-                    if (Model.Type == MvcClient.AuthService.AdType.Selling && AuthHelper.IsLoggedIn())
+                    if (Model.Type == MvcClient.SasPublic.AdType.Selling && AuthHelper.IsLoggedIn())
                     {
                         if (AuthHelper.CurrentUser.Email != Model.Author.Email)
                         {

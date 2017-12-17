@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcClient.SocialAdService {
+namespace MvcClient.SasPrivate {
     using System.Runtime.Serialization;
     using System;
     
@@ -190,16 +190,16 @@ namespace MvcClient.SocialAdService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Ad", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.User))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.User[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Ad[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Post))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Location))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.LocationType))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Price))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.PriceType))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.AdType))]
-    public partial class Ad : MvcClient.SocialAdService.Post {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.User[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.Ad[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.Post))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.Location))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.LocationType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.Price))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.PriceType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.AdType))]
+    public partial class Ad : MvcClient.SasPrivate.Post {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private object CategoriesField;
@@ -211,19 +211,19 @@ namespace MvcClient.SocialAdService {
         private System.Nullable<System.DateTime> ExpDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.Location LocationField;
+        private MvcClient.SasPrivate.Location LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.Price PriceField;
+        private MvcClient.SasPrivate.Price PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.User ReservedByField;
+        private MvcClient.SasPrivate.User ReservedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.AdType TypeField;
+        private MvcClient.SasPrivate.AdType TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ViewsField;
@@ -268,7 +268,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.Location Location {
+        public MvcClient.SasPrivate.Location Location {
             get {
                 return this.LocationField;
             }
@@ -281,7 +281,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.Price Price {
+        public MvcClient.SasPrivate.Price Price {
             get {
                 return this.PriceField;
             }
@@ -294,7 +294,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.User ReservedBy {
+        public MvcClient.SasPrivate.User ReservedBy {
             get {
                 return this.ReservedByField;
             }
@@ -320,7 +320,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.AdType Type {
+        public MvcClient.SasPrivate.AdType Type {
             get {
                 return this.TypeField;
             }
@@ -350,14 +350,14 @@ namespace MvcClient.SocialAdService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Post", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SocialAdService.Ad))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPrivate.Ad))]
     public partial class Post : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.User AuthorField;
+        private MvcClient.SasPrivate.User AuthorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContentField;
@@ -385,7 +385,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.User Author {
+        public MvcClient.SasPrivate.User Author {
             get {
                 return this.AuthorField;
             }
@@ -485,10 +485,10 @@ namespace MvcClient.SocialAdService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.Location ParentField;
+        private MvcClient.SasPrivate.Location ParentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.LocationType TypeField;
+        private MvcClient.SasPrivate.LocationType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -514,7 +514,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.Location Parent {
+        public MvcClient.SasPrivate.Location Parent {
             get {
                 return this.ParentField;
             }
@@ -527,7 +527,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.LocationType Type {
+        public MvcClient.SasPrivate.LocationType Type {
             get {
                 return this.TypeField;
             }
@@ -568,7 +568,7 @@ namespace MvcClient.SocialAdService {
         private int LowField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.SocialAdService.PriceType TypeField;
+        private MvcClient.SasPrivate.PriceType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -620,7 +620,7 @@ namespace MvcClient.SocialAdService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.SocialAdService.PriceType Type {
+        public MvcClient.SasPrivate.PriceType Type {
             get {
                 return this.TypeField;
             }
@@ -706,7 +706,7 @@ namespace MvcClient.SocialAdService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SocialAdService.ISocialAdService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SasPrivate.ISocialAdService")]
     public interface ISocialAdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/Register", ReplyAction="http://tempuri.org/ISocialAdService/RegisterResponse")]
@@ -722,10 +722,10 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task AuthenticateAsync(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetAuthenticatedUser", ReplyAction="http://tempuri.org/ISocialAdService/GetAuthenticatedUserResponse")]
-        MvcClient.SocialAdService.User GetAuthenticatedUser();
+        MvcClient.SasPrivate.User GetAuthenticatedUser();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetAuthenticatedUser", ReplyAction="http://tempuri.org/ISocialAdService/GetAuthenticatedUserResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetAuthenticatedUserAsync();
+        System.Threading.Tasks.Task<MvcClient.SasPrivate.User> GetAuthenticatedUserAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/LogOut", ReplyAction="http://tempuri.org/ISocialAdService/LogOutResponse")]
         void LogOut();
@@ -734,10 +734,10 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task LogOutAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUser", ReplyAction="http://tempuri.org/ISocialAdService/GetUserResponse")]
-        MvcClient.SocialAdService.User GetUser(string userId);
+        MvcClient.SasPrivate.User GetUser(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUser", ReplyAction="http://tempuri.org/ISocialAdService/GetUserResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetUserAsync(string userId);
+        System.Threading.Tasks.Task<MvcClient.SasPrivate.User> GetUserAsync(string userId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/CountUsers", ReplyAction="http://tempuri.org/ISocialAdService/CountUsersResponse")]
         int CountUsers();
@@ -746,10 +746,10 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task<int> CountUsersAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUsers", ReplyAction="http://tempuri.org/ISocialAdService/GetUsersResponse")]
-        MvcClient.SocialAdService.User[] GetUsers(int skip, int amount);
+        MvcClient.SasPrivate.User[] GetUsers(int skip, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetUsers", ReplyAction="http://tempuri.org/ISocialAdService/GetUsersResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.User[]> GetUsersAsync(int skip, int amount);
+        System.Threading.Tasks.Task<MvcClient.SasPrivate.User[]> GetUsersAsync(int skip, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetData", ReplyAction="http://tempuri.org/ISocialAdService/GetDataResponse")]
         int GetData();
@@ -758,16 +758,16 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task<int> GetDataAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/FetchAds", ReplyAction="http://tempuri.org/ISocialAdService/FetchAdsResponse")]
-        MvcClient.SocialAdService.Ad[] FetchAds(int skip, int amount);
+        MvcClient.SasPrivate.Ad[] FetchAds(int skip, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/FetchAds", ReplyAction="http://tempuri.org/ISocialAdService/FetchAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> FetchAdsAsync(int skip, int amount);
+        System.Threading.Tasks.Task<MvcClient.SasPrivate.Ad[]> FetchAdsAsync(int skip, int amount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostAd", ReplyAction="http://tempuri.org/ISocialAdService/PostAdResponse")]
-        void PostAd(string title, string content, string location, MvcClient.SocialAdService.AdType type);
+        void PostAd(string title, string content, string location, MvcClient.SasPrivate.AdType type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostAd", ReplyAction="http://tempuri.org/ISocialAdService/PostAdResponse")]
-        System.Threading.Tasks.Task PostAdAsync(string title, string content, string location, MvcClient.SocialAdService.AdType type);
+        System.Threading.Tasks.Task PostAdAsync(string title, string content, string location, MvcClient.SasPrivate.AdType type);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/ReserveAd", ReplyAction="http://tempuri.org/ISocialAdService/ReserveAdResponse")]
         void ReserveAd(string id);
@@ -794,10 +794,10 @@ namespace MvcClient.SocialAdService {
         System.Threading.Tasks.Task BuyBoostsAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
-        MvcClient.SocialAdService.User GetCurrentUser();
+        MvcClient.SasPrivate.User GetCurrentUser();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
-        System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetCurrentUserAsync();
+        System.Threading.Tasks.Task<MvcClient.SasPrivate.User> GetCurrentUserAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/PostComment", ReplyAction="http://tempuri.org/ISocialAdService/PostCommentResponse")]
         void PostComment(string adId, string content);
@@ -816,15 +816,21 @@ namespace MvcClient.SocialAdService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteAd", ReplyAction="http://tempuri.org/ISocialAdService/DeleteAdResponse")]
         System.Threading.Tasks.Task DeleteAdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/EditAd", ReplyAction="http://tempuri.org/ISocialAdService/EditAdResponse")]
+        void EditAd(string id, string title, string content, string locationName, MvcClient.SasPrivate.AdType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/EditAd", ReplyAction="http://tempuri.org/ISocialAdService/EditAdResponse")]
+        System.Threading.Tasks.Task EditAdAsync(string id, string title, string content, string locationName, MvcClient.SasPrivate.AdType type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface ISocialAdServiceChannel : MvcClient.SocialAdService.ISocialAdService, System.ServiceModel.IClientChannel {
+    public interface ISocialAdServiceChannel : MvcClient.SasPrivate.ISocialAdService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class SocialAdServiceClient : System.ServiceModel.ClientBase<MvcClient.SocialAdService.ISocialAdService>, MvcClient.SocialAdService.ISocialAdService {
+    public partial class SocialAdServiceClient : System.ServiceModel.ClientBase<MvcClient.SasPrivate.ISocialAdService>, MvcClient.SasPrivate.ISocialAdService {
         
         public SocialAdServiceClient() {
         }
@@ -861,11 +867,11 @@ namespace MvcClient.SocialAdService {
             return base.Channel.AuthenticateAsync(email, password);
         }
         
-        public MvcClient.SocialAdService.User GetAuthenticatedUser() {
+        public MvcClient.SasPrivate.User GetAuthenticatedUser() {
             return base.Channel.GetAuthenticatedUser();
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetAuthenticatedUserAsync() {
+        public System.Threading.Tasks.Task<MvcClient.SasPrivate.User> GetAuthenticatedUserAsync() {
             return base.Channel.GetAuthenticatedUserAsync();
         }
         
@@ -877,11 +883,11 @@ namespace MvcClient.SocialAdService {
             return base.Channel.LogOutAsync();
         }
         
-        public MvcClient.SocialAdService.User GetUser(string userId) {
+        public MvcClient.SasPrivate.User GetUser(string userId) {
             return base.Channel.GetUser(userId);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetUserAsync(string userId) {
+        public System.Threading.Tasks.Task<MvcClient.SasPrivate.User> GetUserAsync(string userId) {
             return base.Channel.GetUserAsync(userId);
         }
         
@@ -893,11 +899,11 @@ namespace MvcClient.SocialAdService {
             return base.Channel.CountUsersAsync();
         }
         
-        public MvcClient.SocialAdService.User[] GetUsers(int skip, int amount) {
+        public MvcClient.SasPrivate.User[] GetUsers(int skip, int amount) {
             return base.Channel.GetUsers(skip, amount);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User[]> GetUsersAsync(int skip, int amount) {
+        public System.Threading.Tasks.Task<MvcClient.SasPrivate.User[]> GetUsersAsync(int skip, int amount) {
             return base.Channel.GetUsersAsync(skip, amount);
         }
         
@@ -909,19 +915,19 @@ namespace MvcClient.SocialAdService {
             return base.Channel.GetDataAsync();
         }
         
-        public MvcClient.SocialAdService.Ad[] FetchAds(int skip, int amount) {
+        public MvcClient.SasPrivate.Ad[] FetchAds(int skip, int amount) {
             return base.Channel.FetchAds(skip, amount);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.Ad[]> FetchAdsAsync(int skip, int amount) {
+        public System.Threading.Tasks.Task<MvcClient.SasPrivate.Ad[]> FetchAdsAsync(int skip, int amount) {
             return base.Channel.FetchAdsAsync(skip, amount);
         }
         
-        public void PostAd(string title, string content, string location, MvcClient.SocialAdService.AdType type) {
+        public void PostAd(string title, string content, string location, MvcClient.SasPrivate.AdType type) {
             base.Channel.PostAd(title, content, location, type);
         }
         
-        public System.Threading.Tasks.Task PostAdAsync(string title, string content, string location, MvcClient.SocialAdService.AdType type) {
+        public System.Threading.Tasks.Task PostAdAsync(string title, string content, string location, MvcClient.SasPrivate.AdType type) {
             return base.Channel.PostAdAsync(title, content, location, type);
         }
         
@@ -957,11 +963,11 @@ namespace MvcClient.SocialAdService {
             return base.Channel.BuyBoostsAsync();
         }
         
-        public MvcClient.SocialAdService.User GetCurrentUser() {
+        public MvcClient.SasPrivate.User GetCurrentUser() {
             return base.Channel.GetCurrentUser();
         }
         
-        public System.Threading.Tasks.Task<MvcClient.SocialAdService.User> GetCurrentUserAsync() {
+        public System.Threading.Tasks.Task<MvcClient.SasPrivate.User> GetCurrentUserAsync() {
             return base.Channel.GetCurrentUserAsync();
         }
         
@@ -987,6 +993,14 @@ namespace MvcClient.SocialAdService {
         
         public System.Threading.Tasks.Task DeleteAdAsync(string id) {
             return base.Channel.DeleteAdAsync(id);
+        }
+        
+        public void EditAd(string id, string title, string content, string locationName, MvcClient.SasPrivate.AdType type) {
+            base.Channel.EditAd(id, title, content, locationName, type);
+        }
+        
+        public System.Threading.Tasks.Task EditAdAsync(string id, string title, string content, string locationName, MvcClient.SasPrivate.AdType type) {
+            return base.Channel.EditAdAsync(id, title, content, locationName, type);
         }
     }
 }

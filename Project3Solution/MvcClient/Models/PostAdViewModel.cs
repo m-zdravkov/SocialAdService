@@ -1,4 +1,4 @@
-﻿using MvcClient.SocialAdService;
+﻿using MvcClient.SasPrivate;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +10,7 @@ namespace MvcClient.Models
 {
     public class PostAdViewModel
     {
+        public string Id { get; set; }
         [StringLength(512, ErrorMessage = "Title must be shorter than {0} symbols.")]
         public string Title { get; set; }
         [Required]

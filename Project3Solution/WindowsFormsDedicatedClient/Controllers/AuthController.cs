@@ -14,7 +14,7 @@ namespace WindowsFormsDedicatedClient.Controllers
     {
         public static bool LogIn(LoginViewModel lvm)
         {
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 try
                 {
@@ -42,7 +42,7 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static bool SignUp(SignupViewModel svm)
         {
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 try
                 {

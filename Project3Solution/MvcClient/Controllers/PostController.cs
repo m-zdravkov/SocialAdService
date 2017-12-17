@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using MvcClient.AuthService;
+using MvcClient.SasPublic;
 using MvcClient.Models;
 using MvcClient.Helpers;
 
@@ -29,6 +29,42 @@ namespace MvcClient.Controllers
                 return View();
             }
             return RedirectToAction("Index","Home");
+        }
+
+        public ActionResult Edit(string id)
+        {
+            try
+            {
+                using (var client = ServiceHelper.GetPublicServiceClient())
+                {
+                    if (id == null)
+                        return RedirectToAction("Index", "Home");
+                    else {
+                        var ad = client.GetAd(id);
+                        if (ad == null)
+                            return RedirectToAction("Index", "Home");
+                        return View(ad);
+                    }
+                }
+            }catch(Exception)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Ad ad)
+        {
+            try
+            {
+                ServiceHelper.GetServiceClientLoggedIn().EditAd(ad.Id, ad.Title, ad.Content, ad.Location.Name, (SasPrivate.AdType)ad.Type);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ErrorMessage += ex.Message;
+                return View(ad);
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         public ActionResult Reserve(string id)
@@ -76,7 +112,7 @@ namespace MvcClient.Controllers
             if (id == null)
                 return RedirectToAction("Index", "Home");
 
-            var client = ServiceHelper.GetAuthServiceClient();
+            var client = ServiceHelper.GetPublicServiceClient();
             var ad = client.GetAd(id);
             var comments = client.GetAdReplies(0, 64, id);
             var adWithComments = new AdWithCommentsViewModel

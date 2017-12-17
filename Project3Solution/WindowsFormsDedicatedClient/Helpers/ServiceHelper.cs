@@ -29,10 +29,10 @@ namespace WindowsFormsDedicatedClient.Helpers
             return client;
         }
 
-        public static AuthServiceClient GetAuthServiceClient()
+        public static SocialAdServicePublicClient GetPublicServiceClient()
         {
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            return new AuthServiceClient("WSHttpBinding_IAuthService");
+            return new SocialAdServicePublicClient("WSHttpBinding_ISocialAdServicePublic");
         }
     }
 }

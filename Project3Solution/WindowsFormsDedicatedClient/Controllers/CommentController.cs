@@ -16,7 +16,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             Comment[] comments = null;
 
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 comments = client.GetAdReplies(0, 64, adId);
             }

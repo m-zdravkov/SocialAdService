@@ -1,6 +1,6 @@
 ﻿using MvcClient.Helpers;
 using MvcClient.Models;
-using MvcClient.SocialAdService;
+using MvcClient.SasPrivate;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace MvcClient.Controllers
             using (var client = ServiceHelper.GetServiceClientLoggedIn())
             {
                 User user = client.GetCurrentUser();
-                using (var publicClient = ServiceHelper.GetAuthServiceClient())
+                using (var publicClient = ServiceHelper.GetPublicServiceClient())
                 {
                     var reserved = publicClient.GetReservedAds(user.Email);
                     var posted = publicClient.GetPostedAds(user.Email);
@@ -73,7 +73,7 @@ namespace MvcClient.Controllers
         [HttpPost]
         public ActionResult Register(UserRegistrationViewModel user)
         {
-            using (var authsvc = ServiceHelper.GetAuthServiceClient())
+            using (var authsvc = ServiceHelper.GetPublicServiceClient())
             {
                 try
                 {

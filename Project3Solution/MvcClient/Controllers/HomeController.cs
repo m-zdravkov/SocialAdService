@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MvcClient.Helpers;
-using MvcClient.AuthService;
+using MvcClient.SasPublic;
 
 namespace MvcClient.Controllers
 {
@@ -24,7 +24,7 @@ namespace MvcClient.Controllers
 
             if (ads == null)
             {
-                var list = ServiceHelper.GetAuthServiceClient().GetAds(0, 64).ToList<Ad>();
+                var list = ServiceHelper.GetPublicServiceClient().GetAds(0, 64).ToList<Ad>();
                 return View(list);
             }
             else return View(ads);
@@ -36,16 +36,16 @@ namespace MvcClient.Controllers
 
             switch(type)
             {
-                case "selling": adType = AuthService.AdType.Selling; break;
-                case "buying": adType = AuthService.AdType.Buying; break;
-                case "offer": adType = AuthService.AdType.ServiceOffer; break;
-                case "request": adType = AuthService.AdType.ServiceRequest; break;
-                case "event": adType = AuthService.AdType.Event; break;
-                case "other": adType = AuthService.AdType.Other; break;
-                default: adType = AuthService.AdType.All; break;
+                case "selling": adType = SasPublic.AdType.Selling; break;
+                case "buying": adType = SasPublic.AdType.Buying; break;
+                case "offer": adType = SasPublic.AdType.ServiceOffer; break;
+                case "request": adType = SasPublic.AdType.ServiceRequest; break;
+                case "event": adType = SasPublic.AdType.Event; break;
+                case "other": adType = SasPublic.AdType.Other; break;
+                default: adType = SasPublic.AdType.All; break;
             }
 
-            var list = ServiceHelper.GetAuthServiceClient().FindAds(0, 100, "", "", adType).ToList<Ad>();
+            var list = ServiceHelper.GetPublicServiceClient().FindAds(0, 100, "", "", adType).ToList<Ad>();
             TempData["ads"] = list;
 
             return RedirectToAction("Index");

@@ -1,4 +1,4 @@
-﻿@using MvcClient.AuthService;
+﻿@using MvcClient.SasPublic;
 @using MvcClient.Models;
 @using MvcClient.Helpers;
 @model AdWithCommentsViewModel
@@ -16,7 +16,10 @@
         <p class="text-muted">
             Posted on @Model.Ad.DatePosted.ToShortDateString()
             at @Model.Ad.DatePosted.ToShortTimeString()
-            in @Model.Ad.Location.Name
+            @if (Model.Ad.Location != null)
+            {
+                @:in @Model.Ad.Location.Name
+            }
         </p>
 
         @if (Model.Ad.DatePosted != Model.Ad.LastEdited)
@@ -35,7 +38,7 @@
                 This ad has been reserved by @Model.Ad.ReservedBy.Name
             </p>
         }
-        else if (Model.Ad.Author.Email != AuthHelper.CurrentUser.Email)
+        else if (AuthHelper.IsLoggedIn() && Model.Ad.Author.Email != AuthHelper.CurrentUser.Email && Model.Ad.Type == AdType.Selling)
         {
             using (Html.BeginForm("Reserve", "Post", new { id = Model.Ad.Id }, FormMethod.Post, null))
             {

@@ -8,15 +8,19 @@ using System.ServiceModel;
 
 namespace WcfServiceTier
 {
-   public class MyRoleManager : ServiceAuthorizationManager
+    [Obsolete("Not implemented yet!", true)]
+    public class MyRoleManager : ServiceAuthorizationManager
     {
         protected override bool CheckAccessCore(OperationContext operationContext)
         {
-            //Get the current pipeline user context
+            //Get the current pipeline user context, used for user identifying
             var identity = operationContext.ServiceSecurityContext.PrimaryIdentity;
-            //simulate that we get a user and all his roles from the database
+
+            //Simulate that we get a user and all his roles from the database
+            //This would be refactored to use the control layer
             bool? userFound = true;
             string[] userRolesFound = new string[] { "Admin", "User" };
+
             if (userFound == null || userFound == false)
             {
                 throw new Exception("User not found");

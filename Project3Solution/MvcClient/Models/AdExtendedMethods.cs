@@ -1,4 +1,4 @@
-﻿using MvcClient.AuthService;
+﻿using MvcClient.SasPublic;
 using MvcClient.Helpers;
 using System;
 using System.Collections.Generic;
@@ -9,11 +9,12 @@ namespace MvcClient.Models
 {
     public static class AdExtendedMethods
     {
-        public static AdWithCommentsViewModel[] AttachReplies(this Ad[] list, AuthServiceClient client = null)
+        public static AdWithCommentsViewModel[] AttachReplies(this Ad[] list,
+            SocialAdServicePublicClient client = null)
         {
             if (client == null)
             {
-                using (var newClient = ServiceHelper.GetAuthServiceClient())
+                using (var newClient = ServiceHelper.GetPublicServiceClient())
                 {
                     return AttachRepliesFromClient(list, newClient);
                 }
@@ -24,7 +25,8 @@ namespace MvcClient.Models
             }
         }
 
-        private static AdWithCommentsViewModel[] AttachRepliesFromClient(Ad[] list, AuthServiceClient client)
+        private static AdWithCommentsViewModel[] AttachRepliesFromClient(Ad[] list,
+            SocialAdServicePublicClient client)
         {
             var awc = new AdWithCommentsViewModel[list.Length];
             

@@ -17,7 +17,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             Ad[] ads = null;
 
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 ads = client.GetAds(0, 1024);
             }
@@ -29,7 +29,7 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             Ad[] ads = null;
 
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 ads = client.FindAds(0, 1024, "", "", type);
             }
@@ -41,9 +41,9 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             Ad[] ads = null;
 
-            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
-                ads = client.GetReservedAds().Convert();
+                ads = client.GetReservedAds(AuthHelper.CurrentUser.Email);
             }
 
             return ads;
@@ -53,9 +53,9 @@ namespace WindowsFormsDedicatedClient.Controllers
         {
             Ad[] ads = null;
 
-            using (var client = ServiceHelper.GetServiceClientLoggedIn())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
-                ads = client.GetPostedAds().Convert();
+                ads = client.GetPostedAds(AuthHelper.CurrentUser.Email);
             }
 
             return ads;
@@ -63,7 +63,7 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static Ad GetAd(string id)
         {
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 return client.GetAd(id);
             }
@@ -71,7 +71,7 @@ namespace WindowsFormsDedicatedClient.Controllers
 
         public static Ad[] FindAds(string location, string query, AdType type)
         {
-            using (var client = ServiceHelper.GetAuthServiceClient())
+            using (var client = ServiceHelper.GetPublicServiceClient())
             {
                 return client.FindAds(0, 1024, location, query, type);
             }

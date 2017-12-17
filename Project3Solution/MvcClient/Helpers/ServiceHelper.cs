@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using MvcClient.SocialAdService;
-using MvcClient.AuthService;
+using MvcClient.SasPrivate;
+using MvcClient.SasPublic;
 using System.Net;
 
 namespace MvcClient.Helpers
@@ -28,10 +28,10 @@ namespace MvcClient.Helpers
             return client;
         }
 
-        public static AuthServiceClient GetAuthServiceClient()
+        public static SocialAdServicePublicClient GetPublicServiceClient()
         {
             ServicePointManager.ServerCertificateValidationCallback = (obj, certificate, chain, errors) => true;
-            return new AuthServiceClient("WSHttpBinding_IAuthService");
+            return new SocialAdServicePublicClient("WSHttpBinding_ISocialAdServicePublic");
         }
     }
 }

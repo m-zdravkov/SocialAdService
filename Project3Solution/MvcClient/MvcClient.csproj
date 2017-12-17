@@ -169,12 +169,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\AuthService\Reference.cs">
+    <Compile Include="Connected Services\SasPublic\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\SocialAdService\Reference.cs">
+    <Compile Include="Connected Services\SasPrivate\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -208,41 +208,41 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\AuthService\AuthService.wsdl" />
-    <None Include="Connected Services\AuthService\item.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AuthService\item1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\AuthService\item2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Connected Services\AuthService\MvcClient.AuthService.Ad.datasource">
+    <Content Include="Connected Services\SasPrivate\MvcClient.SasPrivate.Ad.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Connected Services\AuthService\MvcClient.AuthService.Comment.datasource">
+    <Content Include="Connected Services\SasPrivate\MvcClient.SasPrivate.User.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <None Include="Connected Services\SocialAdService\configuration91.svcinfo" />
-    <None Include="Connected Services\SocialAdService\configuration.svcinfo" />
-    <None Include="Connected Services\AuthService\item.disco" />
-    <None Include="Connected Services\AuthService\configuration91.svcinfo" />
-    <None Include="Connected Services\AuthService\configuration.svcinfo" />
-    <None Include="Connected Services\AuthService\Reference.svcmap">
+    <None Include="Connected Services\SasPublic\AuthService.wsdl" />
+    <None Include="Connected Services\SasPublic\item.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SasPublic\item1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SasPublic\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\SasPrivate\configuration91.svcinfo" />
+    <None Include="Connected Services\SasPrivate\configuration.svcinfo" />
+    <None Include="Connected Services\SasPublic\item.disco" />
+    <None Include="Connected Services\SasPublic\configuration91.svcinfo" />
+    <None Include="Connected Services\SasPublic\configuration.svcinfo" />
+    <Content Include="Connected Services\SasPublic\MvcClient.SasPublic.Ad.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\SasPublic\MvcClient.SasPublic.Comment.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\SasPublic\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="Connected Services\SocialAdService\MvcClient.SocialAdService.Ad.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\SocialAdService\MvcClient.SocialAdService.User.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\SocialAdService\Model1.xsd">
+    <None Include="Connected Services\SasPrivate\Model1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SocialAdService\Reference.svcmap">
+    <None Include="Connected Services\SasPrivate\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -260,11 +260,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Connected Services\SocialAdService\service1.wsdl" />
-    <None Include="Connected Services\SocialAdService\service2.xsd">
+    <None Include="Connected Services\SasPrivate\service1.wsdl" />
+    <None Include="Connected Services\SasPrivate\service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\SocialAdService\service21.xsd">
+    <None Include="Connected Services\SasPrivate\service21.xsd">
       <SubType>Designer</SubType>
     </None>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -312,7 +312,6 @@
     <Content Include="Views\Auth\Index.cshtml" />
     <Content Include="Views\Index.cshtml" />
     <Content Include="Views\Search.cshtml" />
-    <Content Include="Views\Search\SearchView.cshtml" />
     <Content Include="Views\Post\Ad.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
@@ -321,6 +320,7 @@
     <Content Include="Views\Shared\AdPartial.cshtml" />
     <Content Include="Views\Shared\PostComment.cshtml" />
     <Content Include="Views\Shared\ShortAdPartial.cshtml" />
+    <Content Include="Views\Post\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -332,8 +332,8 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\AuthService\" />
-    <WCFMetadataStorage Include="Connected Services\SocialAdService\" />
+    <WCFMetadataStorage Include="Connected Services\SasPublic\" />
+    <WCFMetadataStorage Include="Connected Services\SasPrivate\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -16,7 +16,7 @@ namespace WcfServiceConsoleHost
             try
             {
                 ServiceHost host = new ServiceHost(typeof(SocialAdService));
-                ServiceHost authhost = new ServiceHost(typeof(AuthService));
+                ServiceHost authhost = new ServiceHost(typeof(SocialAdServicePublic));
                 host.Open();
                 Console.WriteLine("Social Ad service is hosted...");
                 authhost.Open();

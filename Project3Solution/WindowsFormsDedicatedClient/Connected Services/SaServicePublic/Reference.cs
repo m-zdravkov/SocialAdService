@@ -747,76 +747,88 @@ namespace WindowsFormsDedicatedClient.SaServicePublic {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SaServicePublic.IAuthService")]
-    public interface IAuthService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SaServicePublic.ISocialAdServicePublic")]
+    public interface ISocialAdServicePublic {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Login", ReplyAction="http://tempuri.org/IAuthService/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Login", ReplyAction="http://tempuri.org/ISocialAdServicePublic/LoginResponse")]
         bool Login(string email, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Login", ReplyAction="http://tempuri.org/IAuthService/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Login", ReplyAction="http://tempuri.org/ISocialAdServicePublic/LoginResponse")]
         System.Threading.Tasks.Task<bool> LoginAsync(string email, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Register", ReplyAction="http://tempuri.org/IAuthService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Register", ReplyAction="http://tempuri.org/ISocialAdServicePublic/RegisterResponse")]
         bool Register(string email, string name, string password, string pictureUrl);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Register", ReplyAction="http://tempuri.org/IAuthService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Register", ReplyAction="http://tempuri.org/ISocialAdServicePublic/RegisterResponse")]
         System.Threading.Tasks.Task<bool> RegisterAsync(string email, string name, string password, string pictureUrl);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAds", ReplyAction="http://tempuri.org/IAuthService/GetAdsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsResponse")]
         WindowsFormsDedicatedClient.SaServicePublic.Ad[] GetAds(int skip, int amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAds", ReplyAction="http://tempuri.org/IAuthService/GetAdsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsResponse")]
         System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> GetAdsAsync(int skip, int amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdsWithinLocation", ReplyAction="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocation", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocationResponse")]
         WindowsFormsDedicatedClient.SaServicePublic.Ad[] GetAdsWithinLocation(int skip, int amount, string location);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdsWithinLocation", ReplyAction="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocation", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocationResponse")]
         System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/FindAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/FindAdsResponse")]
         WindowsFormsDedicatedClient.SaServicePublic.Ad[] FindAds(int skip, int amount, string location, string searchQuery, WindowsFormsDedicatedClient.SaServicePublic.AdType type);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/FindAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/FindAdsResponse")]
         System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, WindowsFormsDedicatedClient.SaServicePublic.AdType type);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdReplies", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdRepliesResponse")]
         WindowsFormsDedicatedClient.SaServicePublic.Comment[] GetAdReplies(int skip, int amount, string adId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdReplies", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdRepliesResponse")]
         System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAd", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdResponse")]
         WindowsFormsDedicatedClient.SaServicePublic.Ad GetAd(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAd", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdResponse")]
         System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad> GetAdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetPostedAdsResponse")]
+        WindowsFormsDedicatedClient.SaServicePublic.Ad[] GetPostedAds(string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetPostedAdsResponse")]
+        System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> GetPostedAdsAsync(string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetReservedAdsResponse")]
+        WindowsFormsDedicatedClient.SaServicePublic.Ad[] GetReservedAds(string userEmail);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetReservedAdsResponse")]
+        System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> GetReservedAdsAsync(string userEmail);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAuthServiceChannel : WindowsFormsDedicatedClient.SaServicePublic.IAuthService, System.ServiceModel.IClientChannel {
+    public interface ISocialAdServicePublicChannel : WindowsFormsDedicatedClient.SaServicePublic.ISocialAdServicePublic, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AuthServiceClient : System.ServiceModel.ClientBase<WindowsFormsDedicatedClient.SaServicePublic.IAuthService>, WindowsFormsDedicatedClient.SaServicePublic.IAuthService {
+    public partial class SocialAdServicePublicClient : System.ServiceModel.ClientBase<WindowsFormsDedicatedClient.SaServicePublic.ISocialAdServicePublic>, WindowsFormsDedicatedClient.SaServicePublic.ISocialAdServicePublic {
         
-        public AuthServiceClient() {
+        public SocialAdServicePublicClient() {
         }
         
-        public AuthServiceClient(string endpointConfigurationName) : 
+        public SocialAdServicePublicClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public AuthServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public SocialAdServicePublicClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public AuthServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SocialAdServicePublicClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public AuthServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SocialAdServicePublicClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -874,6 +886,22 @@ namespace WindowsFormsDedicatedClient.SaServicePublic {
         
         public System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad> GetAdAsync(string id) {
             return base.Channel.GetAdAsync(id);
+        }
+        
+        public WindowsFormsDedicatedClient.SaServicePublic.Ad[] GetPostedAds(string userEmail) {
+            return base.Channel.GetPostedAds(userEmail);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> GetPostedAdsAsync(string userEmail) {
+            return base.Channel.GetPostedAdsAsync(userEmail);
+        }
+        
+        public WindowsFormsDedicatedClient.SaServicePublic.Ad[] GetReservedAds(string userEmail) {
+            return base.Channel.GetReservedAds(userEmail);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePublic.Ad[]> GetReservedAdsAsync(string userEmail) {
+            return base.Channel.GetReservedAdsAsync(userEmail);
         }
     }
 }

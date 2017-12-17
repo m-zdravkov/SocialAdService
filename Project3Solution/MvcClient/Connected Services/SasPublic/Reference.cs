@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MvcClient.AuthService {
+namespace MvcClient.SasPublic {
     using System.Runtime.Serialization;
     using System;
     
@@ -17,17 +17,17 @@ namespace MvcClient.AuthService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Ad", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Ad[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Post))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.User))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Location))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.LocationType))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Price))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.PriceType))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.AdType))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Comment[]))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Comment))]
-    public partial class Ad : MvcClient.AuthService.Post {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Ad[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Post))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.User))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Location))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.LocationType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Price))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.PriceType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.AdType))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Comment[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Comment))]
+    public partial class Ad : MvcClient.SasPublic.Post {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private object CategoriesField;
@@ -39,19 +39,19 @@ namespace MvcClient.AuthService {
         private System.Nullable<System.DateTime> ExpDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.Location LocationField;
+        private MvcClient.SasPublic.Location LocationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.Price PriceField;
+        private MvcClient.SasPublic.Price PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.User ReservedByField;
+        private MvcClient.SasPublic.User ReservedByField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.AdType TypeField;
+        private MvcClient.SasPublic.AdType TypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ViewsField;
@@ -96,7 +96,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.Location Location {
+        public MvcClient.SasPublic.Location Location {
             get {
                 return this.LocationField;
             }
@@ -109,7 +109,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.Price Price {
+        public MvcClient.SasPublic.Price Price {
             get {
                 return this.PriceField;
             }
@@ -122,7 +122,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.User ReservedBy {
+        public MvcClient.SasPublic.User ReservedBy {
             get {
                 return this.ReservedByField;
             }
@@ -148,7 +148,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.AdType Type {
+        public MvcClient.SasPublic.AdType Type {
             get {
                 return this.TypeField;
             }
@@ -178,15 +178,15 @@ namespace MvcClient.AuthService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Post", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Comment))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.AuthService.Ad))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Comment))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(MvcClient.SasPublic.Ad))]
     public partial class Post : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.User AuthorField;
+        private MvcClient.SasPublic.User AuthorField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContentField;
@@ -214,7 +214,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.User Author {
+        public MvcClient.SasPublic.User Author {
             get {
                 return this.AuthorField;
             }
@@ -478,7 +478,7 @@ namespace MvcClient.AuthService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Comment", Namespace="http://schemas.datacontract.org/2004/07/Model")]
     [System.SerializableAttribute()]
-    public partial class Comment : MvcClient.AuthService.Post {
+    public partial class Comment : MvcClient.SasPublic.Post {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IndentField;
@@ -526,10 +526,10 @@ namespace MvcClient.AuthService {
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.Location ParentField;
+        private MvcClient.SasPublic.Location ParentField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.LocationType TypeField;
+        private MvcClient.SasPublic.LocationType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -555,7 +555,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.Location Parent {
+        public MvcClient.SasPublic.Location Parent {
             get {
                 return this.ParentField;
             }
@@ -568,7 +568,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.LocationType Type {
+        public MvcClient.SasPublic.LocationType Type {
             get {
                 return this.TypeField;
             }
@@ -609,7 +609,7 @@ namespace MvcClient.AuthService {
         private int LowField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private MvcClient.AuthService.PriceType TypeField;
+        private MvcClient.SasPublic.PriceType TypeField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -661,7 +661,7 @@ namespace MvcClient.AuthService {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public MvcClient.AuthService.PriceType Type {
+        public MvcClient.SasPublic.PriceType Type {
             get {
                 return this.TypeField;
             }
@@ -747,88 +747,88 @@ namespace MvcClient.AuthService {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="AuthService.IAuthService")]
-    public interface IAuthService {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="SasPublic.ISocialAdServicePublic")]
+    public interface ISocialAdServicePublic {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Login", ReplyAction="http://tempuri.org/IAuthService/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Login", ReplyAction="http://tempuri.org/ISocialAdServicePublic/LoginResponse")]
         bool Login(string email, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Login", ReplyAction="http://tempuri.org/IAuthService/LoginResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Login", ReplyAction="http://tempuri.org/ISocialAdServicePublic/LoginResponse")]
         System.Threading.Tasks.Task<bool> LoginAsync(string email, string password);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Register", ReplyAction="http://tempuri.org/IAuthService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Register", ReplyAction="http://tempuri.org/ISocialAdServicePublic/RegisterResponse")]
         bool Register(string email, string name, string password, string pictureUrl);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/Register", ReplyAction="http://tempuri.org/IAuthService/RegisterResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/Register", ReplyAction="http://tempuri.org/ISocialAdServicePublic/RegisterResponse")]
         System.Threading.Tasks.Task<bool> RegisterAsync(string email, string name, string password, string pictureUrl);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAds", ReplyAction="http://tempuri.org/IAuthService/GetAdsResponse")]
-        MvcClient.AuthService.Ad[] GetAds(int skip, int amount);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsResponse")]
+        MvcClient.SasPublic.Ad[] GetAds(int skip, int amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAds", ReplyAction="http://tempuri.org/IAuthService/GetAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsAsync(int skip, int amount);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetAdsAsync(int skip, int amount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdsWithinLocation", ReplyAction="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse")]
-        MvcClient.AuthService.Ad[] GetAdsWithinLocation(int skip, int amount, string location);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocation", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocationResponse")]
+        MvcClient.SasPublic.Ad[] GetAdsWithinLocation(int skip, int amount, string location);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdsWithinLocation", ReplyAction="http://tempuri.org/IAuthService/GetAdsWithinLocationResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocation", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdsWithinLocationResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
-        MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/FindAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/FindAdsResponse")]
+        MvcClient.SasPublic.Ad[] FindAds(int skip, int amount, string location, string searchQuery, MvcClient.SasPublic.AdType type);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/FindAds", ReplyAction="http://tempuri.org/IAuthService/FindAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/FindAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/FindAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.SasPublic.AdType type);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
-        MvcClient.AuthService.Comment[] GetAdReplies(int skip, int amount, string adId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdReplies", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdRepliesResponse")]
+        MvcClient.SasPublic.Comment[] GetAdReplies(int skip, int amount, string adId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAdReplies", ReplyAction="http://tempuri.org/IAuthService/GetAdRepliesResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAdReplies", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdRepliesResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
-        MvcClient.AuthService.Ad GetAd(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAd", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdResponse")]
+        MvcClient.SasPublic.Ad GetAd(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetAd", ReplyAction="http://tempuri.org/IAuthService/GetAdResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad> GetAdAsync(string id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetAd", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetAdResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Ad> GetAdAsync(string id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetPostedAds", ReplyAction="http://tempuri.org/IAuthService/GetPostedAdsResponse")]
-        MvcClient.AuthService.Ad[] GetPostedAds(string userEmail);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetPostedAdsResponse")]
+        MvcClient.SasPublic.Ad[] GetPostedAds(string userEmail);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetPostedAds", ReplyAction="http://tempuri.org/IAuthService/GetPostedAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetPostedAdsAsync(string userEmail);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetPostedAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetPostedAdsAsync(string userEmail);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetReservedAds", ReplyAction="http://tempuri.org/IAuthService/GetReservedAdsResponse")]
-        MvcClient.AuthService.Ad[] GetReservedAds(string userEmail);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetReservedAdsResponse")]
+        MvcClient.SasPublic.Ad[] GetReservedAds(string userEmail);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAuthService/GetReservedAds", ReplyAction="http://tempuri.org/IAuthService/GetReservedAdsResponse")]
-        System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetReservedAdsAsync(string userEmail);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdServicePublic/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdServicePublic/GetReservedAdsResponse")]
+        System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetReservedAdsAsync(string userEmail);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IAuthServiceChannel : MvcClient.AuthService.IAuthService, System.ServiceModel.IClientChannel {
+    public interface ISocialAdServicePublicChannel : MvcClient.SasPublic.ISocialAdServicePublic, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class AuthServiceClient : System.ServiceModel.ClientBase<MvcClient.AuthService.IAuthService>, MvcClient.AuthService.IAuthService {
+    public partial class SocialAdServicePublicClient : System.ServiceModel.ClientBase<MvcClient.SasPublic.ISocialAdServicePublic>, MvcClient.SasPublic.ISocialAdServicePublic {
         
-        public AuthServiceClient() {
+        public SocialAdServicePublicClient() {
         }
         
-        public AuthServiceClient(string endpointConfigurationName) : 
+        public SocialAdServicePublicClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public AuthServiceClient(string endpointConfigurationName, string remoteAddress) : 
+        public SocialAdServicePublicClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public AuthServiceClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SocialAdServicePublicClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public AuthServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public SocialAdServicePublicClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
@@ -848,59 +848,59 @@ namespace MvcClient.AuthService {
             return base.Channel.RegisterAsync(email, name, password, pictureUrl);
         }
         
-        public MvcClient.AuthService.Ad[] GetAds(int skip, int amount) {
+        public MvcClient.SasPublic.Ad[] GetAds(int skip, int amount) {
             return base.Channel.GetAds(skip, amount);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsAsync(int skip, int amount) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetAdsAsync(int skip, int amount) {
             return base.Channel.GetAdsAsync(skip, amount);
         }
         
-        public MvcClient.AuthService.Ad[] GetAdsWithinLocation(int skip, int amount, string location) {
+        public MvcClient.SasPublic.Ad[] GetAdsWithinLocation(int skip, int amount, string location) {
             return base.Channel.GetAdsWithinLocation(skip, amount, location);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetAdsWithinLocationAsync(int skip, int amount, string location) {
             return base.Channel.GetAdsWithinLocationAsync(skip, amount, location);
         }
         
-        public MvcClient.AuthService.Ad[] FindAds(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type) {
+        public MvcClient.SasPublic.Ad[] FindAds(int skip, int amount, string location, string searchQuery, MvcClient.SasPublic.AdType type) {
             return base.Channel.FindAds(skip, amount, location, searchQuery, type);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.AuthService.AdType type) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> FindAdsAsync(int skip, int amount, string location, string searchQuery, MvcClient.SasPublic.AdType type) {
             return base.Channel.FindAdsAsync(skip, amount, location, searchQuery, type);
         }
         
-        public MvcClient.AuthService.Comment[] GetAdReplies(int skip, int amount, string adId) {
+        public MvcClient.SasPublic.Comment[] GetAdReplies(int skip, int amount, string adId) {
             return base.Channel.GetAdReplies(skip, amount, adId);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Comment[]> GetAdRepliesAsync(int skip, int amount, string adId) {
             return base.Channel.GetAdRepliesAsync(skip, amount, adId);
         }
         
-        public MvcClient.AuthService.Ad GetAd(string id) {
+        public MvcClient.SasPublic.Ad GetAd(string id) {
             return base.Channel.GetAd(id);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad> GetAdAsync(string id) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Ad> GetAdAsync(string id) {
             return base.Channel.GetAdAsync(id);
         }
         
-        public MvcClient.AuthService.Ad[] GetPostedAds(string userEmail) {
+        public MvcClient.SasPublic.Ad[] GetPostedAds(string userEmail) {
             return base.Channel.GetPostedAds(userEmail);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetPostedAdsAsync(string userEmail) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetPostedAdsAsync(string userEmail) {
             return base.Channel.GetPostedAdsAsync(userEmail);
         }
         
-        public MvcClient.AuthService.Ad[] GetReservedAds(string userEmail) {
+        public MvcClient.SasPublic.Ad[] GetReservedAds(string userEmail) {
             return base.Channel.GetReservedAds(userEmail);
         }
         
-        public System.Threading.Tasks.Task<MvcClient.AuthService.Ad[]> GetReservedAdsAsync(string userEmail) {
+        public System.Threading.Tasks.Task<MvcClient.SasPublic.Ad[]> GetReservedAdsAsync(string userEmail) {
             return base.Channel.GetReservedAdsAsync(userEmail);
         }
     }

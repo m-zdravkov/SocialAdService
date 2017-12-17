@@ -21,7 +21,7 @@ namespace MvcClient.Controllers
         {
 
             bool canLogIn = false;
-            using (var authsvc = ServiceHelper.GetAuthServiceClient())
+            using (var authsvc = ServiceHelper.GetPublicServiceClient())
             {
                 try
                 {

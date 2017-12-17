@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="Nj7f+ZfpqaRpSV7qSqWUAFrBQ6E=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="piNAkJyStpAJTAYkZz27ONDVXvM=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="wsHttpBinding" name="WSHttpBinding_ISocialAdService1">
       <properties>
@@ -127,7 +127,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="WSHttpBinding_ISocialAdService" contract="SocialAdService.ISocialAdService" bindingType="wsHttpBinding" address="https://localhost:1414/WcfSecurity" bindingConfiguration="WSHttpBinding_ISocialAdService1">
+    <endpoint name="WSHttpBinding_ISocialAdService" contract="SasPrivate.ISocialAdService" bindingType="wsHttpBinding" address="https://localhost:1414/WcfSecurity" bindingConfiguration="WSHttpBinding_ISocialAdService1">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://localhost:1414/WcfSecurity</serializedValue>
@@ -142,7 +142,7 @@
           <serializedValue>WSHttpBinding_ISocialAdService1</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>SocialAdService.ISocialAdService</serializedValue>
+          <serializedValue>SasPrivate.ISocialAdService</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

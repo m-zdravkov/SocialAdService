@@ -216,6 +216,12 @@
   <wsdl:message name="ISocialAdService_DeleteAd_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteAdResponse" />
   </wsdl:message>
+  <wsdl:message name="ISocialAdService_EditAd_InputMessage">
+    <wsdl:part name="parameters" element="tns:EditAd" />
+  </wsdl:message>
+  <wsdl:message name="ISocialAdService_EditAd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EditAdResponse" />
+  </wsdl:message>
   <wsdl:portType name="ISocialAdService">
     <wsdl:operation name="Register">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/Register" message="tns:ISocialAdService_Register_InputMessage" />
@@ -288,6 +294,10 @@
     <wsdl:operation name="DeleteAd">
       <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/DeleteAd" message="tns:ISocialAdService_DeleteAd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/DeleteAdResponse" message="tns:ISocialAdService_DeleteAd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditAd">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISocialAdService/EditAd" message="tns:ISocialAdService_EditAd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISocialAdService/EditAdResponse" message="tns:ISocialAdService_EditAd_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_ISocialAdService" type="tns:ISocialAdService">
@@ -448,6 +458,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteAd">
       <soap12:operation soapAction="http://tempuri.org/ISocialAdService/DeleteAd" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EditAd">
+      <soap12:operation soapAction="http://tempuri.org/ISocialAdService/EditAd" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -16,14 +16,6 @@ namespace WcfServiceTier
     {
         public override void Validate(string email, string password)
         {
-            /*if (userName == "Mein Schaft" && password == "!# test password #!")
-            {
-
-            }
-            else
-            {
-                throw new FaultException<Exception>(new Exception("Incorrect Login"), "Try again maaatey");
-            }*/
             try
             {
                 AuthenticationControl.GetInstance().Authenticate(email, password);

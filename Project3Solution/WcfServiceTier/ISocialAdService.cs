@@ -64,5 +64,8 @@ namespace WcfServiceTier
 
         [OperationContract]
         void DeleteAd(string id);
+
+        [OperationContract]
+        void EditAd(string id, string title, string content, string locationName, AdType type);
     }
 }

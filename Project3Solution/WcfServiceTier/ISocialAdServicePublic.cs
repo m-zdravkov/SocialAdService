@@ -9,7 +9,7 @@ using Model;
 namespace WcfServiceTier
 {
     [ServiceContract]
-    public interface IAuthService
+    public interface ISocialAdServicePublic
     {
         [OperationContract]
         bool Login(string email, string password);

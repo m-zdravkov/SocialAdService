@@ -1,5 +1,5 @@
 ﻿@using MvcClient.Helpers;
-@model List<MvcClient.AuthService.Ad>
+@model List<MvcClient.SasPublic.Ad>
 
 @{
     ViewBag.Title = "Home";
@@ -22,7 +22,6 @@
                 @Html.ActionLink("Events", "AdType", "Home", new { type = "event" }, new { @class = "list-group-item" })
                 @Html.ActionLink("Other", "AdType", "Home", new { type = "other" }, new { @class = "list-group-item" })
             </div>
-                          
         </div>
         
         <!-- Main page -->

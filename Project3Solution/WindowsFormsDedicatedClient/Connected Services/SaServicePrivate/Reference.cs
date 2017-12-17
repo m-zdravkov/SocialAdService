@@ -793,18 +793,6 @@ namespace WindowsFormsDedicatedClient.SaServicePrivate {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/BuyBoosts", ReplyAction="http://tempuri.org/ISocialAdService/BuyBoostsResponse")]
         System.Threading.Tasks.Task BuyBoostsAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetPostedAdsResponse")]
-        WindowsFormsDedicatedClient.SaServicePrivate.Ad[] GetPostedAds();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetPostedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetPostedAdsResponse")]
-        System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePrivate.Ad[]> GetPostedAdsAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetReservedAdsResponse")]
-        WindowsFormsDedicatedClient.SaServicePrivate.Ad[] GetReservedAds();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetReservedAds", ReplyAction="http://tempuri.org/ISocialAdService/GetReservedAdsResponse")]
-        System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePrivate.Ad[]> GetReservedAdsAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/GetCurrentUser", ReplyAction="http://tempuri.org/ISocialAdService/GetCurrentUserResponse")]
         WindowsFormsDedicatedClient.SaServicePrivate.User GetCurrentUser();
         
@@ -828,6 +816,12 @@ namespace WindowsFormsDedicatedClient.SaServicePrivate {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/DeleteAd", ReplyAction="http://tempuri.org/ISocialAdService/DeleteAdResponse")]
         System.Threading.Tasks.Task DeleteAdAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/EditAd", ReplyAction="http://tempuri.org/ISocialAdService/EditAdResponse")]
+        void EditAd(string id, string title, string content, string locationName, WindowsFormsDedicatedClient.SaServicePrivate.AdType type);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISocialAdService/EditAd", ReplyAction="http://tempuri.org/ISocialAdService/EditAdResponse")]
+        System.Threading.Tasks.Task EditAdAsync(string id, string title, string content, string locationName, WindowsFormsDedicatedClient.SaServicePrivate.AdType type);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -969,22 +963,6 @@ namespace WindowsFormsDedicatedClient.SaServicePrivate {
             return base.Channel.BuyBoostsAsync();
         }
         
-        public WindowsFormsDedicatedClient.SaServicePrivate.Ad[] GetPostedAds() {
-            return base.Channel.GetPostedAds();
-        }
-        
-        public System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePrivate.Ad[]> GetPostedAdsAsync() {
-            return base.Channel.GetPostedAdsAsync();
-        }
-        
-        public WindowsFormsDedicatedClient.SaServicePrivate.Ad[] GetReservedAds() {
-            return base.Channel.GetReservedAds();
-        }
-        
-        public System.Threading.Tasks.Task<WindowsFormsDedicatedClient.SaServicePrivate.Ad[]> GetReservedAdsAsync() {
-            return base.Channel.GetReservedAdsAsync();
-        }
-        
         public WindowsFormsDedicatedClient.SaServicePrivate.User GetCurrentUser() {
             return base.Channel.GetCurrentUser();
         }
@@ -1015,6 +993,14 @@ namespace WindowsFormsDedicatedClient.SaServicePrivate {
         
         public System.Threading.Tasks.Task DeleteAdAsync(string id) {
             return base.Channel.DeleteAdAsync(id);
+        }
+        
+        public void EditAd(string id, string title, string content, string locationName, WindowsFormsDedicatedClient.SaServicePrivate.AdType type) {
+            base.Channel.EditAd(id, title, content, locationName, type);
+        }
+        
+        public System.Threading.Tasks.Task EditAdAsync(string id, string title, string content, string locationName, WindowsFormsDedicatedClient.SaServicePrivate.AdType type) {
+            return base.Channel.EditAdAsync(id, title, content, locationName, type);
         }
     }
 }

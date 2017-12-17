@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using MvcClient.Models;
 using MvcClient.Helpers;
-using MvcClient.AuthService;
+using MvcClient.SasPublic;
 
 namespace MvcClient.Controllers
 {
@@ -20,7 +20,7 @@ namespace MvcClient.Controllers
         [HttpPost]
         public ActionResult Index(SearchQueryViewModel sqvm)
         {
-            var results = ServiceHelper.GetAuthServiceClient().
+            var results = ServiceHelper.GetPublicServiceClient().
                 FindAds(0, 100, sqvm.Location, sqvm.Query, sqvm.Type).ToList<Ad>();
             //var results = ServiceHelper.GetAuthServiceClient().GetAds(0, 100).ToList<Ad>();
             TempData["ads"] = results;

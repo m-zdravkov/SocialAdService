@@ -12,7 +12,7 @@ using System.ServiceModel;
 namespace WcfServiceTier
 {
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple)]
-    public class AuthService : IAuthService
+    public class SocialAdServicePublic : ISocialAdServicePublic
     {
         public bool Login(string email, string password)
         {

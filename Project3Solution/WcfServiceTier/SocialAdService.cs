@@ -208,5 +208,17 @@ namespace WcfServiceTier
                 throw new WebFaultException<string>("Can not delete other people's comments", HttpStatusCode.Unauthorized);
             }
         }
+
+        public void EditAd(string id, string title, string content, string locationName, AdType type)
+        {
+            try
+            {
+                AdControl.GetInstance().UpdateAd(GetServiceUserEmail(), id, title, content, locationName, type);
+            }
+            catch (InvalidOperationException)
+            {
+                throw new WebFaultException<string>("Can not edit other people's ads", HttpStatusCode.Unauthorized);
+            }
+        }
     }
 }
