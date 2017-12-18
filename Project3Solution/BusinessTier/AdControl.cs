@@ -351,7 +351,7 @@ namespace BusinessTier
             db.Users.Attach(user);
             db.Entry(user).State = EntityState.Modified;
 
-            using (var reserveTransaction = db.Database.BeginTransaction(System.Data.IsolationLevel.ReadCommitted))
+            using (var reserveTransaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
             {
                 try
                 {
