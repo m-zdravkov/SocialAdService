@@ -15,10 +15,23 @@ namespace BusinessTier
 
         private AdControl ()
         {
-            //REFACTOR
-            //THIS IS A QUICK FIX
+            SeedAds();
+        }
+
+        public static AdControl GetInstance ()
+        {
+            if (_instance == null)
+            {
+                _instance = new AdControl();
+            }
+            return _instance;
+        }
+
+        private void SeedAds()
+        {
+            //TODO: Refactor
             var db = DbContextControl.GetNew();
-            if(db.Ads.Count() == 0)
+            if (db.Ads.Count() == 0)
             {
                 if (db.Users.Count() == 0)
                     MigrationSeed.SeedUsers();
@@ -35,15 +48,15 @@ namespace BusinessTier
             }
         }
 
-        public static AdControl GetInstance ()
-        {
-            if (_instance == null)
-            {
-                _instance = new AdControl();
-            }
-            return _instance;
-        }
-
+        /// <summary>
+        /// Posts an Ad, persists to the database
+        /// </summary>
+        /// <param name="authorEmail"></param>
+        /// <param name="title"></param>
+        /// <param name="content"></param>
+        /// <param name="locationName"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Ad PostAd(string authorEmail, string title, string content, string locationName=null, AdType type = AdType.Other)
         {
             var db = DbContextControl.GetNew();
@@ -82,6 +95,16 @@ namespace BusinessTier
             return ad;
         }
 
+        /// <summary>
+        /// Updates an ad. Requires author email.
+        /// </summary>
+        /// <param name="authorEmail"></param>
+        /// <param name="id"></param>
+        /// <param name="title"></param>
+        /// <param name="content"></param>
+        /// <param name="locationName"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public Ad UpdateAd(string authorEmail, string id, string title, string content, string locationName = null, AdType type = AdType.Other)
         {
             using (var db = DbContextControl.GetNew())
@@ -166,7 +189,7 @@ namespace BusinessTier
         }
 
         /// <summary>
-        /// Fetches from all ads. Ordered by date.
+        /// Fetches from all ads. Ordered by date. This method is used on the home page.
         /// </summary>
         public IList<Ad> GetAds (int skip, int amount)
         {
@@ -190,7 +213,8 @@ namespace BusinessTier
         }
 
         /// <summary>
-        /// This method is used to shorten the finding of possible locations for search methods
+        /// This method is used to shorten the finding of possible locations for search methods.
+        /// It searhes for all locations within a larger one.
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
@@ -207,7 +231,8 @@ namespace BusinessTier
         }
 
         /// <summary>
-        /// Like GetPossibleLocations, but returns string list, for easier comparison
+        /// Like GetPossibleLocations, but returns string list, for easier comparison.
+        /// Looks for locations within a larger one.
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
@@ -224,6 +249,10 @@ namespace BusinessTier
             return strings;
         }
 
+        /// <summary>
+        /// Gets a page of ads that are within a location.
+        /// </summary>
+        /// <returns></returns>
         public IList<Ad> GetAdsWithinLocation(int skip, int amount, string location)
         {
             if (amount > Throttle)
@@ -231,12 +260,9 @@ namespace BusinessTier
 
             IList<string> possibleLocationNames = GetPossibleLocationNames(location);
 
-            ///TODO: use one universal db context when possible
             ServiceDbContext db = DbContextControl.GetLastOrNew();
-            IQueryable<Ad> query = /*(from ad in db.Ads
-                                    where possibleLocations.Any(loc => ad.Location.Name == loc)
-                                    select ad);*/
-                                    db.Ads.Include("Location")
+
+            IQueryable<Ad> query = db.Ads.Include("Location")
                                     .Where(a => a.Location!=null
                                         && possibleLocationNames.Contains(a.Location.Name));
 
@@ -331,30 +357,30 @@ namespace BusinessTier
         {
             Ad ad = GetAd(id);
             User user = UserControl.GetInstance().GetUser(userEmail);
-
-            if (user.Id == ad.ReservedBy?.Id)
-                throw new ArgumentException("Users can not reserve their own ads.");
-
-            if (ad.ReservedBy != null)
-                throw new AlreadyReservedException(String.Format(
-                    "Ad with id '{0}' is already reserved by user with id '{1}'", ad.Id, ad.ReservedBy.Id));
-
-            if (user.Reservations < 1)
-                throw new NotEnoughReservationsException("This user can not reserve any more ads.");
-
             var db = DbContextControl.GetNew();
-            //Get ad into context
-            db.Ads.Attach(ad);
-            db.Entry(ad).State = EntityState.Modified;
-
-            //Get user into context
-            db.Users.Attach(user);
-            db.Entry(user).State = EntityState.Modified;
 
             using (var reserveTransaction = db.Database.BeginTransaction(System.Data.IsolationLevel.Serializable))
             {
                 try
                 {
+                    if (user.Id == ad.ReservedBy?.Id)
+                        throw new ArgumentException("Users can not reserve their own ads.");
+
+                    if (ad.ReservedBy != null)
+                        throw new AlreadyReservedException(String.Format(
+                            "Ad with id '{0}' is already reserved by user with id '{1}'", ad.Id, ad.ReservedBy.Id));
+
+                    if (user.Reservations < 1)
+                        throw new NotEnoughReservationsException("This user can not reserve any more ads.");
+
+                    //Get ad into context
+                    db.Ads.Attach(ad);
+                    db.Entry(ad).State = EntityState.Modified;
+
+                    //Get user into context
+                    db.Users.Attach(user);
+                    db.Entry(user).State = EntityState.Modified;
+
                     //Modify ad, reserve
                     ad.ReservedBy = user;
 
